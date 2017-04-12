@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	//Hola Sarita cara de bolilla
     include 'controlador/IndexC.php';
 
     $metodo = new IndexC();
