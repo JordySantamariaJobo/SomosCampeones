@@ -1,0 +1,41 @@
+@font-face{
+	font-family: SanFranciscoBold;
+	src: url(../fonts/YosemiteFonts/SanFranciscoBold.ttf);
+}
+@font-face{
+	font-family: SanFranciscoBoldItalic;
+	src: url(../fonts/YosemiteFonts/SanFranciscoBoldItalic.ttf);
+}
+@font-face{
+	font-family: SanFranciscoRegular;
+	src: url(../fonts/YosemiteFonts/SanFranciscoRegular.ttf);
+}
+@font-face{
+	font-family: SanFranciscoTextMedium;
+	src: url(../fonts/YosemiteFonts/SanFranciscoTextMedium.ttf);
+}
+@font-face{
+	font-family: SanFranciscoTextMediumItalic;
+	src: url(../fonts/YosemiteFonts/SanFranciscoTextMediumItalic.ttf);
+}
+@font-face{
+	font-family: SanFranciscoTextRegularItalic;
+	src: url(../fonts/YosemiteFonts/SanFranciscoTextRegularItalic.ttf);
+}
+@font-face{
+	font-family: SanFranciscoThin;
+	src: url(../fonts/YosemiteFonts/SanFranciscoThin.ttf);
+}
+@font-face{
+	font-family: SanFranciscoUltralight;
+	src: url(../fonts/YosemiteFonts/SanFranciscoUltralight.ttf);
+}
+
+#SFBold{ font-family: SanFranciscoBold; }
+#SFBoldItalic{ font-family: SanFranciscoBoldItalic; }
+#SFRegular{ font-family: SanFranciscoRegular; }
+#SFTextMedium{ font-family: SanFranciscoTextMedium; }
+#SFTextMediumItalic{ font-family: SanFranciscoTextMediumItalic; }
+#SFTextRegularItalic{ font-family: SanFranciscoTextRegularItalic; }
+#SFThin{ font-family: SanFranciscoThin; }
+#SFUltraLight{ font-family: SanFranciscoUltraLight; }

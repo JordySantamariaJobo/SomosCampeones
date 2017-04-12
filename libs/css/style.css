@@ -1,0 +1,116 @@
+.clearout {
+    height:20px;
+    clear:both;
+}
+
+#flexiselDemo1, #flexiselDemo2, #flexiselDemo3 {
+    display:none;
+}
+
+.nbs-flexisel-container {
+    position:relative;
+    max-width:100%;
+}
+.nbs-flexisel-ul {
+    position:relative;
+    width:99999px;
+    margin:0px;
+    padding:0px;
+    list-style-type:none;   
+    text-align:center;  
+}
+
+.nbs-flexisel-inner {
+    position: relative;
+    overflow: hidden;
+    float:left;
+    width:100%;
+    border:1px solid #ccc;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+
+.nbs-flexisel-item {
+    float:left;
+    margin:0px;
+    padding:0px;
+    cursor:pointer;
+    position:relative;
+    line-height:0px;
+}
+.nbs-flexisel-item img {
+    max-width: 100%;
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*** Navigation ***/
+
+th.Liga {
+    text-align: center; 
+    color:#ff3546;
+}
+
+td.equipo {
+    text-align: center;
+    color: #4c4c4c;
+}
+
+td.resultado {
+    background-color: #ff3546;
+    color: #fff;
+    text-align: center;
+    padding: 1px 1px;
+}
+ 
+.nbs-flexisel-nav-left,
+.nbs-flexisel-nav-right {
+    padding: 40px 5px; 
+    position: absolute;
+    cursor: pointer;
+    z-index: 4;
+    background-color: #e2e2e2;
+    color: #000;     
+}
+
+.nbs-flexisel-nav-left {
+    left: 0px;
+}
+
+.nbs-flexisel-nav-left:before {
+    content: "<"
+}
+
+.nbs-flexisel-nav-left.disabled {
+    opacity: 0.4;
+}
+
+.nbs-flexisel-nav-right {
+    right: 0px;    
+}
+
+.nbs-flexisel-nav-right:before {
+    content: ">"
+}
+
+.nbs-flexisel-nav-right.disabled {
+    opacity: 0.4;
+}
+
+.ContenedorResultados{
+  width: 10% !important;
+  height: auto;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  overflow:hidden;
+}
+.GolesCarousel{
+  padding-top: 10%;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}

@@ -1,0 +1,53 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+#canvas-holder{
+  width:30%;
+}
+.content{
+  background: url(../img/iconos/Wall.png) fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.skin-blue .main-header li.user-header{
+  background: url(../img/iconos/championsleague.jpg) fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.skin-blue .main-header .navbar {
+  background-color: #03A9F4;
+}
+.skin-blue .main-header .logo {
+  background-color: #0091EA;
+}
+.box.box-primary {
+  border-top-color: #03A9F4;
+}
+.text-success {
+  color: #00E676;
+}
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+  background-color: #000;
+}
+.skin-blue .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a {
+  color: #fff;
+  background: #1e282c;
+  border-left-color: #03A9F4;
+}
+.btn-primary, .btn-primary:hover{
+  background-color: #03A9F4;
+  border-color: transparent;
+}
+.btn-success, .btn-success:hover{
+  background-color: #00E676;
+  border-color: transparent;
+}
+.sidebar-menu{
+  color:#fff;
+}
+.profile-user-img{
+  border: 3px solid #03A9F4 !important;
+}

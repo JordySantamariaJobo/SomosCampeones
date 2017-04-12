@@ -1,0 +1,61 @@
+a { 
+   text-decoration: none;
+}
+ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+#sticky-social {
+   left: 0;
+   position: fixed;
+   top: 250px;
+   z-index: 1000;
+}
+#sticky-social a {
+   background: #333;
+   color: #fff;
+   display: block;
+   height: 40px;
+   font: 16px;
+   line-height: 40px;
+   position: relative;
+   text-align: center;
+   width: 40px;
+}
+#sticky-social a span {
+   line-height: 40px;
+   left: -120px;
+   position: absolute;
+   text-align:center;
+   width:120px;
+}
+#sticky-social a:hover span {
+   left: 100%;
+}
+#sticky-social a[class*="facebook"],
+#sticky-social a[class*="facebook"]:hover,
+#sticky-social a[class*="facebook"] span { background: #3b5998; }
+
+#sticky-social a[class*="twitter"],
+#sticky-social a[class*="twitter"]:hover,
+#sticky-social a[class*="twitter"] span { background: #00aced; }
+
+#sticky-social a[class*="gplus"],
+#sticky-social a[class*="gplus"]:hover,
+#sticky-social a[class*="gplus"] span { background: #dd4b39; }  
+
+#sticky-social a[class*="instagram"],
+#sticky-social a[class*="instagram"]:hover,
+#sticky-social a[class*="instagram"] span { background: #9C27B0; }
+
+#sticky-social a[class*="youtube"],
+#sticky-social a[class*="youtube"]:hover,
+#sticky-social a[class*="youtube"] span { background: #E53935; }
+
+#sticky-social a[class*="whatsapp"],
+#sticky-social a[class*="whatsapp"]:hover,
+#sticky-social a[class*="whatsapp"] span { background: #4CAF50; }
+
+.fa-futbol-o{ color: #000 !important; }
+.fa-fire{ color: #E53935 !important; }
