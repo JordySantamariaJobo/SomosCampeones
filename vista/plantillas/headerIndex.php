@@ -75,4 +75,5 @@
 	<script type="text/javascript" src="libs/js/jquery.flexisel.js"></script>
 	<script type="text/javascript" src="libs/js/BuscadorAvanzado.js"></script>
 	<script type="text/javascript" src="libs/js/index.js"></script>
+	<script src="http://www.jqueryscript.net/demo/Responsive-jQuery-News-Ticker-Plugin-with-Bootstrap-3-Bootstrap-News-Box/scripts/jquery.bootstrap.newsbox.min.js" type="text/javascript"></script>
 </head>

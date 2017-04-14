@@ -251,7 +251,7 @@
 					</li>
 				</ul>
         		<ul class="nav navbar-nav navbar-right" style="padding-right:15px;">
-        			<li><input type="text" id="BuscadorAvanzado" class="form-control BuscadorNav M4" placeholder="Buscar..." style="margin-top:10px;"></li>
+        			<li><input type="text" id="BuscadorAvanzado" class="form-control BuscadorNav M7" placeholder="Buscar..." style="margin-top:10px;"></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<?php
@@ -320,10 +320,41 @@
 			</div>
 			<div id="ResultadosBuscador" class="col-sm-12"></div>
 			<div id="WallWhiteNews" class="col-sm-12">
-				<a href="vista/noticia.php?id=<?php echo $jumbotron['id_noticia']; ?>&tituloNew=<?php echo $jumbotron['titulo']; ?>"><div class="jumbotron" style="background-image: url(libs/img/Noticias/<?php echo $jumbotron['foto_ruta']; ?>);">
-					<div class="cat M8" style="font-size: 20px;"><i class="fa fa-trophy"></i> <?php echo $jumbotron['categoria']; ?></div>
-					<h2 class="M9"><?php echo $jumbotron['titulo']; ?></h2>
-        		</div></a>
+				<div class="col-sm-12">
+					<div class="col-sm-8">
+						<a href="vista/noticia.php?id=<?php echo $jumbotron['id_noticia']; ?>&tituloNew=<?php echo $jumbotron['titulo']; ?>">
+							<div class="jumbotron" style="background-image: url(libs/img/Noticias/<?php echo $jumbotron['foto_ruta']; ?>);">
+								<div class="cat M8" style="font-size: 20px;"><i class="fa fa-trophy"></i> <?php echo $jumbotron['categoria']; ?></div>
+								<h2 class="M9"><?php echo $jumbotron['titulo']; ?></h2>
+        					</div>
+        				</a>
+					</div>
+					<div class="col-sm-4">
+						<div class="col-sm-12" style="margin-bottom:15px;">
+							<img src="libs/img/social/facebook.png" class="img-responsive" style="float:left; padding-left: 10px;">
+							<img src="libs/img/social/twitter.png" class="img-responsive" style="float:left; padding-left: 10px;">
+							<img src="libs/img/social/instagram.png" class="img-responsive" style="float:left; padding-left: 10px;">
+							<img src="libs/img/social/whatsapp.png" class="img-responsive" style="float:left; padding-left:10px;"><br>
+						</div>
+						<div class="col-sm-12">
+							<div class="panel panel-primary" style="border-radius: 0px; border-color: transparent; box-shadow: 0 5px 10px 0 rgba(0,0,0,.28); border: 0px solid;">
+								<div class="panel-heading" style="border-radius: 0px;"> <span class="fa fa-newspaper-o"></span><b> ULTIMAS PUBLICACIONES</b></div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-12">
+											<ul id="demo3">
+												<li class="news-item"><a href="#">Cristiano y Messi: La batalla por los 100.</a></li>
+												<li class="news-item"><a href="#">Cristiano y Messi: La batalla por los 100.</a></li>
+												<li class="news-item"><a href="#">Cristiano y Messi: La batalla por los 100.</a></li>
+												<li class="news-item"><a href="#">Cristiano y Messi: La batalla por los 100.</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<h2 class="M7" style="margin-left: 15px;"><img src="libs/img/newspaper-o.png" class="img-responsive ContenedorImagen"> TITULARES DEL DIA</h2><hr class="hrRed"><br><br>
 				<div class="col-sm-12" style="margin-bottom:15px;">
 					<?php
@@ -373,58 +404,69 @@
 	</div>
 	<?php include 'vista/plantillas/footerIndex.php'; ?>
 	<script type="text/javascript">
+		$(function () {
+        	$("#demo3").bootstrapNews({
+            	newsPerPage: 5,
+            	autoplay: false,
+            	onToDo: function () {
+                	//console.log(this);
+            	}
+        	});
+   		});
+
+
 		$("#BuscadorAvanzado").focus(function(){
-  	$("#WallWhiteNews").fadeOut(1000);
-  	$("#ResultadosBuscador").fadeIn(1000);
-   	$("#ResultadosBuscador").html("<br><br><center><h3 class='M7'>Busca artículos, noticias de tu equipo, jugador favorito o liga, vamos inténtalo! <i class='fa fa-futbol-o'></i></h3></center><br><br>");
-});
+  			$("#WallWhiteNews").fadeOut(1000);
+  			$("#ResultadosBuscador").fadeIn(1000);
+   			$("#ResultadosBuscador").html("<br><br><center><h3 class='M7'>Busca artículos, noticias de tu equipo, jugador favorito o liga, vamos inténtalo! <i class='fa fa-futbol-o'></i></h3></center><br><br>");
+		});
 
-$("#BuscadorAvanzado").focusout(function(){
-  	if ($("#BuscadorAvanzado").val() == "") {
-  		$("#WallWhiteNews").fadeIn(1000);
-   		$("#ResultadosBuscador").fadeOut(1000);
-   	}
-});
+		$("#BuscadorAvanzado").focusout(function(){
+  			if ($("#BuscadorAvanzado").val() == "") {
+  				$("#WallWhiteNews").fadeIn(1000);
+   				$("#ResultadosBuscador").fadeOut(1000);
+   			}
+		});
 
-$("#BuscadorAvanzado").keyup(function(){
-   	var PalabrasBuscador = $("#BuscadorAvanzado").val();
-    var Lugar = 0;
-  	var ajax_data = { "palabraBuscador" : PalabrasBuscador, "lugar" : Lugar };
-   	$.ajax({
-   	    async: true,
-    	type: "POST",
-    	dataType: "html",
-    	contentType: "application/x-www-form-urlencoded",
-    	url: "../controlador/BuscadorAvanzado.php",
-    	data: ajax_data,
-    	success: function(result) { 
-            $("#ResultadosBuscador").html(result); 
-        },
-    	error: function() { 
-            BuscadorAvanzadoInicio(); 
-        }
-	});	
-});
+		$("#BuscadorAvanzado").keyup(function(){
+   			var PalabrasBuscador = $("#BuscadorAvanzado").val();
+    		var Lugar = 0;
+  			var ajax_data = { "palabraBuscador" : PalabrasBuscador, "lugar" : Lugar };
+   			$.ajax({
+   	    		async: true,
+    			type: "POST",
+    			dataType: "html",
+    			contentType: "application/x-www-form-urlencoded",
+    			url: "../controlador/BuscadorAvanzado.php",
+    			data: ajax_data,
+    			success: function(result) { 
+            		$("#ResultadosBuscador").html(result); 
+        		},
+    			error: function() { 
+            		BuscadorAvanzadoInicio(); 
+        		}
+			});	
+		});
 
-function BuscadorAvanzadoInicio(){
-    var PalabrasBuscador = $("#BuscadorAvanzado").val();
-    var Lugar = 1;
-    var ajax_data = { "palabraBuscador" : PalabrasBuscador, "lugar" : Lugar };
-    $.ajax({
-        async: true,
-        type: "POST",
-        dataType: "html",
-        contentType: "application/x-www-form-urlencoded",
-        url: "controlador/BuscadorAvanzado.php",
-        data: ajax_data,
-        success: function(result) { 
-            $("#ResultadosBuscador").html(result); 
-        },
-        error: function() { 
-            console.log("Error 404"); 
-        }
-    });
-}
+		function BuscadorAvanzadoInicio(){
+    		var PalabrasBuscador = $("#BuscadorAvanzado").val();
+    		var Lugar = 1;
+    		var ajax_data = { "palabraBuscador" : PalabrasBuscador, "lugar" : Lugar };
+    		$.ajax({
+        		async: true,
+        		type: "POST",
+        		dataType: "html",
+        		contentType: "application/x-www-form-urlencoded",
+        		url: "controlador/BuscadorAvanzado.php",
+        		data: ajax_data,
+        		success: function(result) { 
+            		$("#ResultadosBuscador").html(result); 
+        		},
+        		error: function() { 
+            		console.log("Error 404"); 
+        		}
+    		});
+		}
 	</script>
 </body>
 </html>
