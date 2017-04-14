@@ -279,6 +279,11 @@ body{ background-color: #DBDBDB; }
     margin-top: 25%;
   }
 }
+@media only screen and (max-width: 250px) {
+  .jumbotron {
+    margin-top: 50%;
+  }
+}
 .cat {
   background: #FF3546;
   color: #fff;
@@ -502,10 +507,10 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 }
 .box.box-primary { border-top-color: #dd4b39; }
 #myAdAlternative{ display: none !important; }
-@media only screen and (max-width: 768px){ 
+/*@media only screen and (max-width: 768px){ 
   #myAd{ display: none !important; } 
   #myAdAlternative{ display: block !important; }
-}
+}*/
 #myAd{
   margin-top: 10px;
   margin-bottom: 10px;

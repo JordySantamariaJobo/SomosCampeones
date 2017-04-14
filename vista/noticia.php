@@ -412,13 +412,13 @@
 			<div id="ResultadosBuscador" class="col-sm-12"></div>
 			<div id="WallWhiteNews" class="col-sm-12">
 				<div class="col-sm-9">
+					<h1 class="M9"><?php echo $new['titulo']; ?></h1>
+					<p class="M4" style="font-size: 20px;"><img src="../libs/img/usuarios/<?php echo $con['imagen']; ?>" class="img-circle" style="width:65px; float:left; padding-right:5px;">Redactada por: <strong class="M7"><a href="PerfilAcerca.php?idUser=<?php echo $new['id_usuario']; ?>"><?php echo $con['nombre']." ".$con['app'] ?></a><div class="fb-follow" data-href="https://www.facebook.com/campeonessomoscs/?fref=ts" data-layout="standard" data-size="large" data-show-faces="true"></div></strong></p>
+					<h5 class="M7"><i class="fa fa-calendar"></i> Redactada el: <strong class="M4"><?php echo $FormatoFecha -> ModificarFecha($new['fecha']) ?></strong></h5><hr>					
 					<center><img src="../libs/img/Noticias/<?php echo $new['foto_ruta']; ?>" width="100%" class="img-responsive"></center>
-					<h5 id="Raleway4"><i class="fa fa-camera"></i> <?php echo $new['descrip_foto']; ?></h5><hr>
-					<h1 class="M9"><?php echo $new['titulo']; ?></h1><br>
-					<p id="Raleway4" style="font-size: 20px;"><img src="../libs/img/usuarios/<?php echo $con['imagen']; ?>" class="img-circle" style="width:65px; float:left; padding-right:5px;">Redactada por: <strong id="Raleway6"><a href="PerfilAcerca.php?idUser=<?php echo $new['id_usuario']; ?>"><?php echo $con['nombre']." ".$con['app'] ?></a><div class="fb-follow" data-href="https://www.facebook.com/campeonessomoscs/?fref=ts" data-layout="standard" data-size="large" data-show-faces="true"></div></strong></p>
+					<h5 id="Raleway4"><i class="fa fa-camera"></i> <?php echo $new['descrip_foto']; ?></h5><br>
 					<div id="Raleway4" style="text-align:justify; font-size:20px;"><?php echo $new['descripcion']; ?></div><br>
 					<div id="myAd"><?php echo $metodo -> GeneradorAnuncios(); ?></div>
-					<h5 id="Raleway7"><i class="fa fa-calendar"></i> Redactada el: <strong id="Raleway5"><?php echo $FormatoFecha -> ModificarFecha($new['fecha']) ?></strong></h5>
 					<center>
 						<?php
 							if ($init == 1) {

@@ -330,13 +330,16 @@
         				</a>
 					</div>
 					<div class="col-sm-4">
-						<div class="col-sm-12" style="margin-bottom:15px;">
+						<!--div class="col-sm-12 RedesSociales" style="margin-bottom:15px;">
 							<img src="libs/img/social/facebook.png" class="img-responsive" style="float:left; padding-left: 10px;">
 							<img src="libs/img/social/twitter.png" class="img-responsive" style="float:left; padding-left: 10px;">
 							<img src="libs/img/social/instagram.png" class="img-responsive" style="float:left; padding-left: 10px;">
 							<img src="libs/img/social/whatsapp.png" class="img-responsive" style="float:left; padding-left:10px;"><br>
-						</div>
+						</div-->
 						<div class="col-sm-12">
+							<?php echo $metodo -> SoundCloud(); ?>
+						</div>
+						<div class="col-sm-12 PanelRS">
 							<div class="panel panel-primary" style="border-radius: 0px; border-color: transparent; box-shadow: 0 5px 10px 0 rgba(0,0,0,.28); border: 0px solid;">
 								<div class="panel-heading" style="border-radius: 0px;"> <span class="fa fa-newspaper-o"></span><b> ULTIMAS PUBLICACIONES</b></div>
 								<div class="panel-body">
