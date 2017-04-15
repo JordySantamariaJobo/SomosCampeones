@@ -42,7 +42,7 @@
 				<div class="col-sm-4" id="Raleway5">
 					<h4 id="Raleway7">CONTACTANOS</h4>
 					<h5><strong><a>CORREO:</a> </strong> ibwoz@hotmail.com</h5>
-					<h5><strong><a>TELEFONO:</a></strong> (044) 222 60 75 994</h5><br>
+					<h5><strong><a>TELEFONO:</a></strong> (044) 222 874 0125</h5><br>
 				</div>
 			</div>
 		</div><br>
@@ -55,4 +55,67 @@
 	var unrli = "<?php echo $url; ?>";
 	var inpli = "<?php echo $ipUser; ?>";
 	count(unrli, inpli);
+
+	$(function () {
+       	$("#demo3").bootstrapNews({
+          	newsPerPage: 8,
+            autoplay: false,
+            onToDo: function () {
+               	//console.log(this);
+            }
+        });
+   	});
+
+   	$("#BuscadorAvanzado").focus(function(){
+  		$("#WallWhiteNews").fadeOut(1000);
+  		$("#ResultadosBuscador").fadeIn(1000);
+   		$("#ResultadosBuscador").html("<br><br><center><h3 class='M7'>Busca artículos, noticias de tu equipo, jugador favorito o liga, vamos inténtalo! <i class='fa fa-futbol-o'></i></h3></center><br><br>");
+	});
+
+	$("#BuscadorAvanzado").focusout(function(){
+  		if ($("#BuscadorAvanzado").val() == "") {
+  			$("#WallWhiteNews").fadeIn(1000);
+   			$("#ResultadosBuscador").fadeOut(1000);
+   		}
+	});
+
+	$("#BuscadorAvanzado").keyup(function(){
+   		var PalabrasBuscador = $("#BuscadorAvanzado").val();
+    	var Lugar = 0;
+  		var ajax_data = { "palabraBuscador" : PalabrasBuscador, "lugar" : Lugar };
+   		$.ajax({
+   	   		async: true,
+    		type: "POST",
+    		dataType: "html",
+    		contentType: "application/x-www-form-urlencoded",
+    		url: "../controlador/BuscadorAvanzado.php",
+    		data: ajax_data,
+    		success: function(result) { 
+           		$("#ResultadosBuscador").html(result); 
+       		},
+    		error: function() { 
+           		BuscadorAvanzadoInicio(); 
+       		}
+		});	
+	});
+
+	function BuscadorAvanzadoInicio(){
+    	var PalabrasBuscador = $("#BuscadorAvanzado").val();
+    	var Lugar = 1;
+    	var ajax_data = { "palabraBuscador" : PalabrasBuscador, "lugar" : Lugar };
+    	$.ajax({
+       		async: true,
+       		type: "POST",
+       		dataType: "html",
+       		contentType: "application/x-www-form-urlencoded",
+       		url: "controlador/BuscadorAvanzado.php",
+       		data: ajax_data,
+       		success: function(result) { 
+           		$("#ResultadosBuscador").html(result); 
+       		},
+       		error: function() { 
+           		console.log("Error 404"); 
+       		}
+    	});
+	}
 </script>

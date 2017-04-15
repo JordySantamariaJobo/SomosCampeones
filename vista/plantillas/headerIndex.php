@@ -75,5 +75,19 @@
 	<script type="text/javascript" src="libs/js/jquery.flexisel.js"></script>
 	<script type="text/javascript" src="libs/js/BuscadorAvanzado.js"></script>
 	<script type="text/javascript" src="libs/js/index.js"></script>
-	<script src="http://www.jqueryscript.net/demo/Responsive-jQuery-News-Ticker-Plugin-with-Bootstrap-3-Bootstrap-News-Box/scripts/jquery.bootstrap.newsbox.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="http://www.jqueryscript.net/demo/Responsive-jQuery-News-Ticker-Plugin-with-Bootstrap-3-Bootstrap-News-Box/scripts/jquery.bootstrap.newsbox.min.js"></script>
 </head>
+<script>
+	(adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-9347761211349930", enable_page_level_ads: true });
+	$(document).ready(function(){
+		$("#flexiselDemo3").flexisel({
+    		visibleItems: 5,
+        	itemsToScroll: 1,         
+        	autoPlay: {
+           	 	enable: true,
+            	interval: 5000,
+            	pauseOnHover: true
+        	}        
+    	});
+	});
+</script>

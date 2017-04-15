@@ -59,9 +59,13 @@
 			return IndexM::ConsultarEquipo($id);
 		}
 
+		public function NoticiaPanel()
+		{
+			return IndexM::NoticiaPanel();
+		}
+
 		public function MensajeSesion()
 		{
-
 			$random = rand(0,2);
 
     		switch ($random)

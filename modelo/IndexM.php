@@ -30,8 +30,8 @@ class IndexM {
 		return $r;
 	}
 
-	public function NoticiaJumbotron(){
-
+	public function NoticiaJumbotron()
+	{
 		include 'config/conn.php';
 
 		$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 1";
@@ -41,8 +41,8 @@ class IndexM {
 		return $res;
 	}
 
-	public function TitularesDelDia(){
-
+	public function TitularesDelDia()
+	{
 		include 'config/conn.php';
 
 		$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 3";
@@ -51,8 +51,8 @@ class IndexM {
 		return $r;
 	}
 
-	public function TitularesChampions(){
-
+	public function TitularesChampions()
+	{
 		include 'config/conn.php';
 
 		$q = "SELECT *FROM Noticia WHERE categoria = 'Champions League' ORDER BY id_noticia DESC LIMIT 3";
@@ -61,8 +61,8 @@ class IndexM {
 		return $r;
 	}
 
-	public function Partidos(){
-
+	public function Partidos()
+	{
 		include 'config/conn.php';
 
 		$q = "SELECT *FROM PartidosEnJuego";
@@ -71,8 +71,8 @@ class IndexM {
 		return $r;
 	}
 
-	public function UltimasApuestas(){
-
+	public function UltimasApuestas()
+	{
 		include 'config/conn.php';
 
 		$q = "SELECT u.nombreusuario ,u.imagen, p.competencia_p, e.nombre_e AS 'equipoLocal', ev.nombre_e AS 'equipoVisita', a.punt, a.porc, p.porLocal, p.porEmpate, p.porVisita FROM Usuario u INNER JOIN Apuesta a ON u.id_usuario = a.id_usuario INNER JOIN Partido p ON a.id_partido = p.id_partido INNER JOIN Equipo e ON p.id_local = e.id_equipo INNER JOIN Equipo ev ON p.id_visitante = ev.id_equipo ORDER BY a.id_apuesta DESC LIMIT 4";
@@ -81,8 +81,8 @@ class IndexM {
 		return $r;
 	}
 
-	public function GeneradorAnuncios($num){
-
+	public function GeneradorAnuncios($num)
+	{
 		include 'config/conn.php';
 
 		$q = "CALL GeneradorAnuncios($num)";
@@ -92,8 +92,8 @@ class IndexM {
 		return $result['code_ad'];
 	}
 
-	public function SoundCloud(){
-
+	public function SoundCloud()
+	{
 		include 'config/conn.php';
 
 		$q = "SELECT code_sound FROM SoundCloud ORDER BY id_sound DESC";
@@ -103,8 +103,8 @@ class IndexM {
 		return $result['code_sound'];
 	}
 
-	public function ConsultarEquipo($id){
-
+	public function ConsultarEquipo($id)
+	{
 		include 'config/conn.php';
 
 		$q = "CALL DatosEquipo($id)";
@@ -114,8 +114,8 @@ class IndexM {
 		return $row;
 	}
 
-	public function NoticiasEspecial() {
-		
+	public function NoticiasEspecial()
+	{
 		include 'config/conn.php';
 
 		$q = "SELECT *FROM Noticia WHERE categoria = 'Champions League' ORDER BY id_noticia DESC LIMIT 5";
@@ -124,9 +124,8 @@ class IndexM {
 		return $r;
 	}
 
-	//Cuando el usuario haga login, aqui se validaran los datos ingresados para verificar si son correctos.
-	public function LoginUsuario($correoEn, $contrasenaEn) {
-
+	public function LoginUsuario($correoEn, $contrasenaEn)
+	{
 		$correo = base64_decode($correoEn);
 		$contrasena = base64_decode($contrasenaEn);
 
@@ -145,8 +144,8 @@ class IndexM {
 		else { return "Error"; }
 	}
 
-	public function ConsultarDatosUsuario($id){
-
+	public function ConsultarDatosUsuario($id)
+	{
 		include 'config/conn.php';
 
 		$q = "SELECT *FROM Usuario WHERE id_usuario = $id";
@@ -156,8 +155,8 @@ class IndexM {
 		return $res;
 	}
 
-	public function ValidarSesion($correoEn) {
-
+	public function ValidarSesion($correoEn)
+	{
 		$correo = base64_decode($correoEn);
 		
 		include 'config/conn.php';
@@ -173,8 +172,8 @@ class IndexM {
 		$_SESSION['TipoUsuario'] = $DatosUsuario['tipoUsuario'];
 	}
 
-	public function ReactivarCuenta($correoEn) {
-
+	public function ReactivarCuenta($correoEn)
+	{
 		$correo = base64_decode($correoEn);
 
 		include 'config/conn.php';
@@ -183,13 +182,23 @@ class IndexM {
 		$r = mysqli_query($conn, $q);
 	}
 
-	function BuscadorAvanzado($palabra){
-			
+	public function BuscadorAvanzado($palabra)
+	{	
 		include 'config/conn.php';
 
 		$q = "CALL BuscadorAvanzado('$palabra')";
 		$r = mysqli_query($conn, $q);
 		
+		return $r;
+	}
+
+	public function NoticiaPanel()
+	{
+		include 'config/conn.php';
+
+		$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 10";
+		$r = mysqli_query($conn, $q);
+
 		return $r;
 	}
 }

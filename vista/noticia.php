@@ -87,28 +87,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="shortcut icon" href="../libs/img/iconos/icon.ico" type="image/x-icon">
 	<?php include 'plantillas/headerVista.php'; ?>
-	<script>
-  		(adsbygoogle = window.adsbygoogle || []).push({
-    		google_ad_client: "ca-pub-9347761211349930",
-    		enable_page_level_ads: true
-  		});
-
-    	$(document).ready(function(){
-			var unrli = "<?php echo $url; ?>";
-			var inpli = "<?php echo $ipUser; ?>";
-			count(unrli, inpli);
-
-			$("#flexiselDemo3").flexisel({
-        		visibleItems: 5,
-        		itemsToScroll: 2,         
-        		autoPlay: {
-            		enable: true,
-            		interval: 5000,
-            		pauseOnHover: true
-        		}        
-    		});
-		});
-	</script>
 </head>
 <body>
 	<div id="fb-root"></div>
@@ -120,267 +98,7 @@
   	fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-580436d98a2e5f21"></script>
-	<header>
-		<nav class="navbar navbar-default navbar M7">
-    		<div class="navbar-header">
-    			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a id="M8" class="navbar-brand active" href="../index.php">
-                    <img src="../libs/img/SomosCampeonesNav.png" class="img-responsive">
-                </a>
-			</div>
-			<div class="collapse navbar-collapse js-navbar-collapse">
-				<ul id="M7" class="nav navbar-nav">
-					<li class="dropdown dropdown-large">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">LIGAS <i class="fa fa-angle-down"></i></a>
-						<ul class="dropdown-menu dropdown-menu-large row">
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header M8">Ligas por el Mundo</li>
-									<li><a href="ligamx.php">Liga MX</a></li>
-									<li><a href="premierleague.php">Premier League</a></li>
-									<li><a href="laliga.php">La Liga</a></li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Copas de las Ligas</li>
-									<li><a href="copamx.php">Copa MX</a></li>
-									<li><a href="facup.php">FA Cup</a></li>
-									<li><a href="copadelrey.php">Copa del Rey</a></li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Galardones</li>
-									<li><a href="balondeoro.php">Balon de Oro</a></li>
-									<li><a href="bestuefa.php">Mejor Jugador de la UEFA</a></li>
-									<li><a href="thebest.php">The BEST</a></li>
-								</ul>
-							</li>
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header M8">Liga MX</li>
-									<li>
-										<a href="noticia.php?id='<?php echo $LMX['id_noticia']; ?>'&tituloNew='<?php echo $LMX['titulo']; ?>'"><img src="../libs/img/Noticias/<?php echo $LMX['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
-										<h4 class="M4"><?php echo $LMX['titulo']; ?></h4></a>
-									</li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Noticias Liga MX</li>
-									<?php
-										while ($result = mysqli_fetch_array($NoticiasLMX, MYSQLI_ASSOC)) {
-											echo "<li><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
-										}
-									?>
-								</ul>
-							</li>
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header M8">Premier League</li>
-									<li>
-										<a href="noticia.php?id='<?php echo $PL['id_noticia']; ?>'&tituloNew='<?php echo $PL['titulo']; ?>'"><img src="../libs/img/Noticias/<?php echo $PL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
-										<h4 class="M4"><?php echo $PL['titulo']; ?></h4></a>
-									</li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Noticias de la PL</li>
-									<?php
-										while ($result = mysqli_fetch_array($NoticiasPL, MYSQLI_ASSOC)) {
-											echo "<li><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
-										}
-									?>
-								</ul>
-							</li>
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header">La Liga</li>
-									<li>
-										<a href="noticia.php?id='<?php echo $LL['id_noticia']; ?>'&tituloNew='<?php echo $LL['titulo']; ?>'"><img src="../libs/img/Noticias/<?php echo $LL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
-										<h4 class="M4"><?php echo $LL['titulo']; ?></h4></a>
-									</li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Noticias La Liga</li>
-									<?php
-										while ($result = mysqli_fetch_array($NoticiasLL, MYSQLI_ASSOC)) {
-											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
-										}
-									?>
-								</ul>
-							</li>		
-						</ul>
-					</li>
-					<li class="dropdown dropdown-large">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">COMPETICIONES <i class="fa fa-angle-down"></i></a>
-						<ul class="dropdown-menu dropdown-menu-large row">
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header M8">Competiciones de la UEFA</li>
-									<li><a href="championsleague.php">UEFA Champions League</a></li>
-									<li><a href="supercup.php">UEFA Super Cup</a></li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Otras Competiciones</li>
-									<li><a href="ligacampeones.php">Liga de Campeones CONCACAF</a></li>
-									<li><a href="copalibertadores.php">Copa Libertadores</a></li>
-									<li><a href="mundialdeclubes.php">Mundial de Clubes de la FIFA</a></li>
-								</ul>
-							</li>
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header M8">UEFA Champions League</li>
-									<li>
-										<a href="noticia.php?id='<?php echo $UCL['id_noticia']; ?>'&tituloNew='<?php echo $UCL['titulo']; ?>'"><img src="../libs/img/Noticias/<?php echo $UCL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
-										<h4 class="M4"><?php echo $UCL['titulo']; ?></h4></a>
-									</li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Noticias de la UCL</li>
-									<?php
-										while ($result = mysqli_fetch_array($NoticiasUCL, MYSQLI_ASSOC)) {
-											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
-										}
-									?>
-								</ul>
-							</li>
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header M8">Liga de Campeones CONCACAF</li>
-									<li>
-										<a href="noticia.php?id='<?php echo $LC['id_noticia']; ?>'&tituloNew='<?php echo $LC['titulo']; ?>'"><img src="../libs/img/Noticias/<?php echo $LC['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
-										<h4 class="M4"><?php echo $LC['titulo']; ?></h4></a>
-									</li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Noticias de la LCC</li>
-									<?php
-										while ($result = mysqli_fetch_array($NoticiasLC, MYSQLI_ASSOC)) {
-											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
-										}
-									?>
-								</ul>
-							</li>
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header">Copa Libertadores</li>
-									<li>
-										<a href="noticia.php?id='<?php echo $CL['id_noticia']; ?>'&tituloNew='<?php echo $CL['titulo']; ?>'"><img src="../libs/img/Noticias/<?php echo $CL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
-										<h4 class="M4"><?php echo $CL['titulo']; ?></h4></a>
-									</li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Noticias de la CL</li>
-									<?php
-										while ($result = mysqli_fetch_array($NoticiasCL, MYSQLI_ASSOC)) {
-											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
-										}
-									?>
-								</ul>
-							</li>		
-						</ul>
-					</li>
-					<li class="dropdown dropdown-large">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">INTERNACIONAL <i class="fa fa-angle-down"></i></a>
-						<ul class="dropdown-menu dropdown-menu-large row">
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header M8">Competiciones Internacionales</li>
-									<li><a href="copaconfederaciones.php">Copa FIFA Confederaciones Rusia 2017</a></li>
-									<li><a href="copadelmundo.php">Copa del Mundo de la FIFA Rusia 2018</a></li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Otros</li>
-									<li><a href="seleccionmexicana.php">Seleccion Mexicana</a></li>
-									<li><a href="mexicanosporelmundo.php">Mexicanos por el Mundo</a></li>
-								</ul>
-							</li>
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header M8">Seleccion Mexicana</li>
-									<li>
-										<a href="noticia.php?id='<?php echo $SM['id_noticia']; ?>'&tituloNew='<?php echo $SM['titulo']; ?>'"><img src="../libs/img/Noticias/<?php echo $SM['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
-										<h4 class="M4"><?php echo $SM['titulo']; ?></h4></a>
-									</li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Noticias de la SM</li>
-									<?php
-										while ($result = mysqli_fetch_array($NoticiasSM, MYSQLI_ASSOC)) {
-											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
-										}
-									?>
-								</ul>
-							</li>
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header M8">Copa Confederaciones Rusia</li>
-									<li>
-										<a href="noticia.php?id='<?php echo $CC['id_noticia']; ?>'&tituloNew='<?php echo $CC['titulo']; ?>'"><img src="../libs/img/Noticias/<?php echo $CC['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
-										<h4 class="M4"><?php echo $CC['titulo']; ?></h4></a>
-									</li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Noticias de la CCR</li>
-									<?php
-										while ($result = mysqli_fetch_array($NoticiasCC, MYSQLI_ASSOC)) {
-											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
-										}
-									?>
-								</ul>
-							</li>
-							<li class="col-sm-3">
-								<ul>
-									<li class="dropdown-header">Copa Mundial 2018</li>
-									<li>
-										<a href="noticia.php?id='<?php echo $CM['id_noticia']; ?>'&tituloNew='<?php echo $CM['titulo']; ?>'"><img src="../libs/img/Noticias/<?php echo $CM['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
-										<h4 class="M4"><?php echo $CM['titulo']; ?></h4></a>
-									</li>
-									<li class="divider"></li>
-									<li class="dropdown-header M8">Noticias de la CM2018</li>
-									<?php
-										while ($result = mysqli_fetch_array($NoticiasCM, MYSQLI_ASSOC)) {
-											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
-										}
-									?>
-								</ul>
-							</li>		
-						</ul>
-					</li>
-					<li>
-						<div id="google_translate_element"></div><script type="text/javascript">
-						function googleTranslateElementInit() { new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT}, 'google_translate_element'); }
-						</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-					</li>
-				</ul>
-        		<ul class="nav navbar-nav navbar-right" style="padding-right:15px;">
-        			<li><input type="text" id="BuscadorAvanzado" class="form-control BuscadorNav M4" placeholder="Buscar..." style="margin-top:10px;"></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<?php
-							if (isset($_SESSION['IdUsuario'])) { echo "Hola! <strong>".$datos['nombreusuario']." <div class='ContenedorImagen'><img src='../libs/img/usuarios/".$datos['imagen']."' style='width:20px;' class='img-circle img-responsive'></div></strong>"; }
-							else{ echo "INICIAR SESIÓN  <i class='fa fa-user'></i>"; }
-						?>
-						</a>
-						<ul class="dropdown-menu dropdown-menu-large row">
-							<?php 	if (isset($_SESSION['IdUsuario'])) {	?>
-							<li class="col-sm-12">
-								<ul>
-									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='View/perfil.php'"><i class="fa fa-user"></i>  Ir a Mi Perfil</button></li><br>
-									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='View/editarperfil.php'"><i class="fa fa-pencil-square-o"></i>  Editar Mis Datos</button></li>
-									<li class="divider"></li>
-									<li><button class="btn btn-danger" style="width:100%;" onclick="CerrarSesion(); return false;">Salir   <i class="fa fa-sign-out"></i></button></li>
-								</ul>
-							</li>
-							<?php } else{ ?>
-							<li class="col-sm-12">
-								<ul>
-									<li class="dropdown-header M8"><?php echo NoticiaC::MensajeSesion(); ?></li>
-									<li class="divider"></li>
-									<li><input id="txtmail" type="mail" class="form-control input-sc valCorreo M4" placeholder="Correo Electronico"></li><br>
-									<li><input id="txtpwd" type="password" class="form-control input-sc M4" placeholder="Contraseña"></li><br>
-									<div id="fail"></div>
-									<li><button id="btnLogin" class="btn btn-danger M8" style="width:100%;" onclick="Login();"><strong>INICIAR SESIÓN</strong></button></li>
-									<li class="divider"></li>
-									<li><button class="btn btn-link M8" style="width:100%;">CREAR UNA CUENTA</button></li><br>
-									<li class="dropdown-header"><center><a href="vista/Recovery.php" style="color: #002242;">¿Olvidaste tu contraseña?</a></center></li>
-								</ul>
-							</li>
-							<?php	}	?>				
-						</ul>
-					</li>
-      			</ul>
-			</div>
-  		</nav>
-	</header>
+	<?php include 'plantillas/NavBar.php'; ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
@@ -419,7 +137,28 @@
 					<h5 id="Raleway4"><i class="fa fa-camera"></i> <?php echo $new['descrip_foto']; ?></h5><br>
 					<div id="Raleway4" style="text-align:justify; font-size:20px;"><?php echo $new['descripcion']; ?></div><br>
 					<div id="myAd"><?php echo $metodo -> GeneradorAnuncios(); ?></div>
-					<center>
+					<h2 class="M7" style="margin-left: 15px;">QUIZÁS TE INTERESE...</h2><hr class="hrRed"><br><br>
+					<div class="col-sm-12">
+						<?php
+							while ($trec = mysqli_fetch_array($trc, MYSQLI_ASSOC)) {
+								echo "<div class='col-sm-6' style='overflow: hidden;'><br>
+									<div class='thumbnail thumb-material'>
+      									<img src='../libs/img/Noticias/".$trec['foto_ruta']."' style='background-repeat: no-repeat; background-size: cover; width:100%; height:35%;' class='img-responsive'>
+      									<div class='caption'>
+        									<h3 class='M8'>".$trec['titulo']."</h3>
+        									<p class='M4 Descripcion' style='text-align: justify;'>".$trec['breve_desc']."...</p>
+      									</div><hr class='hrThumbMaterial'>
+      									<center>
+      										<strong>
+      											<a href='noticia.php?id=".$trec['id_noticia']."&tituloNew=".$trec['titulo']."' class='M9'>LEER MÁS</a>
+      										</strong>
+      									</center>
+    								</div>
+    							</div>";
+							}
+						?>
+					</div>
+					<!--center>
 						<?php
 							if ($init == 1) {
 								if ($like['megusta'] == 1 && $like['nomegusta'] == 0) {
@@ -445,31 +184,61 @@
 									<h3 id="Raleway7">Que te ha parecido el Articulo?</h3>
 									<a data-toggle="modal" data-target="#myModal"><div class="ContenedorEmoticon"><img src="../libs/img/Emoticonos/MeEncanta.png" class="img-responsive" title="Me Encanta" width="80%;"></div></a>
 									<a data-toggle="modal" data-target="#myModal"><div class="ContenedorEmoticon"><img src="../libs/img/Emoticonos/MeMolesta.png" class="img-responsive" title="Me Molesta" width="80%;"></div></a>
-							<?php
-						}
-					?>
-					</center>
-					<center><div class="fb-comments" data-href="<?php echo $urlLibre; ?>" data-numposts="5"></div></center><br><br>
+								<?php
+							}
+						?>
+					</center-->
+					<div class="fb-comments" data-href="<?php echo $urlLibre; ?>" data-width="100%" data-numposts="5"></div><br><br>
 				</div>
-				<div class="col-sm-3"><br>
-					<center><h3 class="M8">TITULARES</h3></center>
-					<?php
-					while ($trec = mysqli_fetch_array($trc, MYSQLI_ASSOC)) {
-						echo "<div class='thumbnail thumb-material'>
-      								<img src='../libs/img/Noticias/".$trec['foto_ruta']."' style='background-repeat: no-repeat; background-size: cover; width:100%; height:35%;' class='img-responsive'>
-      								<div class='caption'>
-        								<h3 class='M8'>".$trec['titulo']."</h3>
-        								<p class='M4 Descripcion' style='text-align: justify;'>".$trec['breve_desc']."...</p>
-      								</div><hr class='hrThumbMaterial'>
-      								<center>
-      									<strong>
-      										<a href='noticia.php?id=".$trec['id_noticia']."&tituloNew=".$trec['titulo']."' class='M9'>LEER MÁS</a>
-      									</strong>
-      								</center>
-    							</div><br>";
-					}
-					?><br><br>
-					<div id="myAd"><?php echo $metodo -> GeneradorAnuncios(); ?></div>
+				<div class="col-sm-3">
+					<h2 class="M8" style="margin-left: 15px;"><img src="../libs/img/social/soundcloud.png" class="img-responsive ContenedorImagen"> POSTCAST</h2><hr class="hrRed">
+					<?php echo $metodo -> SoundCloud(); ?><br><br>
+					<div class="panel panel-default">
+  						<div class="panel-body M7">
+  							<center>
+  								<p>Quieres enterarte de las ultimas noticias en Somos Campeones, Suscríbete en nuestro Newsletter!.</p>
+  								<button class="btn btn-primary">Suscribirme <i class="fa fa-send"></i></button>
+  							</center>
+  						</div>
+					</div>
+					<div class="panel panel-default">
+  						<div class="panel-heading">
+    						<h3 class="panel-title M7">CATEGORIAS</h3>
+  						</div>
+  						<div class="panel-body M4">
+    						<p>UEFA Champions League</p><hr>
+    						<p>La Liga</p><hr>
+    						<p>Premier League</p><hr>
+    						<p>Liga MX</p>
+  						</div>
+					</div>
+					<div class="panel panel-default">
+  						<div class="panel-heading">
+    						<h3 class="panel-title M8">TAGS</h3>
+  						</div>
+  						<div class="panel-body M4">
+    						<?php echo $new['keywords']; ?>
+  						</div>
+					</div>
+					<div class="col-sm-12 PanelRS">
+						<div class="panel panel-primary" style="border-radius: 0px; border-color: transparent; box-shadow: 0 5px 10px 0 rgba(0,0,0,.28); border: 0px solid;">
+							<div class="panel-heading" style="border-radius: 0px;"> <span class="fa fa-newspaper-o"></span><b> ULTIMAS PUBLICACIONES</b></div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-xs-12">
+										<ul id="demo3">
+											<?php
+												$noticiaPanel = $metodo -> NoticiaPanel();
+												while ($result = mysqli_fetch_array($noticiaPanel, MYSQLI_ASSOC)) {
+													echo "<li class='news-item'><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
+												}
+											?>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

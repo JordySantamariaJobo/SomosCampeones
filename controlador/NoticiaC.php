@@ -70,9 +70,18 @@
 			return NoticiaM::ConsultarEquipo($id);
 		}
 
+		public function SoundCloud()
+		{
+			return NoticiaM::SoundCloud();
+		}
+
+		public function NoticiaPanel()
+		{
+			return NoticiaM::NoticiaPanel();
+		}
+
 		public function MensajeSesion()
 		{
-
 			$random = rand(0,2);
 
     		switch ($random)

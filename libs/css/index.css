@@ -233,7 +233,7 @@ body{ background-color: #DBDBDB; }
   border-top: 1px solid rgba(210, 210, 210, 0.99);
 }
 .thumb-material{
-  box-shadow: 0 5px 10px 0 rgba(0,0,0,.28);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.20);
   border:0px solid;
   padding: 0px;
   padding-bottom: 10px;

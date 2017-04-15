@@ -14,20 +14,6 @@
 
     include 'vista/plantillas/headerIndex.php';
 ?>
-<script>
-	(adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-9347761211349930", enable_page_level_ads: true });
-	$(document).ready(function(){
-		$("#flexiselDemo3").flexisel({
-    		visibleItems: 5,
-        	itemsToScroll: 1,         
-        	autoPlay: {
-           	 	enable: true,
-            	interval: 5000,
-            	pauseOnHover: true
-        	}        
-    	});
-	});
-</script>
 <body>
 	<header>
 		<nav class="navbar navbar-default navbar M7">
@@ -336,9 +322,6 @@
 							<img src="libs/img/social/instagram.png" class="img-responsive" style="float:left; padding-left: 10px;">
 							<img src="libs/img/social/whatsapp.png" class="img-responsive" style="float:left; padding-left:10px;"><br>
 						</div-->
-						<div class="col-sm-12">
-							<?php echo $metodo -> SoundCloud(); ?>
-						</div>
 						<div class="col-sm-12 PanelRS">
 							<div class="panel panel-primary" style="border-radius: 0px; border-color: transparent; box-shadow: 0 5px 10px 0 rgba(0,0,0,.28); border: 0px solid;">
 								<div class="panel-heading" style="border-radius: 0px;"> <span class="fa fa-newspaper-o"></span><b> ULTIMAS PUBLICACIONES</b></div>
@@ -346,10 +329,12 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<ul id="demo3">
-												<li class="news-item"><a href="#">Cristiano y Messi: La batalla por los 100.</a></li>
-												<li class="news-item"><a href="#">Cristiano y Messi: La batalla por los 100.</a></li>
-												<li class="news-item"><a href="#">Cristiano y Messi: La batalla por los 100.</a></li>
-												<li class="news-item"><a href="#">Cristiano y Messi: La batalla por los 100.</a></li>
+												<?php
+													$noticiaPanel = $metodo -> NoticiaPanel();
+													while ($result = mysqli_fetch_array($noticiaPanel, MYSQLI_ASSOC)) {
+														echo "<li class='news-item'><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
+													}
+												?>
 											</ul>
 										</div>
 									</div>
@@ -406,70 +391,5 @@
 		</div><br>
 	</div>
 	<?php include 'vista/plantillas/footerIndex.php'; ?>
-	<script type="text/javascript">
-		$(function () {
-        	$("#demo3").bootstrapNews({
-            	newsPerPage: 5,
-            	autoplay: false,
-            	onToDo: function () {
-                	//console.log(this);
-            	}
-        	});
-   		});
-
-
-		$("#BuscadorAvanzado").focus(function(){
-  			$("#WallWhiteNews").fadeOut(1000);
-  			$("#ResultadosBuscador").fadeIn(1000);
-   			$("#ResultadosBuscador").html("<br><br><center><h3 class='M7'>Busca artículos, noticias de tu equipo, jugador favorito o liga, vamos inténtalo! <i class='fa fa-futbol-o'></i></h3></center><br><br>");
-		});
-
-		$("#BuscadorAvanzado").focusout(function(){
-  			if ($("#BuscadorAvanzado").val() == "") {
-  				$("#WallWhiteNews").fadeIn(1000);
-   				$("#ResultadosBuscador").fadeOut(1000);
-   			}
-		});
-
-		$("#BuscadorAvanzado").keyup(function(){
-   			var PalabrasBuscador = $("#BuscadorAvanzado").val();
-    		var Lugar = 0;
-  			var ajax_data = { "palabraBuscador" : PalabrasBuscador, "lugar" : Lugar };
-   			$.ajax({
-   	    		async: true,
-    			type: "POST",
-    			dataType: "html",
-    			contentType: "application/x-www-form-urlencoded",
-    			url: "../controlador/BuscadorAvanzado.php",
-    			data: ajax_data,
-    			success: function(result) { 
-            		$("#ResultadosBuscador").html(result); 
-        		},
-    			error: function() { 
-            		BuscadorAvanzadoInicio(); 
-        		}
-			});	
-		});
-
-		function BuscadorAvanzadoInicio(){
-    		var PalabrasBuscador = $("#BuscadorAvanzado").val();
-    		var Lugar = 1;
-    		var ajax_data = { "palabraBuscador" : PalabrasBuscador, "lugar" : Lugar };
-    		$.ajax({
-        		async: true,
-        		type: "POST",
-        		dataType: "html",
-        		contentType: "application/x-www-form-urlencoded",
-        		url: "controlador/BuscadorAvanzado.php",
-        		data: ajax_data,
-        		success: function(result) { 
-            		$("#ResultadosBuscador").html(result); 
-        		},
-        		error: function() { 
-            		console.log("Error 404"); 
-        		}
-    		});
-		}
-	</script>
 </body>
 </html>

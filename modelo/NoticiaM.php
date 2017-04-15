@@ -129,5 +129,26 @@
 
 			return $row;
 		}
+
+		public function SoundCloud()
+		{
+			include 'config/conn.php';
+
+			$q = "SELECT code_sound FROM SoundCloud ORDER BY id_sound DESC";
+			$r = mysqli_query($conn, $q);
+			$result = mysqli_fetch_array($r, MYSQLI_ASSOC);
+
+			return $result['code_sound'];
+		}
+
+		public function NoticiaPanel()
+		{
+			include 'config/conn.php';
+
+			$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 10";
+			$r = mysqli_query($conn, $q);
+
+			return $r;
+		}
 	}
 ?>
