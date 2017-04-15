@@ -56,6 +56,16 @@
 	var inpli = "<?php echo $ipUser; ?>";
 	count(unrli, inpli);
 
+	$(function () {
+       	$("#demo3").bootstrapNews({
+          	newsPerPage: 8,
+            autoplay: false,
+            onToDo: function () {
+               	//console.log(this);
+            }
+        });
+   	});
+
 	$("#BuscadorAvanzado").focus(function(){
   		$("#WallWhiteNews").fadeOut(1000);
   		$("#ResultadosBuscador").fadeIn(1000);

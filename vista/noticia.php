@@ -150,7 +150,7 @@
       									</div><hr class='hrThumbMaterial'>
       									<center>
       										<strong>
-      											<a href='noticia.php?id=".$trec['id_noticia']."&tituloNew=".$trec['titulo']."' class='M9'>LEER MÁS</a>
+      											<a href='noticia.php?id=".$trec['id_noticia']."&tituloNew=".$trec['titulo']."' class='btn btn-primary M9'>LEER MÁS</a>
       										</strong>
       									</center>
     								</div>
