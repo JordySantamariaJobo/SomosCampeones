@@ -4,9 +4,6 @@
 	*/
 	class NoticiaM
 	{
-		
-		function __construct(){}
-
 		public function TitularNav($competencia)
 		{
 			include 'config/conn.php';

@@ -36,14 +36,14 @@
 							<li class="col-sm-3">
 								<ul>
 									<li class="dropdown-header M8">Ligas por el Mundo</li>
-									<li><a href="vista/ligamx.php">Liga MX</a></li>
-									<li><a href="vista/premierleague.php">Premier League</a></li>
-									<li><a href="vista/laliga.php">La Liga</a></li>
+									<li><a href="vista/competicion.php?competencia=Liga%20MX">Liga MX</a></li>
+									<li><a href="vista/competicion.php?competencia=Premier%20League">Premier League</a></li>
+									<li><a href="vista/competicion.php?competencia=La%20Liga">La Liga</a></li>
 									<li class="divider"></li>
 									<li class="dropdown-header M8">Copas de las Ligas</li>
-									<li><a href="vista/copamx.php">Copa MX</a></li>
-									<li><a href="vista/facup.php">FA Cup</a></li>
-									<li><a href="vista/copadelrey.php">Copa del Rey</a></li>
+									<li><a href="vista/competicion.php?competencia=Copa%20MX">Copa MX</a></li>
+									<li><a href="vista/competicion.php?competencia=FA%20Cup">FA Cup</a></li>
+									<li><a href="vista/competicion.php?competencia=Copa%20del%20Rey">Copa del Rey</a></li>
 									<li class="divider"></li>
 									<li class="dropdown-header M8">Galardones</li>
 									<li><a href="vista/balondeoro.php">Balon de Oro</a></li>
@@ -55,7 +55,7 @@
 								<ul>
 									<li class="dropdown-header M8">Liga MX</li>
 									<li>
-										<a href="vista/noticia.php?id='<?php echo $LMX['id_noticia']; ?>'&tituloNew='<?php echo $LMX['titulo']; ?>'"><img src="libs/img/Noticias/<?php echo $LMX['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
+										<a href="vista/noticia.php?id=<?php echo $LMX['id_noticia']; ?>&tituloNew=<?php echo $LMX['titulo'];?>"><img src="libs/img/Noticias/<?php echo $LMX['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
 										<h4 class="M4"><?php echo $LMX['titulo']; ?></h4></a>
 									</li>
 									<li class="divider"></li>
@@ -71,7 +71,7 @@
 								<ul>
 									<li class="dropdown-header M8">Premier League</li>
 									<li>
-										<a href="vista/noticia.php?id='<?php echo $PL['id_noticia']; ?>'&tituloNew='<?php echo $PL['titulo']; ?>'"><img src="libs/img/Noticias/<?php echo $PL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
+										<a href="vista/noticia.php?id=<?php echo $PL['id_noticia']; ?>&tituloNew=<?php echo $PL['titulo']; ?>"><img src="libs/img/Noticias/<?php echo $PL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
 										<h4 class="M4"><?php echo $PL['titulo']; ?></h4></a>
 									</li>
 									<li class="divider"></li>
@@ -87,7 +87,7 @@
 								<ul>
 									<li class="dropdown-header">La Liga</li>
 									<li>
-										<a href="vista/noticia.php?id='<?php echo $LL['id_noticia']; ?>'&tituloNew='<?php echo $LL['titulo']; ?>'"><img src="libs/img/Noticias/<?php echo $LL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
+										<a href="vista/noticia.php?id=<?php echo $LL['id_noticia']; ?>&tituloNew=<?php echo $LL['titulo']; ?>"><img src="libs/img/Noticias/<?php echo $LL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
 										<h4 class="M4"><?php echo $LL['titulo']; ?></h4></a>
 									</li>
 									<li class="divider"></li>
@@ -107,20 +107,20 @@
 							<li class="col-sm-3">
 								<ul>
 									<li class="dropdown-header M8">Competiciones de la UEFA</li>
-									<li><a href="vista/championsleague.php">UEFA Champions League</a></li>
-									<li><a href="vista/supercup.php">UEFA Super Cup</a></li>
+									<li><a href="vista/competicion.php?competencia=Champions%20League">UEFA Champions League</a></li>
+									<li><a href="vista/competicion.php?competencia=Super%20Cup">UEFA Super Cup</a></li>
 									<li class="divider"></li>
 									<li class="dropdown-header M8">Otras Competiciones</li>
-									<li><a href="vista/ligacampeones.php">Liga de Campeones CONCACAF</a></li>
-									<li><a href="vista/copalibertadores.php">Copa Libertadores</a></li>
-									<li><a href="vista/mundialdeclubes.php">Mundial de Clubes de la FIFA</a></li>
+									<li><a href="vista/competicion.php?competencia=Liga%20de%20Campeones">Liga de Campeones CONCACAF</a></li>
+									<li><a href="vista/competicion.php?competencia=Copa%20Libertadores">Copa Libertadores</a></li>
+									<li><a href="vista/competicion.php?competencia=Mundial%20de%20Clubes">Mundial de Clubes de la FIFA</a></li>
 								</ul>
 							</li>
 							<li class="col-sm-3">
 								<ul>
 									<li class="dropdown-header M8">UEFA Champions League</li>
 									<li>
-										<a href="vista/noticia.php?id='<?php echo $UCL['id_noticia']; ?>'&tituloNew='<?php echo $UCL['titulo']; ?>'"><img src="libs/img/Noticias/<?php echo $UCL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
+										<a href="vista/noticia.php?id=<?php echo $UCL['id_noticia']; ?>&tituloNew=<?php echo $UCL['titulo']; ?>"><img src="libs/img/Noticias/<?php echo $UCL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
 										<h4 class="M4"><?php echo $UCL['titulo']; ?></h4></a>
 									</li>
 									<li class="divider"></li>
@@ -136,7 +136,7 @@
 								<ul>
 									<li class="dropdown-header M8">Liga de Campeones CONCACAF</li>
 									<li>
-										<a href="vista/noticia.php?id='<?php echo $LC['id_noticia']; ?>'&tituloNew='<?php echo $LC['titulo']; ?>'"><img src="libs/img/Noticias/<?php echo $LC['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
+										<a href="vista/noticia.php?id=<?php echo $LC['id_noticia']; ?>&tituloNew=<?php echo $LC['titulo']; ?>"><img src="libs/img/Noticias/<?php echo $LC['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
 										<h4 class="M4"><?php echo $LC['titulo']; ?></h4></a>
 									</li>
 									<li class="divider"></li>
@@ -152,7 +152,7 @@
 								<ul>
 									<li class="dropdown-header">Copa Libertadores</li>
 									<li>
-										<a href="vista/noticia.php?id='<?php echo $CL['id_noticia']; ?>'&tituloNew='<?php echo $CL['titulo']; ?>'"><img src="libs/img/Noticias/<?php echo $CL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
+										<a href="vista/noticia.php?id=<?php echo $CL['id_noticia']; ?>&tituloNew=<?php echo $CL['titulo']; ?>"><img src="libs/img/Noticias/<?php echo $CL['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
 										<h4 class="M4"><?php echo $CL['titulo']; ?></h4></a>
 									</li>
 									<li class="divider"></li>
@@ -172,8 +172,8 @@
 							<li class="col-sm-3">
 								<ul>
 									<li class="dropdown-header M8">Competiciones Internacionales</li>
-									<li><a href="vista/copaconfederaciones.php">Copa FIFA Confederaciones Rusia 2017</a></li>
-									<li><a href="vista/copadelmundo.php">Copa del Mundo de la FIFA Rusia 2018</a></li>
+									<li><a href="vista/competicion.php?competencia=Copa%20Confederaciones">Copa FIFA Confederaciones Rusia 2017</a></li>
+									<li><a href="vista/competicion.php?competencia=Copa%20del%20Mundo">Copa del Mundo de la FIFA Rusia 2018</a></li>
 									<li class="divider"></li>
 									<li class="dropdown-header M8">Otros</li>
 									<li><a href="vista/seleccionmexicana.php">Seleccion Mexicana</a></li>
@@ -184,7 +184,7 @@
 								<ul>
 									<li class="dropdown-header M8">Seleccion Mexicana</li>
 									<li>
-										<a href="vista/noticia.php?id='<?php echo $SM['id_noticia']; ?>'&tituloNew='<?php echo $SM['titulo']; ?>'"><img src="libs/img/Noticias/<?php echo $SM['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
+										<a href="vista/noticia.php?id=<?php echo $SM['id_noticia']; ?>&tituloNew=<?php echo $SM['titulo']; ?>"><img src="libs/img/Noticias/<?php echo $SM['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
 										<h4 class="M4"><?php echo $SM['titulo']; ?></h4></a>
 									</li>
 									<li class="divider"></li>
@@ -200,7 +200,7 @@
 								<ul>
 									<li class="dropdown-header M8">Copa Confederaciones Rusia</li>
 									<li>
-										<a href="vista/noticia.php?id='<?php echo $CC['id_noticia']; ?>'&tituloNew='<?php echo $CC['titulo']; ?>'"><img src="libs/img/Noticias/<?php echo $CC['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
+										<a href="vista/noticia.php?id=<?php echo $CC['id_noticia']; ?>&tituloNew=<?php echo $CC['titulo']; ?>"><img src="libs/img/Noticias/<?php echo $CC['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
 										<h4 class="M4"><?php echo $CC['titulo']; ?></h4></a>
 									</li>
 									<li class="divider"></li>
@@ -216,7 +216,7 @@
 								<ul>
 									<li class="dropdown-header">Copa Mundial 2018</li>
 									<li>
-										<a href="vista/noticia.php?id='<?php echo $CM['id_noticia']; ?>'&tituloNew='<?php echo $CM['titulo']; ?>'"><img src="libs/img/Noticias/<?php echo $CM['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
+										<a href="vista/noticia.php?id=<?php echo $CM['id_noticia']; ?>&tituloNew=<?php echo $CM['titulo']; ?>"><img src="libs/img/Noticias/<?php echo $CM['foto_ruta']; ?>" style="background-repeat: no-repeat; background-size: cover; width:100%; height:25%;" class="img-responsive">
 										<h4 class="M4"><?php echo $CM['titulo']; ?></h4></a>
 									</li>
 									<li class="divider"></li>
@@ -249,8 +249,8 @@
 							<?php 	if (isset($_SESSION['IdUsuario'])) {	?>
 							<li class="col-sm-12">
 								<ul>
-									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='View/perfil.php'"><i class="fa fa-user"></i>  Ir a Mi Perfil</button></li><br>
-									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='View/editarperfil.php'"><i class="fa fa-pencil-square-o"></i>  Editar Mis Datos</button></li>
+									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='vista/perfil.php'"><i class="fa fa-user"></i>  Ir a Mi Perfil</button></li><br>
+									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='vista/editarperfil.php'"><i class="fa fa-pencil-square-o"></i>  Editar Mis Datos</button></li>
 									<li class="divider"></li>
 									<li><button class="btn btn-danger" style="width:100%;" onclick="CerrarSesion(); return false;">Salir   <i class="fa fa-sign-out"></i></button></li>
 								</ul>

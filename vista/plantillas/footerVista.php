@@ -14,16 +14,16 @@
 					<?php
 						$noticias1 = NoticiaC::TitularesDelDia();
 						while ($result = mysqli_fetch_array($noticias1, MYSQLI_ASSOC)) {
-							echo "<a id='Raleway5' href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a><br>";
+							echo "<a id='Raleway5' href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a><br>";
 						}
 					?>
 				</div>
 				<div class="col-sm-4" id="Raleway5">
 					<h4 id="Raleway4"><strong>COMPETICIONES</strong></h4>
-					<a href="ChampionsLeague.php">UEFA Champions League</a><br>
-					<a href="Ligas.php">La Liga</a><br>
-					<a href="Ligas.php">Premier League</a><br>
-					<a href="Ligas.php">Liga MX</a><br>
+					<a href="competicion.php?competencia=Champions%20League">UEFA Champions League</a><br>
+					<a href="competicion.php?competencia=La%20Liga">La Liga</a><br>
+					<a href="competicion.php?competencia=Premier%20League">Premier League</a><br>
+					<a href="competicion.php?competencia=Liga%20MX">Liga MX</a><br>
 				</div>
 			</div>
 			<div class="col-sm-12"><br>

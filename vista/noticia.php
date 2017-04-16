@@ -4,6 +4,7 @@
 	//$_SERVER['SERVER_PORT']: Sirve para obtener el puerto.
 	//$_SERVER['REQUEST_URI']: Sirve para obtener la URI.
 	include '../controlador/NoticiaC.php';
+	include '../controlador/NavBarC.php';
 	include("../controlador/FormatoFecha.php");
 
 	$urlLibre = "http://www.campeonessomos.com".$_SERVER['REQUEST_URI'];
@@ -25,13 +26,6 @@
 	$trc = $metodo -> TeRecomendamos($id);
 	$actual = $metodo -> Partidos();
 
-	$random = rand(0,2);
-    switch ($random) {
-    	case 0: $mensaje = "QUE DORSAL LLEVARA TU CAMISETA?"; break;
-    	case 1: $mensaje = "VAMOS!, LA AFICION TE ESPERA!"; break;
-    	case 2: $mensaje = "CUANTOS GOLES PLANEAS METER HOY?"; break;
-	}
-
 	if (isset($_SESSION['IdUsuario'])) { 
     	$id = $_SESSION['IdUsuario'];
     	$datos = $metodo -> ConsultarDatosUsuario($id);
@@ -40,7 +34,7 @@
     }
     else{ $init = 0; }
 ?>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -150,7 +144,7 @@
       									</div><hr class='hrThumbMaterial'>
       									<center>
       										<strong>
-      											<a href='noticia.php?id=".$trec['id_noticia']."&tituloNew=".$trec['titulo']."' class='btn btn-primary M9'>LEER MÁS</a>
+      											<a href='noticia.php?id=".$trec['id_noticia']."&tituloNew=".$trec['titulo']."' class='M9'>LEER MÁS</a>
       										</strong>
       									</center>
     								</div>
@@ -206,10 +200,10 @@
     						<h3 class="panel-title M7">CATEGORIAS</h3>
   						</div>
   						<div class="panel-body M4">
-    						<p>UEFA Champions League</p><hr>
-    						<p>La Liga</p><hr>
-    						<p>Premier League</p><hr>
-    						<p>Liga MX</p>
+    						<a href="competicion.php?competencia=Champions%20League">UEFA Champions League</a><hr>
+    						<a href="competicion.php?competencia=La%20Liga">La Liga</a><hr>
+    						<a href="competicion.php?competencia=Premier%20League">Premier League</a><hr>
+    						<a href="competicion.php?competencia=Liga%20MX">Liga MX</a>
   						</div>
 					</div>
 					<div class="panel panel-default">

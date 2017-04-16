@@ -5,19 +5,6 @@
 	include '../modelo/NoticiaM.php';
 	class NoticiaC extends NoticiaM
 	{
-		
-		function __construct(){}
-
-		public function TitularNav($competencia)
-		{
-			return NoticiaM::TitularNav($competencia);
-		}
-
-		public function NoticiasNav($competencia)
-		{
-			return NoticiaM::NoticiasNav($competencia);
-		}
-
 		public function TitularesDelDia()
 		{
 			return NoticiaM::TitularesDelDia();
@@ -78,20 +65,6 @@
 		public function NoticiaPanel()
 		{
 			return NoticiaM::NoticiaPanel();
-		}
-
-		public function MensajeSesion()
-		{
-			$random = rand(0,2);
-
-    		switch ($random)
-    		{
-    			case 0: $mensaje = "QUE DORSAL LLEVARA TU CAMISETA?"; break;
-    			case 1: $mensaje = "VAMOS!, LA AFICION TE ESPERA!"; break;
-    			case 2: $mensaje = "CUANTOS GOLES PLANEAS METER HOY?"; break;
-			}
-
-			return $mensaje;
 		}
 	}
 ?>

@@ -20,10 +20,10 @@
 				</div>
 				<div class="col-sm-4" id="Raleway5">
 					<h4 id="Raleway4"><strong>COMPETICIONES</strong></h4>
-					<a href="vista/ChampionsLeague.php">UEFA Champions League</a><br>
-					<a href="vista/Ligas.php">La Liga</a><br>
-					<a href="vista/Ligas.php">Premier League</a><br>
-					<a href="vista/Ligas.php">Liga MX</a><br>
+					<a href="vista/competicion.php?competencia=Champions%20League">UEFA Champions League</a><br>
+					<a href="vista/competicion.php?competencia=La%20Liga">La Liga</a><br>
+					<a href="vista/competicion.php?competencia=Premier%20League">Premier League</a><br>
+					<a href="vista/competicion.php?competencia=Liga%20MX">Liga MX</a><br>
 				</div>
 			</div>
 			<div class="col-sm-12"><br>
