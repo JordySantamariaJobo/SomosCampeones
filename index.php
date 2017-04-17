@@ -316,12 +316,14 @@
         				</a>
 					</div>
 					<div class="col-sm-4">
-						<!--div class="col-sm-12 RedesSociales" style="margin-bottom:15px;">
-							<img src="libs/img/social/facebook.png" class="img-responsive" style="float:left; padding-left: 10px;">
-							<img src="libs/img/social/twitter.png" class="img-responsive" style="float:left; padding-left: 10px;">
-							<img src="libs/img/social/instagram.png" class="img-responsive" style="float:left; padding-left: 10px;">
-							<img src="libs/img/social/whatsapp.png" class="img-responsive" style="float:left; padding-left:10px;"><br>
-						</div-->
+						<div class="panel panel-default">
+  							<div class="panel-body M4">
+  								<center>
+  									<p>Recibe las ultimas noticias de <strong>Somos Campeones</strong> en tu celular por Whatsapp.</p>
+  									<button class="btn btn-success" onclick="location.href='vista/whatsapp.php'">Suscribirme <i class="fa fa-whatsapp"></i></button>
+  								</center>
+  							</div>
+						</div>
 						<div class="col-sm-12 PanelRS">
 							<div class="panel panel-primary" style="border-radius: 0px; border-color: transparent; box-shadow: 0 5px 10px 0 rgba(0,0,0,.28); border: 0px solid;">
 								<div class="panel-heading" style="border-radius: 0px;"> <span class="fa fa-newspaper-o"></span><b> ULTIMAS PUBLICACIONES</b></div>
@@ -343,6 +345,33 @@
 						</div>
 					</div>
 				</div>
+				<?php
+					$MinutoPartido = $metodo -> MinutoPartido();
+					if (mysqli_num_rows($MinutoPartido) != 0) {
+						?>
+						<h2 class="M7" style="margin-left: 15px;"><img src="libs/img/live.png" class="img-responsive ContenedorImagen"> MINUTO A MINUTO</h2><hr class="hrRed"><br><br>
+						<div class="col-sm-12" style="margin-bottom:15px;">
+						<?php
+						while ($result = mysqli_fetch_array($MinutoPartido, MYSQLI_ASSOC)) {
+							echo "<div class='col-sm-4' style='overflow: hidden;'><br>
+								<div class='thumbnail thumb-material'>
+								<div class='cat M8'><i class='fa fa-circle'></i> EN VIVO</div>
+      								<img src='libs/img/MinutoPartido/".$result['imagen']."' style='background-repeat: no-repeat; background-size: cover; width:100%; height:35%;' class='img-responsive'>
+      								<div class='caption'>
+        								<h3 class='M8'>".$result['titulo']."</h3>
+        								<p class='M4 Descripcion' style='text-align: justify;'>".$result['descripcion']."...</p>
+      								</div><hr class='hrThumbMaterial'>
+      								<center>
+      									<strong>
+      										<a href='vista/MinutoPartido.php?id=".$result['idPost']."&partido=".$result['titulo']."' class='M9'>VER PARTIDO</a>
+      									</strong>
+      								</center>
+    							</div>
+							</div>";
+						}
+						?></div><?php
+					}
+				?>
 				<h2 class="M7" style="margin-left: 15px;"><img src="libs/img/newspaper-o.png" class="img-responsive ContenedorImagen"> TITULARES DEL DIA</h2><hr class="hrRed"><br><br>
 				<div class="col-sm-12" style="margin-bottom:15px;">
 					<?php

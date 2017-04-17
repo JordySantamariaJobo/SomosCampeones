@@ -3,12 +3,8 @@
 *  Funciones para la pagina principal -> index.php
 */
 include 'config/conexion.php';
-class IndexM {
-	
-	private $_connect;
-
-	function __construct(){}
-
+class IndexM
+{
 	public function TitularNav($competencia)
 	{
 		include 'config/conn.php';
@@ -197,6 +193,16 @@ class IndexM {
 		include 'config/conn.php';
 
 		$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 10";
+		$r = mysqli_query($conn, $q);
+
+		return $r;
+	}
+
+	public function MinutoPartido()
+	{
+		include 'config/conn.php';
+
+		$q = "SELECT *FROM PostMinuto WHERE activo = 1 ORDER BY idPost DESC LIMIT 3";
 		$r = mysqli_query($conn, $q);
 
 		return $r;

@@ -64,6 +64,11 @@
 			return IndexM::NoticiaPanel();
 		}
 
+		public function MinutoPartido()
+		{
+			return IndexM::MinutoPartido();
+		}
+
 		public function MensajeSesion()
 		{
 			$random = rand(0,2);

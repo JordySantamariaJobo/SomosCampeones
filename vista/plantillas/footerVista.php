@@ -12,7 +12,7 @@
 				<div class="col-sm-4" id="Raleway5">
 					<h4 id="Raleway7"><strong>NOTICIAS</strong></h4>
 					<?php
-						$noticias1 = NoticiaC::TitularesDelDia();
+						$noticias1 = NavBarC::TitularesDelDia();
 						while ($result = mysqli_fetch_array($noticias1, MYSQLI_ASSOC)) {
 							echo "<a id='Raleway5' href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a><br>";
 						}
@@ -58,7 +58,7 @@
 
 	$(function () {
        	$("#demo3").bootstrapNews({
-          	newsPerPage: 8,
+          	newsPerPage: 5,
             autoplay: false,
             onToDo: function () {
                	//console.log(this);

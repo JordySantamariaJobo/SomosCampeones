@@ -58,7 +58,7 @@
 
 	$(function () {
        	$("#demo3").bootstrapNews({
-          	newsPerPage: 8,
+          	newsPerPage: 5,
             autoplay: false,
             onToDo: function () {
                	//console.log(this);

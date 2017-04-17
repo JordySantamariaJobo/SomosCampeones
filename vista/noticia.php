@@ -5,7 +5,7 @@
 	//$_SERVER['REQUEST_URI']: Sirve para obtener la URI.
 	include '../controlador/NoticiaC.php';
 	include '../controlador/NavBarC.php';
-	include("../controlador/FormatoFecha.php");
+	include'../controlador/FormatoFecha.php';
 
 	$urlLibre = "http://www.campeonessomos.com".$_SERVER['REQUEST_URI'];
 	$url = base64_encode("http://www.campeonessomos.com".$_SERVER['REQUEST_URI']);
@@ -125,11 +125,11 @@
 			<div id="WallWhiteNews" class="col-sm-12">
 				<div class="col-sm-9">
 					<h1 class="M9"><?php echo $new['titulo']; ?></h1>
-					<p class="M4" style="font-size: 20px;"><img src="../libs/img/usuarios/<?php echo $con['imagen']; ?>" class="img-circle" style="width:65px; float:left; padding-right:5px;">Redactada por: <strong class="M7"><a href="PerfilAcerca.php?idUser=<?php echo $new['id_usuario']; ?>"><?php echo $con['nombre']." ".$con['app'] ?></a><div class="fb-follow" data-href="https://www.facebook.com/campeonessomoscs/?fref=ts" data-layout="standard" data-size="large" data-show-faces="true"></div></strong></p>
+					<p class="M4" style="font-size: 20px;"><img src="../libs/img/usuarios/<?php echo $con['imagen']; ?>" class="img-circle" style="width:65px; float:left; padding-right:5px;">Redactada por: <strong class="M7"><?php echo $con['nombre']." ".$con['app'] ?><div class="fb-follow" data-href="https://www.facebook.com/campeonessomoscs/?fref=ts" data-layout="standard" data-size="large" data-show-faces="true"></div></strong></p>
 					<h5 class="M7"><i class="fa fa-calendar"></i> Redactada el: <strong class="M4"><?php echo $FormatoFecha -> ModificarFecha($new['fecha']) ?></strong></h5><hr>					
 					<center><img src="../libs/img/Noticias/<?php echo $new['foto_ruta']; ?>" width="100%" class="img-responsive"></center>
-					<h5 id="Raleway4"><i class="fa fa-camera"></i> <?php echo $new['descrip_foto']; ?></h5><br>
-					<div id="Raleway4" style="text-align:justify; font-size:20px;"><?php echo $new['descripcion']; ?></div><br>
+					<h5 class="M4"><i class="fa fa-camera"></i> <?php echo $new['descrip_foto']; ?></h5><br>
+					<div class="M4" style="text-align:justify; font-size:20px;"><?php echo $new['descripcion']; ?></div><br>
 					<div id="myAd"><?php echo $metodo -> GeneradorAnuncios(); ?></div>
 					<h2 class="M7" style="margin-left: 15px;">QUIZÁS TE INTERESE...</h2><hr class="hrRed"><br><br>
 					<div class="col-sm-12">
@@ -188,10 +188,10 @@
 					<h2 class="M8" style="margin-left: 15px;"><img src="../libs/img/social/soundcloud.png" class="img-responsive ContenedorImagen"> POSTCAST</h2><hr class="hrRed">
 					<?php echo $metodo -> SoundCloud(); ?><br><br>
 					<div class="panel panel-default">
-  						<div class="panel-body M7">
+  						<div class="panel-body M4">
   							<center>
-  								<p>Quieres enterarte de las ultimas noticias en Somos Campeones, Suscríbete en nuestro Newsletter!.</p>
-  								<button class="btn btn-primary">Suscribirme <i class="fa fa-send"></i></button>
+  								<p>Recibe las ultimas noticias de <strong>Somos Campeones</strong> en tu celular por Whatsapp.</p>
+  								<button class="btn btn-success" onclick="location.href='whatsapp.php'">Suscribirme <i class="fa fa-whatsapp"></i></button>
   							</center>
   						</div>
 					</div>
