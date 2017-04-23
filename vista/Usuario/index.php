@@ -1,3 +1,17 @@
+<?php
+    session_start();
+
+    include 'controlador/UsuarioC.php';
+
+    if ($_SESSION['TipoUsuario'] == "Admin") { header("Location: ../Admin/index.php"); } 
+    else if ($_SESSION['TipoUsuario'] == "Editor") { header("Location: ../Editor/index.php"); }
+    else if (!isset($_SESSION['TipoUsuario'])) { header("Location: ../../index.php"); }
+    else {
+        $metodo = new UsuarioC($_SESSION['IdUsuario'], $_SESSION['CorreoUsuario']);
+        $datos = $metodo -> DatosUsuario();
+        $historial = $metodo -> HistorialUsuario();
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -7,9 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Fonts -->
-    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet'
-          type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../libs/fonts/muli.css">
 
     <!-- Icomoon -->
     <link rel="stylesheet" type="text/css" href="../../libs/fonts/font-awesome/css/font-awesome.min.css">
@@ -31,7 +43,6 @@
     <link rel="shortcut icon" href="../../libs/img/iconos/icon.ico">
 
 </head>
-
 <body class="dashboard-page">
 <div id="main">
     <header class="navbar navbar-fixed-top bg-dark">
@@ -72,7 +83,6 @@
                                         <div class="timeline-date"></div>
                                     </li>
                                 </ol>
-
                             </div>
                         </div>
                     </div>
@@ -80,17 +90,17 @@
             </li>
             <li class="dropdown dropdown-fuse">
                 <a href="#" class="dropdown-toggle fw600" data-toggle="dropdown">
-                    <span class="hidden-xs"><name>Nombre Usuario</name> </span>
+                    <span class="hidden-xs"><name><?= $datos['nombreusuario']; ?></name> </span>
                     <span class="fa fa-caret-down hidden-xs mr15"></span>
-                    <img src="../../libs/img/usuarios/jordysantamaria@hotmail.comjordy.jpg" alt="avatar" class="mw55">
+                    <img src="../../libs/img/usuarios/<?= $datos['imagen']; ?>" alt="avatar" class="mw55">
                 </a>
                 <ul class="dropdown-menu list-group keep-dropdown w250" role="menu">
                     <li class="list-group-item">
-                        <a href="#" class="animated animated-short fadeInUp">
+                        <a href="configuracion.php" class="animated animated-short fadeInUp">
                             <span class="fa fa-cogs"></span> Configuración </a>
                     </li>
                     <li class="dropdown-footer text-center">
-                        <a href="#" class="btn btn-danger btn-sm btn-bordered">
+                        <a href="../../index.php" class="btn btn-danger btn-sm btn-bordered">
                             <span class="fa fa-power-off pr5"></span> SALIR </a>
                     </li>
                 </ul>
@@ -103,11 +113,11 @@
                 <div class="sidebar-widget author-widget">
                     <div class="media">
                         <a class="media-left" href="#">
-                            <img src="../../libs/img/usuarios/jordysantamaria@hotmail.comjordy.jpg" class="img-responsive">
+                            <img src="../../libs/img/usuarios/<?= $datos['imagen']; ?>" class="img-responsive">
                         </a>
 
                         <div class="media-body">
-                            <div class="media-author">Nombre Usuario</div>
+                            <div class="media-author"><?= $datos['nombreusuario']; ?></div>
                         </div>
                     </div>
                 </div>
@@ -155,7 +165,7 @@
             <ul class="nav sidebar-menu">
                 <li class="active">
                     <a href="doc/index.html">
-                        <span class="fa fa-home"></span>
+                        <span class="fa fa-user"></span>
                         <span class="sidebar-title">Mi Perfil</span>
                     </a>
                 </li>
@@ -200,6 +210,12 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="configuracion.php" data-toggle="modal" data-target="#myModal">
+                        <span class="fa fa-inbox"></span>
+                        <span class="sidebar-title">Quejas y Sugerencias</span>
+                    </a>
+                </li>
+                <li>
                     <a href="configuracion.php">
                         <span class="fa fa-cogs"></span>
                         <span class="sidebar-title">Configuración</span>
@@ -212,20 +228,42 @@
         <section id="content" class="table-layout animated fadeIn">
             <div class="chute chute-center">
                 <div class="row">
-                    <div class="col-sm-12" style="background-color:#fff; box-shadow: 0 2px 2px 0 rgba(0,0,0,0.20); border: 0px solid; padding-top:15px; padding-bottom:15px;">
-                        <div class="col-sm-4">
-                            <img src="../../libs/img/usuarios/jordysantamaria@hotmail.comjordy.jpg" class="img-responsive">
-                        </div>
-                        <div class="col-sm-8">
-                            <h2>Jordy Santamaria</h2>
-                            <p><strong>Correo Electronico: </strong> jordysantamaria@hotmail.com</p>
-                            <p><strong>Tu Equipo: </strong>FC Barcelona</p>
-                            <p><strong>Puntos Disponibles: </strong>145896</p><hr style="margin: 25px 0;">
-                            <div class="form-group">
-                                <label for="exampleInputName2">Codigo de Invitación</label>
-                                <input type="text" class="form-control" id="exampleInputName2" value="qwerty">
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="thumbnail">
+                                <img src="../../libs/img/usuarios/<?= $datos['imagen']; ?>" class="img-responsive">
+                                <div class="caption">
+                                    <h2><?= $datos['nombreusuario']; ?></h2>
+                                    <p><strong>Correo Electronico: </strong> <?= $datos['correo']; ?></p>
+                                    <p><strong>Tu Equipo: </strong> <?= $datos['equipoFav']; ?></p>
+                                    <p><strong>Puntos Disponibles: </strong> <?= $historial['puntos']; ?></p><hr style="margin: 25px 0;">
+                                    <div class="form-group">
+                                        <label for="exampleInputName2">Codigo de Invitación</label>
+                                        <input type="text" class="form-control" id="exampleInputName2" value="<?= $datos['cod_inv']; ?>">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                            <div class="panel" id="pchart4">
+                                <div class="panel-heading">
+                                    <span class="panel-title"> Historial de Apuestas</span>
+                                </div>
+                                <div class="panel-body bg-light dark">
+                                    <div id="donut-chart" style="height: 350px; width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Partido</th>
+                                <th>Competencia</th>
+                                <th>Puntos Apostados</th>
+                            </tr>
+                            <?= $metodo -> HistorialPartidosApostados(); ?>
+                        </table><br>
                     </div>
                 </div>
             </div>
@@ -246,6 +284,25 @@
             </div>
         </footer>
     </section>
+</div>
+<!-- Modal Quejas y Sugerencias-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Quejas y Sugerencias</h4>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" placeholder="Ponle un asunto a este mensaje..."><br>
+                <textarea class="form-control" placeholder="¿Cuéntanos que sucede?"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger">Enviar <i class="fa fa-send"></i></button>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="../../libs/js/jquery/jquery-1.11.3.min.js"></script>
 <script src="../../libs/js/jquery/jquery_ui/jquery-ui.min.js"></script>
@@ -274,6 +331,45 @@
 <script src="../../libs/js/demo/widgets.js"></script>
 <script src="../../libs/js/demo/widgets_sidebar.js"></script>
 <script src="../../libs/js/pages/dashboard1.js"></script>
+
+<script type="text/javascript">
+    var D3Charts = function () {
+        var runD3Charts = function () {
+            var Colors = [bgPrimary, bgSuccess, bgInfo, bgWarning, bgAlert, bgDanger, bgSystem];
+            var chart10 = c3.generate({
+                bindto: '#donut-chart',
+                color: {
+                    pattern: Colors
+                },
+                data: {
+                    columns: [
+                        ['Victorias', "<?= $historial['victorias'];?>"],
+                        ['Derrotas', "<?= $historial['perdidos'];?>"]
+                    ],
+                    type : 'donut',
+                    onclick: function (d, i) { console.log("onclick", d, i); },
+                    onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                    onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                },
+                donut: {
+                    title: "Historial de Apuestas"
+                }
+            });
+        };
+        return {
+            init: function () {
+                runD3Charts();
+            }
+        };
+    }();
+
+    jQuery(document).ready(function () {
+        "use strict";
+        Core.init();
+        Demo.init();
+        D3Charts.init();
+    });
+</script>
 
 </body>
 

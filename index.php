@@ -249,8 +249,8 @@
 							<?php 	if (isset($_SESSION['IdUsuario'])) {	?>
 							<li class="col-sm-12">
 								<ul>
-									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='vista/perfil.php'"><i class="fa fa-user"></i>  Ir a Mi Perfil</button></li><br>
-									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='vista/editarperfil.php'"><i class="fa fa-pencil-square-o"></i>  Editar Mis Datos</button></li>
+									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='vista/Usuario/index.php'"><i class="fa fa-user"></i>  Ir a Mi Perfil</button></li><br>
+									<li><button class="btn btn-primary" style="width:100%;" onclick="location.href='vista/Usuario/configuracion.php'"><i class="fa fa-pencil-square-o"></i>  Editar Mis Datos</button></li>
 									<li class="divider"></li>
 									<li><button class="btn btn-danger" style="width:100%;" onclick="CerrarSesion(); return false;">Salir   <i class="fa fa-sign-out"></i></button></li>
 								</ul>
@@ -316,7 +316,7 @@
         				</a>
 					</div>
 					<div class="col-sm-4">
-						<div class="panel panel-default">
+						<div class="panel panel-default panel-whats">
   							<div class="panel-body M4">
   								<center>
   									<p>Recibe las ultimas noticias de <strong>Somos Campeones</strong> en tu celular por Whatsapp.</p>

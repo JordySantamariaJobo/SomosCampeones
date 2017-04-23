@@ -114,3 +114,10 @@ td.resultado {
   display: inline-block;
   vertical-align: top;
 }
+
+.panel-whats{
+    border-radius: 0px;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,.28);
+    border: 0px solid;
+    margin: 13px;
+}

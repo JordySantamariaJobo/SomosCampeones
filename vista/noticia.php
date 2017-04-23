@@ -123,12 +123,14 @@
 			</div>
 			<div id="ResultadosBuscador" class="col-sm-12"></div>
 			<div id="WallWhiteNews" class="col-sm-12">
-				<div class="col-sm-9">
+				<div class="col-sm-12">
 					<h1 class="M9"><?php echo $new['titulo']; ?></h1>
 					<p class="M4" style="font-size: 20px;"><img src="../libs/img/usuarios/<?php echo $con['imagen']; ?>" class="img-circle" style="width:65px; float:left; padding-right:5px;">Redactada por: <strong class="M7"><?php echo $con['nombre']." ".$con['app'] ?><div class="fb-follow" data-href="https://www.facebook.com/campeonessomoscs/?fref=ts" data-layout="standard" data-size="large" data-show-faces="true"></div></strong></p>
 					<h5 class="M7"><i class="fa fa-calendar"></i> Redactada el: <strong class="M4"><?php echo $FormatoFecha -> ModificarFecha($new['fecha']) ?></strong></h5><hr>					
 					<center><img src="../libs/img/Noticias/<?php echo $new['foto_ruta']; ?>" width="100%" class="img-responsive"></center>
-					<h5 class="M4"><i class="fa fa-camera"></i> <?php echo $new['descrip_foto']; ?></h5><br>
+					<h5 class="M4"><i class="fa fa-camera"></i> <?php echo $new['descrip_foto']; ?></h5><hr>
+				</div>
+				<div class="col-sm-9">
 					<div class="M4" style="text-align:justify; font-size:20px;"><?php echo $new['descripcion']; ?></div><br>
 					<div id="myAd"><?php echo $metodo -> GeneradorAnuncios(); ?></div>
 					<h2 class="M7" style="margin-left: 15px;">QUIZÁS TE INTERESE...</h2><hr class="hrRed"><br><br>
@@ -187,7 +189,7 @@
 				<div class="col-sm-3">
 					<h2 class="M8" style="margin-left: 15px;"><img src="../libs/img/social/soundcloud.png" class="img-responsive ContenedorImagen"> POSTCAST</h2><hr class="hrRed">
 					<?php echo $metodo -> SoundCloud(); ?><br><br>
-					<div class="panel panel-default">
+					<div class="panel panel-default panel-whats">
   						<div class="panel-body M4">
   							<center>
   								<p>Recibe las ultimas noticias de <strong>Somos Campeones</strong> en tu celular por Whatsapp.</p>
