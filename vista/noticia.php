@@ -11,12 +11,9 @@
 	$url = base64_encode("http://www.campeonessomos.com".$_SERVER['REQUEST_URI']);
 	$ipUser = base64_encode($_SERVER['REMOTE_ADDR']);
 
-	$_SESSION['IdNoticia'] = $_GET['id'];
-	$_SESSION['TituloNew'] = $_GET['tituloNew'];
+	$id = $_GET['id'];
+	$TituloNew = $_GET['tituloNew'];
 	
-	$id = $_SESSION['IdNoticia'];
-	$TituloNew = $_SESSION['TituloNew'];
-
 	$metodo = new NoticiaC();
 	$FormatoFecha = new FormatoFecha();
 
