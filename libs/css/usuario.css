@@ -1,0 +1,29 @@
+.hrThumbMaterial{
+  border-top: 1px solid rgba(210, 210, 210, 0.99);
+}
+.thumb-material{
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.20);
+  border:0px solid;
+  padding: 0px;
+  padding-bottom: 10px;
+}
+.thumb-material .caption{
+  margin-top: -17px;
+  margin-bottom: -17px;
+}
+.thumb-material .caption p{
+  text-align: justify;
+}
+.thumb-material hr{
+  margin-bottom: 8px;
+}
+.img-logo-modal {
+	width: 10% !important;
+    height: auto !important;
+    position: relative !important;
+    display: inline-block !important;
+    vertical-align: top !important;
+    overflow: hidden !important;
+    margin-left: 5px;
+    margin-right: 5px;
+}
