@@ -77,6 +77,14 @@
         </footer>
     </section>
 </div>
+<style type="text/css">
+    .ui-slider .ui-slider-handle{
+        background: #FF4C77;
+    }
+    .ui-slider .ui-slider-range{
+        background-color: #FF003E;
+    }
+</style>
 <!-- Modal -->
 <div class="modal fade" id="ModalApostar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -84,7 +92,7 @@
       <div class="modal-body">
         <center>
             <div class="EquiposModal"></div>
-            <p><label for="amount">Maximum price:</label></p>
+            <p><label for="amount">Apostar:</label></p>
             <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold; text-align: center;"><br>
             <div id="slider-range-min"></div>
         </center>    
