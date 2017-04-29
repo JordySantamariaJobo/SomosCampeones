@@ -7,7 +7,7 @@
 	{
 		public function ApuestasDisponibles()
 		{
-			return ApuestaM::ApuestasDisponibles();
+			return ApuestaM::ApuestasDisponibles($_SESSION['IdUsuario']);
 		}
 
 		public function ConsultarEquipo($idEquipo)

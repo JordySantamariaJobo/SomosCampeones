@@ -11,7 +11,7 @@
 		}
 
 		function ModificarHora($hora){
-			$hora = date("H:i",strtotime($hora));
+			$hora = date("H:i a",strtotime($hora));
 			return $hora;
 		}
 	}

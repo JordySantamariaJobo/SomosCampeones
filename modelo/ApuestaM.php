@@ -4,11 +4,11 @@
 	*/
 	class ApuestaM
 	{
-		public function ApuestasDisponibles()
+		public function ApuestasDisponibles($idUsuario)
 		{
 			include 'config/conn.php';
 
-			$q = "SELECT *FROM ApuestasDisponibles";
+			$q = "CALL PartidosDisponiblesApostar($idUsuario)";
 			$r = mysqli_query($conn, $q);
 
 			return $r;
@@ -23,6 +23,22 @@
 			$res = mysqli_fetch_array($r, MYSQLI_ASSOC);
 
 			return $res;
+		}
+
+		public function ApuestaEnPartido($idPartido, $idUsuario, $cantidad, $porcentaje)
+		{
+			include 'config/conn.php';
+
+			$q = "CALL ApostarPartido($idPartido, $idUsuario, $cantidad, $porcentaje)";
+			$r = mysqli_query($conn, $q);
+		}
+
+		public function ActualizarPuntosUsuario($idUsuario, $puntos)
+		{
+			include 'config/conn.php';
+
+			$q = "CALL ActualizarPuntaje($idusuario, $puntos)";
+			$r = mysqli_query($conn, $q);
 		}
 	}
 ?>

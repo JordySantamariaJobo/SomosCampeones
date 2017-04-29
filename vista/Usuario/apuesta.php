@@ -16,6 +16,7 @@
         $FormatoFecha = new FormatoFecha();
 
         $datos = $metodo -> DatosUsuario();
+        $historial = $metodo -> HistorialUsuario();
         $lista = $metodoApuesta -> ApuestasDisponibles();
     }
 ?>
@@ -49,7 +50,7 @@
                                             <td>".$equipoL['nombre_e']." - ".$equipoV['nombre_e']."</td>
                                             <td>".$valor['competencia_p']."</td>
                                             <td>".$FormatoFecha -> ModificarFecha($valor['fecPartido'])." </td>
-                                            <td>" ?><button class='btn btn-danger' data-toggle='modal' data-target='#ModalApostar' onclick="ModalApostar('<?= $equipoL['nombre_e']; ?>', '<?= $equipoV['nombre_e']; ?>', <?= $valor['porLocal']; ?>, <?= $valor['porEmpate']; ?>, <?= $valor['porVisita']; ?>, '<?= $equipoL['imagen']; ?>', '<?= $equipoV['imagen']; ?>', '<?= $valor['fecPartido']; ?>', '<?= $valor['horPartido']; ?>', '<?= $valor['competencia_p']; ?>')">Apostar</button>
+                                            <td>" ?><button class='btn btn-danger' data-toggle='modal' data-target='#ModalApostar' onclick="ModalApostar(<?= $valor['id_partido']; ?>,'<?= $equipoL['nombre_e']; ?>', '<?= $equipoV['nombre_e']; ?>', <?= $valor['porLocal']; ?>, <?= $valor['porEmpate']; ?>, <?= $valor['porVisita']; ?>, '<?= $equipoL['imagen']; ?>', '<?= $equipoV['imagen']; ?>', '<?= $valor['fecPartido']; ?>', '<?= $valor['horPartido']; ?>', '<?= $valor['competencia_p']; ?>', <?= $valor['porLocal']; ?>, <?= $valor['porEmpate']; ?>, <?= $valor['porVisita']; ?>)">Apostar</button>
                                             <?php "</td>
                                         </tr>";
                                     }
@@ -79,35 +80,50 @@
 </div>
 <style type="text/css">
     .ui-slider .ui-slider-handle{
-        background: #FF4C77;
+        background: #ff7022;
     }
     .ui-slider .ui-slider-range{
-        background-color: #FF003E;
+        background-color: #ff7022;
     }
 </style>
 <!-- Modal -->
 <div class="modal fade" id="ModalApostar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <center>
-            <div class="EquiposModal"></div>
-            <p><label for="amount">Apostar:</label></p>
-            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold; text-align: center;"><br>
-            <div id="slider-range-min"></div>
-        </center>    
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="ApostarPartido()">Apostar</button>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:url(../../libs/img/WallMinuto.png); background-repeat: no-repeat; background-size: cover;">
+                <center>
+                    <div class="EquiposModal"></div>
+                </center>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div class="InfoPartido"></div>
+                    <p for="amount">Apostar: <span id="amount" style="color:#f6931f; font-weight:bold;"></span> Punto(s).</p>
+                    <div id="slider-range-min"></div>
+                    <input type="text" class="idPartido" style="display:none;">
+                </center>    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="ApostarPartido()">Apostar</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <?php include 'plantillas/footer.php'; ?>
 <script>
-    function ModalApostar(equipoL, equipoV, porLocal, porEmpate, porVisita, imgLocal, imgVisita, fecPartido, horPartido, competencia) {
-        $(".EquiposModal").html("<h2><img src='../../libs/img/Logotipo/Equipos/"+imgLocal+"' class='img-responsive img-logo-modal'>"+equipoL+" - "+equipoV+"<img src='../../libs/img/Logotipo/Equipos/"+imgVisita+"' class='img-responsive img-logo-modal'></h2><br><p>"+competencia+"</p><p>"+fecPartido+" "+horPartido+"</p>");
+    function ModificarFecha(fecha) {
+        fecha = new Date(fecha);
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return fecha.toLocaleDateString("es-MX", options);
+    }
+
+    function ModalApostar(idPartido, equipoL, equipoV, porLocal, porEmpate, porVisita, imgLocal, imgVisita, fecPartido, horPartido, competencia, porLocal, porEmpate, porVisita) {
+        var FechaFormato = ModificarFecha(fecPartido);
+
+        $(".idPartido").val(idPartido);
+        $(".EquiposModal").html("<h3 style='color:#fff;'><img src='../../libs/img/Logotipo/Equipos/"+imgLocal+"' class='img-responsive img-logo-modal'>"+equipoL+" - "+equipoV+"<img src='../../libs/img/Logotipo/Equipos/"+imgVisita+"' class='img-responsive img-logo-modal'></h3>");
+        $(".InfoPartido").html("<h3>"+competencia+"</h3><p>"+FechaFormato+"</p><p>"+horPartido+"</p><p><input type='radio' name='optionsRadios' id='optionsRadios' value='"+porLocal+"' checked> "+porLocal+"<br><input type='radio' name='optionsRadios' id='optionsRadios' value='"+porEmpate+"'> "+porEmpate+"<br><input type='radio' name='optionsRadios' id='optionsRadios' value='"+porVisita+"'> "+porVisita+"</p>");
     }
 
     jQuery(document).ready(function () {
@@ -120,19 +136,44 @@
     $(function() {
         $("#slider-range-min").slider({
             range: "min",
-            value: 1,
-            min: 1,
-            max: 14500,
+            value: 0,
+            min: 0,
+            max: "<?= $historial['puntos']; ?>",
             slide: function( event, ui ) {
-                $("#amount").val(ui.value );
+                $("#amount").text(ui.value );
             }
         });
-        $("#amount").val($( "#slider-range-min" ).slider("value"));
+        $("#amount").text($( "#slider-range-min" ).slider("value"));
     });
 
     function ApostarPartido() {
-        alert("Apostaste: "+$("#amount").val());
-    }//qwerty
+        $("input[name=optionsRadios]").each(function (index) {  
+            if($(this).is(':checked')){
+                var cantidad = $("#amount").text();
+                var porcentaje = $(this).val();
+                var idPartido = $(".idPartido").val();
+                var parametros = {
+                    "Cantidad" : cantidad,
+                    "Porcentaje" : porcentaje,
+                    "IdPartido" : idPartido
+                };
+                $.ajax({
+                    async: true,
+                    type: "POST",
+                    dataType: "html",
+                    contentType: "application/x-www-form-urlencoded",
+                    url: "controlador/ApostarPartido.php",
+                    data: parametros,
+                    success: function(result){
+                        alert(result);
+                    },
+                    error: function(){
+                        console.log("ERROR");
+                    }
+                });
+            }
+        });
+    }
 </script>
 </body>
 </html>
