@@ -1,20 +1,22 @@
 <!-- Modal Quejas y Sugerencias-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Quejas y Sugerencias</h4>
+        <form method="POST" action="controlador/QuejaSugerenciaC.php">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Quejas y Sugerencias</h4>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control" name="titulo" placeholder="Ponle un asunto a este mensaje..." required><br>
+                    <textarea class="form-control" name="descripcion" placeholder="¿Cuéntanos que sucede?" required></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-danger">Enviar <i class="fa fa-send"></i></button>
+                </div>
             </div>
-            <div class="modal-body">
-                <input class="form-control" placeholder="Ponle un asunto a este mensaje..."><br>
-                <textarea class="form-control" placeholder="¿Cuéntanos que sucede?"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-danger">Enviar <i class="fa fa-send"></i></button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 <script src="../../libs/js/jquery/jquery-1.11.3.min.js"></script>

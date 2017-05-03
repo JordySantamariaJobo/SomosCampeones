@@ -85,6 +85,9 @@
     .ui-slider .ui-slider-range{
         background-color: #ff7022;
     }
+    #slider-range-min{
+        background-color: #ddd;
+    }
 </style>
 <!-- Modal -->
 <div class="modal fade" id="ModalApostar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -98,7 +101,7 @@
             <div class="modal-body">
                 <center>
                     <div class="InfoPartido"></div>
-                    <p for="amount">Apostar: <span id="amount" style="color:#f6931f; font-weight:bold;"></span> Punto(s).</p>
+                    <p for="amount">Apostar: <span id="amount" style="color:#f6931f; font-weight:bold; font-size: 35px;"></span> Punto(s).</p>
                     <div id="slider-range-min"></div>
                     <input type="text" class="idPartido" style="display:none;">
                 </center>    
@@ -122,8 +125,8 @@
         var FechaFormato = ModificarFecha(fecPartido);
 
         $(".idPartido").val(idPartido);
-        $(".EquiposModal").html("<h3 style='color:#fff;'><img src='../../libs/img/Logotipo/Equipos/"+imgLocal+"' class='img-responsive img-logo-modal'>"+equipoL+" - "+equipoV+"<img src='../../libs/img/Logotipo/Equipos/"+imgVisita+"' class='img-responsive img-logo-modal'></h3>");
-        $(".InfoPartido").html("<h3>"+competencia+"</h3><p>"+FechaFormato+"</p><p>"+horPartido+"</p><p><input type='radio' name='optionsRadios' id='optionsRadios' value='"+porLocal+"' checked> "+porLocal+"<br><input type='radio' name='optionsRadios' id='optionsRadios' value='"+porEmpate+"'> "+porEmpate+"<br><input type='radio' name='optionsRadios' id='optionsRadios' value='"+porVisita+"'> "+porVisita+"</p>");
+        $(".EquiposModal").html("<h2 style='color:#fff;'>"+competencia+"</h2><h3 style='color:#fff;'><img src='../../libs/img/Logotipo/Equipos/"+imgLocal+"' class='img-responsive img-logo-modal'>"+equipoL+" - "+equipoV+"<img src='../../libs/img/Logotipo/Equipos/"+imgVisita+"' class='img-responsive img-logo-modal'></h3><p style='color:#fff;'>"+FechaFormato+"<br>"+horPartido+"</p>");
+        $(".InfoPartido").html("<p><input type='radio' name='optionsRadios' id='optionsRadios' value='"+porLocal+"' checked> "+porLocal+"<br><input type='radio' name='optionsRadios' id='optionsRadios' value='"+porEmpate+"'> "+porEmpate+"<br><input type='radio' name='optionsRadios' id='optionsRadios' value='"+porVisita+"'> "+porVisita+"</p>");
     }
 
     jQuery(document).ready(function () {
@@ -165,7 +168,8 @@
                     url: "controlador/ApostarPartido.php",
                     data: parametros,
                     success: function(result){
-                        alert(result);
+                        if (result == 0) { alert("Tu apuesta debe ser mayor a 0 puntos"); }
+                        else { location.reload(); }
                     },
                     error: function(){
                         console.log("ERROR");

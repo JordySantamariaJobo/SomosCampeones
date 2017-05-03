@@ -4,10 +4,10 @@
 			<div class="col-sm-12">
 				<div class="col-sm-4" id="Raleway5">
 					<h4 id="Raleway7"><strong>COBERTURAS</strong></h4>
-					<a href="UCLFinale.php">Final Champions League</a><br>
-					<a href="MXFinal.php">Final Liga MX</a><br>
-					<a href="BalonDeOro.php">Balon de Oro</a><br>
-					<a href="TheBest.php">The BEST</a><br>
+					<a href="competicion.php?competencia=Champions%20League">Final Champions League</a><br>
+					<a href="competicion.php?competencia=Liga%20MX">Final Liga MX</a><br>
+					<a href="balondeoro.php">Balon de Oro</a><br>
+					<a href="thebest.php">The BEST</a><br>
 				</div>
 				<div class="col-sm-4" id="Raleway5">
 					<h4 id="Raleway7"><strong>NOTICIAS</strong></h4>

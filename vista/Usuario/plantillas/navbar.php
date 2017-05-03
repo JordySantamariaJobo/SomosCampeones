@@ -141,10 +141,10 @@
                             <a href="partidos.php">
                             <i class="fa fa-circle"></i> Partidos EN VIVO</a>
                         </li>
-                        <li>
+                        <!--li>
                             <a href="historialminuto.php">
                             <i class="fa fa-reply-all"></i> Revivir Minuto a Minuto</a>
-                        </li>
+                        </li-->
                     </ul>
                 </li>
                 <li>
