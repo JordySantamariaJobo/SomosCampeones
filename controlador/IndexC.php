@@ -69,6 +69,11 @@
 			return IndexM::MinutoPartido();
 		}
 
+		public function ConsultarDatosUsuario($id)
+		{
+			return IndexM::ConsultarDatosUsuario($id);
+		}
+
 		public function MensajeSesion()
 		{
 			$random = rand(0,2);

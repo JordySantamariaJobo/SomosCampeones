@@ -15,6 +15,7 @@
 <!DOCTYPE html>
 <html>
 <?php include 'plantillas/header.php'; ?>
+<link rel="stylesheet" type="text/css" href="../../libs/css/card.css">
 <body class="dashboard-page">
 <div id="main">
     <?php include 'plantillas/navbar.php'; ?>
@@ -22,28 +23,46 @@
         <section id="content" class="table-layout animated fadeIn">
             <div class="chute chute-center">
                 <div class="row">
-                    <div class="col-sm-12" style="box-shadow: 1px 2px 0 #e5eaee; position: relative; margin-bottom: 45px; background-color: #ffffff; border-radius: 4px; padding:10px;">
+                    <div class="col-sm-12">
                         <?= $metodo -> Anuncio(); ?><br>
-                        <div class="col-sm-3">
-                            <img src="../../libs/img/usuarios/<?= $datos['imagen']; ?>" class="img-responsive" style="width:100%; height:250px;">
-                        </div>
-                        <div class="col-sm-9">
-                            <h3><?= $datos['nombreusuario']; ?></h3>
-                            <p><strong>Correo Electronico: </strong> <?= $datos['correo']; ?></p>
-                            <p><strong>Tu Equipo: </strong> <?= $datos['equipoFav']; ?></p>
-                            <p><strong>Puntos Disponibles: </strong> <?= $historial['puntos']; ?></p><hr style="margin: 25px 0;">
-                            <div class="form-group">
-                                <label for="exampleInputName2">Codigo de Invitación</label>
-                                <input type="text" class="form-control" id="exampleInputName2" value="<?= $datos['cod_inv']; ?>">
+                        <div class="col-sm-6">
+                            <div class="card-container manual-flip">
+                                <div class="card">
+                                    <div class="front">
+                                        <div class="cover">
+                                            <img src="../../libs/img/WallMinuto.png"/>
+                                        </div>
+                                        <div class="user">
+                                            <img class="img-circle" src="../../libs/img/usuarios/<?= $datos['imagen']; ?>"/>
+                                        </div>
+                                        <div class="content">
+                                            <div class="main">
+                                                <h3 class="name"><?= $datos['nombreusuario']; ?></h3>
+                                                <p class="profession"><?= $datos['equipoFav']; ?></p>
+                                                <p class="text-center">Puntos Disponibles <br><strong><?= $historial['puntos']; ?></strong></p>
+                                            </div>
+                                            <div class="footer">
+                                                <button class="btn btn-simple" onclick="rotateCard(this)">Ver Más</button>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end front panel -->
+                                    <div class="back">
+                                        <div class="header">
+                                            <h5 class="motto"><?= $datos['correo']; ?></h5>
+                                        </div>
+                                        <div class="content">
+                                            <div class="main">
+                                                <h4 class="text-center">Información</h4>
+                                                <p class="text-center">Codigo de Invitación: <br><strong><?= $datos['cod_inv']; ?></strong></p>
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">Atras</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <?= $metodo -> Anuncio(); ?>
-                        <h2><i class="fa fa-newspaper-o"></i> Titulares del Dia</h2>
-                        <?= $metodo -> TitularesDelDia($datos['equipoFav']); ?>
-                    </div>
-                    <div class="col-sm-12">
                         <div class="col-sm-6">
                             <div class="panel" id="pchart4">
                                 <div class="panel-heading">
@@ -54,21 +73,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6" style="box-shadow: 1px 2px 0 #e5eaee; position: relative; margin-bottom: 45px; background-color: #ffffff; border-radius: 4px;">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Partido</th>
-                                        <th>Competencia</th>
-                                        <th>Puntos Apostados</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?= $metodo -> HistorialPartidosApostados(); ?>
-                                </tbody>
-                            </table><br>
-                            <button class="btn btn-danger" style="width:100%" onclick="location.href='historial.php';">Ver Historial Completo</button><br><br>
-                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <?= $metodo -> Anuncio(); ?>
+                        <h2><i class="fa fa-newspaper-o"></i> Titulares del Dia</h2>
+                        <?= $metodo -> TitularesDelDia($datos['equipoFav']); ?>
+                    </div>
+                    <div class="col-sm-12" style="box-shadow: 1px 2px 0 #e5eaee; position: relative; margin-bottom: 45px; background-color: #ffffff; border-radius: 4px;">
+                        <?= $metodo -> Anuncio(); ?><br>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Partido</th>
+                                    <th>Competencia</th>
+                                    <th>Puntos Apostados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?= $metodo -> HistorialPartidosApostados(); ?>
+                            </tbody>
+                        </table><br>
+                        <button class="btn btn-danger" style="width:100%" onclick="location.href='historial.php';">Ver Historial Completo</button><br><br>
                     </div>
                 </div>
             </div>
@@ -121,6 +146,20 @@
             }
         };
     }();
+       $().ready(function(){
+        $('[rel="tooltip"]').tooltip();
+
+    });
+
+    function rotateCard(btn){
+        var $card = $(btn).closest('.card-container');
+        console.log($card);
+        if($card.hasClass('hover')){
+            $card.removeClass('hover');
+        } else {
+            $card.addClass('hover');
+        }
+    }
 
     jQuery(document).ready(function () {
         "use strict";

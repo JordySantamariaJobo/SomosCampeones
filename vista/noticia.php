@@ -26,7 +26,6 @@
 	if (isset($_SESSION['IdUsuario'])) { 
     	$id = $_SESSION['IdUsuario'];
     	$datos = $metodo -> ConsultarDatosUsuario($id);
-    	$like = $metodo -> VerificarGustas();
     	$init = 1;
     }
     else{ $init = 0; }
@@ -151,36 +150,6 @@
 							}
 						?>
 					</div>
-					<!--center>
-						<?php
-							if ($init == 1) {
-								if ($like['megusta'] == 1 && $like['nomegusta'] == 0) {
-									?>
-									<a><img src="../libs/img/Emoticonos/MeEncanta.png" class="img-responsive" title="Me Encanta" width="25%;"></a>
-									<?php
-								}
-								else if($like['megusta'] == 0 && $like['nomegusta'] == 1){
-									?>
-									<a><img src="../libs/img/Emoticonos/MeMolesta.png" class="img-responsive" title="Me Molesta" width="25%;"></a>
-									<?php
-								}
-								else{
-									?>
-										<h3 id="Raleway7">Que te ha parecido el Articulo?</h3>
-										<a onclick="MeGusta()"><div class="ContenedorEmoticon"><img src="../libs/img/Emoticonos/MeEncanta.png" class="img-responsive" title="Me Encanta" width="80%"></div></a>
-										<a onclick="NoMeGusta()"><div class="ContenedorEmoticon"><img src="../libs/img/Emoticonos/MeMolesta.png" class="img-responsive" title="Me Molesta" width="80%;"></div></a>
-									<?php
-								}
-							}
-							else{
-								?>
-									<h3 id="Raleway7">Que te ha parecido el Articulo?</h3>
-									<a data-toggle="modal" data-target="#myModal"><div class="ContenedorEmoticon"><img src="../libs/img/Emoticonos/MeEncanta.png" class="img-responsive" title="Me Encanta" width="80%;"></div></a>
-									<a data-toggle="modal" data-target="#myModal"><div class="ContenedorEmoticon"><img src="../libs/img/Emoticonos/MeMolesta.png" class="img-responsive" title="Me Molesta" width="80%;"></div></a>
-								<?php
-							}
-						?>
-					</center-->
 					<div class="fb-comments" data-href="<?php echo $urlLibre; ?>" data-width="100%" data-numposts="5"></div><br><br>
 				</div>
 				<div class="col-sm-3">

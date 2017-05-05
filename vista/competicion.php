@@ -1,12 +1,25 @@
 <?php
 	session_start();
 
+    $urlLibre = "http://www.campeonessomos.com".$_SERVER['REQUEST_URI'];
+    $url = base64_encode("http://www.campeonessomos.com".$_SERVER['REQUEST_URI']);
+    $ipUser = base64_encode($_SERVER['REMOTE_ADDR']);
+
+    include '../controlador/NoticiaC.php';
 	include '../controlador/competicionC.php';
 	include '../controlador/NavBarC.php';
 
 	$competicion = $_GET['competencia'];
 
 	$metodo = new competicionC($competicion);
+    $metodoNoticia = new NoticiaC();
+
+    if (isset($_SESSION['IdUsuario'])) { 
+        $id = $_SESSION['IdUsuario'];
+        $datos = $metodoNoticia -> ConsultarDatosUsuario($id);
+        $init = 1;
+    }
+    else{ $init = 0; }
 ?>
 <html lang="es">
 <head>
@@ -69,8 +82,11 @@
 	<?php include 'plantillas/NavBar.php'; ?>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12">
+            <div id="ResultadosBuscador" class="col-sm-12"></div>
+			<div id="WallWhiteNews" class="col-sm-12">
 				<h1 class="M8"><?php echo $metodo->titulo(); ?></h1>
 			</div>
 		</div>
 	</div>
+    <?php include 'plantillas/footerVista.php'; ?>
+</body>

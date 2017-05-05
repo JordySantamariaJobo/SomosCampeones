@@ -131,23 +131,6 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="accordion-toggle" href="#">
-                        <span class="fa fa-futbol-o"></span>
-                        <span class="sidebar-title">Minuto a Minuto</span>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="nav sub-nav">
-                        <li>
-                            <a href="partidos.php">
-                            <i class="fa fa-circle"></i> Partidos EN VIVO</a>
-                        </li>
-                        <!--li>
-                            <a href="historialminuto.php">
-                            <i class="fa fa-reply-all"></i> Revivir Minuto a Minuto</a>
-                        </li-->
-                    </ul>
-                </li>
-                <li>
                     <a href="" data-toggle="modal" data-target="#myModal">
                         <span class="fa fa-inbox"></span>
                         <span class="sidebar-title">Quejas y Sugerencias</span>
