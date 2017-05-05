@@ -2,9 +2,6 @@
 	include '../../modelo/UsuarioM.php';
 	include '../../modelo/NoticiaM.php';
 
-	/**
-	* 
-	*/
 	class UsuarioC extends UsuarioM
 	{
 		public $idUsuario;

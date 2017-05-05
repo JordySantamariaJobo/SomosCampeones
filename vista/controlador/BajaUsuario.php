@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	include("../modelo/ConfiguracionM.php");
+	include '../../modelo/ConfiguracionM.php';
 
 	$metodo = new ConfiguracionM();
 

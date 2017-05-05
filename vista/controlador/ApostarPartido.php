@@ -1,8 +1,8 @@
 <?php
 	session_start();
 
-	include '../../../modelo/UsuarioM.php';
-	include '../../../modelo/ApuestaM.php';
+	include '../../modelo/UsuarioM.php';
+	include '../../modelo/ApuestaM.php';
 
 	$metodo = new UsuarioM();
 	$apuesta = new ApuestaM();

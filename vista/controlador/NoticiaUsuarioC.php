@@ -1,8 +1,5 @@
 <?php
-	/**
-	* 
-	*/
-	class NoticiaC extends NoticiaM
+	class NoticiaUsuarioC extends NoticiaM
 	{
 		public $Id;
 		public $Titulo;

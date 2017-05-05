@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    include 'controlador/UsuarioC.php';
+    include '../controlador/UsuarioC.php';
 
     if ($_SESSION['TipoUsuario'] == "Admin") { header("Location: ../Admin/index.php"); } 
     else if ($_SESSION['TipoUsuario'] == "Editor") { header("Location: ../Editor/index.php"); }

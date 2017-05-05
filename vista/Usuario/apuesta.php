@@ -1,8 +1,8 @@
 <?php
 	session_start();
 
-	include 'controlador/UsuarioC.php';
-    include 'controlador/ApuestaC.php';
+	include '../controlador/UsuarioC.php';
+    include '../controlador/ApuestaC.php';
     include'../../controlador/FormatoFecha.php';
 
 
