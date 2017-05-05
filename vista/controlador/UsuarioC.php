@@ -90,6 +90,11 @@
 			return $contenedor;
 		}
 
+		public function BonusDiario()
+		{
+			return UsuarioM::BonusDiario($this->idUsuario);
+		}
+
 		public function Anuncio()
 		{
 			$num = rand(1,10);

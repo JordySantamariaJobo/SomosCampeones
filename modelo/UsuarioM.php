@@ -57,5 +57,15 @@
 			return $result['code_ad'];
 		}
 
+		public function BonusDiario($id)
+		{
+			include 'config/conn.php';
+
+			$q = "CALL ConsultarBonusDiario($id)";
+			$r = mysqli_query($conn, $q);
+			$count = mysqli_num_rows($r);
+
+			return $count;
+		}
 	}
 ?>

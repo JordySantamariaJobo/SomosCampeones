@@ -14,6 +14,9 @@
         $datos = $metodo -> DatosUsuario();
         $lista = $metodoConfiguracion -> ListaEquipos();
     }
+
+    print_r($_SESSION['TipoUsuario']);
+    exit();
 ?>
 <!DOCTYPE html>
 <html>
