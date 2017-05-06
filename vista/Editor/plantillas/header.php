@@ -23,6 +23,10 @@
     <!-- CSS - allcp forms -->
     <link rel="stylesheet" type="text/css" href="../../libs/allcp/forms/css/forms.css">
 
+    <!-- CSS - Editor -->
+    <link rel="stylesheet" type="text/css" href="../../libs/css/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" type="text/css" href="../../libs/css/bootstrap3-wysiwyg5-color.css">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../libs/img/iconos/icon.ico">
     <link rel="stylesheet" type="text/css" href="../../libs/css/usuario.css">

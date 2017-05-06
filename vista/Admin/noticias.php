@@ -2,13 +2,13 @@
 	session_start();
 
 	include '../controlador/UsuarioC.php';
-	include '../controlador/NoticiaUsuarioC.php';
-	include'../controlador/FormatoFecha.php';
+    include '../controlador/NoticiaC.php';
+    include'../../controlador/FormatoFecha.php';
 
-	$Id = $_GET['id'];
-	$Titulo = $_GET['tituloNew'];
+    $Id = $_GET['id'];
+    $Titulo = $_GET['tituloNew'];
 
-	$metodoNoticia = new NoticiaUsuarioC($Id, $Titulo);
+    $metodoNoticia = new NoticiaC($Id, $Titulo);
 	$FormatoFecha = new FormatoFecha();
 
 	$new = $metodoNoticia -> ConsultarNoticia();

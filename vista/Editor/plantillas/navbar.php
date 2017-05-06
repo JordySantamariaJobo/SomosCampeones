@@ -131,9 +131,51 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="" data-toggle="modal" data-target="#myModal">
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-newspaper-o"></span>
+                        <span class="sidebar-title">Noticias</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="redactarnoticia.php">
+                            <i class="fa fa-newspaper-o"></i> Redactar Noticia</a>
+                        </li>
+                        <li>
+                            <a href="editarnoticia.php">
+                            <i class="fa fa-pencil"></i> Editar Noticia</a>
+                        </li>
+                        <li>
+                            <a href="eliminarnoticia.php">
+                            <i class="fa fa-trash"></i> Eliminar Noticia</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-futbol-o"></span>
+                        <span class="sidebar-title">Partidos</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="registrarpartido.php">
+                            <i class="fa fa-futbol-o"></i> Registrar Partido</a>
+                        </li>
+                        <li>
+                            <a href="editarpartido.php">
+                            <i class="fa fa-pencil"></i> Editar Partido</a>
+                        </li>
+                        <li>
+                            <a href="eliminarpartido.php">
+                            <i class="fa fa-trash"></i> Eliminar Partido</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="bandejaquejas.php">
                         <span class="fa fa-inbox"></span>
-                        <span class="sidebar-title">Quejas y Sugerencias</span>
+                        <span class="sidebar-title">Bandeja de Entrada</span>
                     </a>
                 </li>
                 <li>

@@ -171,7 +171,6 @@
         D3Charts.init();
 
         var bonus = "<?= $bonus; ?>";
-
         if (bonus == 0){ $("#ModalBonusDiario").modal("show"); }
     });
 </script>

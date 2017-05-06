@@ -23,15 +23,16 @@
 <div class="modal fade" id="ModalBonusDiario" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="text-align: center; background: url(http://guialand.com/uploads/prod_images/IMG_65EA34-048FCD-261740-AF6442-C1B38B-EFCB59.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+            <div class="modal-header" style="text-align: center; background: url(../../libs/img/BonusDiario.png); background-position: center; background-repeat: no-repeat; background-size: cover;">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h2 style="color:#fff;">¡FELICIDADES!</h2>
-                <h4 class="modal-title" style="color:#fff;">Bonus Diario</h4>
+                <h4 class="modal-title" style="color:#fff;">Obtuviste un Bonus Diario</h4>
             </div>
             <div class="modal-body">
                 <center>
-                    <p>Aqui vendra tu bonus diario.</p>
-                    <button type="button" class="btn btn-primary">Aceptar Bonus</button>
+                    <p style="font-size:25px; color:#424242;"><span style="font-size:50px;">500</span> Puntos</p>
+                    <p style="color:#424242;">Vuelve todos los dias y obtendras un bonus diario.</p>
+                    <button type="button" data-dismiss="modal" class="btn btn-danger">Aceptar Bonus</button>
                 </center>
             </div>
         </div>
@@ -64,3 +65,7 @@
 <script src="../../libs/js/main.js"></script>
 
 <script src="../../libs/js/demo/charts/d3.js"></script>
+
+<script src="../../libs/js/wysihtml5-0.3.0.js"></script>
+<script src="../../libs/js/bootstrap3-wysihtml5.js"></script>
+<script type="../../libs/js/prettify.js"></script>
