@@ -165,5 +165,21 @@
 
 			return $r;
 		}
+
+		public function EliminarNoticia($id)
+		{
+			include 'config/conn.php';
+
+			$q = "UPDATE Noticia SET activo = 0 WHERE id_noticia = $id";
+			$r = mysqli_query($conn, $q);
+		}
+
+		public function EditarNoticia($id, $titulo, $descImagen, $descripcion, $descBreve, $categoria, $keywords)
+		{
+			include 'config/conn.php';
+
+			$q = "UPDATE Noticia SET titulo = '$titulo', descrip_foto = '$descImagen', descripcion = '$descripcion', breve_desc = '$descBreve', categoria = '$categoria', keywords = '$keywords' WHERE id_noticia = $id";
+			$r = mysqli_query($conn, $q);
+		}
 	}
 ?>

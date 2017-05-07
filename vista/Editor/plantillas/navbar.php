@@ -145,10 +145,6 @@
                             <a href="editarnoticia.php">
                             <i class="fa fa-pencil"></i> Editar Noticia</a>
                         </li>
-                        <li>
-                            <a href="eliminarnoticia.php">
-                            <i class="fa fa-trash"></i> Eliminar Noticia</a>
-                        </li>
                     </ul>
                 </li>
                 <li>

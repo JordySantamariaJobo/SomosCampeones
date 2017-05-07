@@ -38,6 +38,14 @@
                                     <option value="La Liga">La Liga</option>
                                     <option value="Premier League">Premier League</option>
                                     <option value="Liga MX">Liga MX</option>
+                                    <option value="Copa MX">Copa MX</option>
+                                    <option value="FA Cup">FA Cup</option>
+                                    <option value="Copa del Rey">Copa del Rey</option>
+                                    <option value="Copa MX">Super Cup</option>
+                                    <option value="Liga de Campeones">Liga de Campeones</option>
+                                    <option value="Copa Libertadores">Copa Libertadores</option>
+                                    <option value="Mundial de Clubes">Mundial de Clubes</option>
+                                    <option value="Seleccion Mexicana">Seleccion Mexicana</option>
                                 </select><br>
                                 <textarea class="form-control" placeholder="Keywords de la Noticia" style="width:100%;" name="Keywords" required></textarea><br>
                                 <button type="submit" class="btn btn-danger">Registrar Noticia</button><br><br>

@@ -35,6 +35,7 @@
                                     <th>Titulo</th>
                                     <th>Descripcion</th>
                                     <th>Editar</th>
+                                    <th>Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,9 +46,11 @@
                                             <td>".$valor['titulo']."</td>
                                             <td>".$valor['breve_desc']."</td><td>";
                                         ?>
-                                        <button class='btn btn-danger' data-toggle='modal' data-target='#ModalEditar' onclick="EditarNoticia(<?= $valor['id_noticia']; ?>,'<?= $valor['titulo']; ?>','<?= $valor['descrip_foto']; ?>','<?= $valor['descripcion']; ?>','<?= $valor['breve_desc']; ?>','<?= $valor['categoria']; ?>','<?= $valor['keywords']; ?>');">Editar <i class='fa fa-pencil'></i></button>
+                                        <button class='btn btn-primary' data-toggle='modal' data-target='#ModalEditar' onclick="EditarNoticia(<?= $valor['id_noticia']; ?>,'<?= $valor['titulo']; ?>','<?= $valor['descrip_foto']; ?>','<?= $valor['descripcion']; ?>','<?= $valor['breve_desc']; ?>','<?= $valor['categoria']; ?>','<?= $valor['keywords']; ?>');"><i class='fa fa-pencil'></i></button>
                                         <?php
-                                        echo "</td></tr>";
+                                        echo "</td>
+                                        <td><button class='btn btn-danger' data-toggle='modal' data-target='#ModalEliminar' onclick='ModalEliminar(".$valor['id_noticia'].")'><i class='fa fa-trash'></i></button></td>
+                                        </tr>";
                                     }
                                 ?>
                             </tbody>
@@ -73,7 +76,7 @@
         </footer>
     </section>
 </div>
-<!-- Modal -->
+<!-- Modal Editar -->
 <div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -82,15 +85,50 @@
                 <h4 class="modal-title" id="myModalLabel">Editar Noticia</h4>
             </div>
             <div class="modal-body">
-                <input class="form-control Titulo" required><br>
-                <input type="text" class="form-control DescripcionImagen" required><br>
-                <textarea class="textarea form-control" name="Descripcion" style="width:100%; height: 200px" required></textarea><br>
-                <textarea class="form-control DescripcionBreve" style="width:100%;" required></textarea><br>
-                <textarea class="form-control Keywords" style="width:100%;" required></textarea><br>
+                <form method="POST" action="../controlador/EditarNoticia.php">
+                <input class="idInputEditar" name="idInputEditar" style="display:none;">
+                <input class="form-control Titulo" name="Titulo" required><br>
+                <input type="text" class="form-control DescripcionImagen" name="DescripcionImagen" required><br>
+                <div class="textEditor"></div><br>
+                <textarea class="form-control DescripcionBreve" name="DescripcionBreve" style="width:100%;" required></textarea><br>
+                <select class="form-control" class="categoria" name="categoria">
+                    <option value="Champions League">Champions League</option>
+                    <option value="La Liga">La Liga</option>
+                    <option value="Premier League">Premier League</option>
+                    <option value="Liga MX">Liga MX</option>
+                    <option value="Copa MX">Copa MX</option>
+                    <option value="FA Cup">FA Cup</option>
+                    <option value="Copa del Rey">Copa del Rey</option>
+                    <option value="Copa MX">Super Cup</option>
+                    <option value="Liga de Campeones">Liga de Campeones</option>
+                    <option value="Copa Libertadores">Copa Libertadores</option>
+                    <option value="Mundial de Clubes">Mundial de Clubes</option>
+                    <option value="Seleccion Mexicana">Seleccion Mexicana</option>
+                </select><br>
+                <textarea class="form-control Keywords" name="Keywords" style="width:100%;" required></textarea><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar Cambios <i class="fa fa-save"></i></button>
+                <button type="submit" class="btn btn-primary">Guardar Cambios <i class="fa fa-save"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Eliminar -->
+<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">¿Seguro que quieres eliminar esta noticia?</h4>
+                <form method="POST" action="../controlador/EditarNoticia.php">
+                <input class="InputId" name="InputId" style="display:none">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-danger">Eliminar <i class="fa fa-trash"></i></button>
+                </form>
             </div>
         </div>
     </div>
@@ -102,15 +140,24 @@
         Core.init();
         Demo.init();
         D3Charts.init();
-        $('.textarea').wysihtml5();
     });
 
     function EditarNoticia(id, titulo, descrip_foto, descripcion, breve_desc, categoria, keywords) {
+        $(".idInputEditar").val(id);
         $(".Titulo").val(titulo);
         $(".DescripcionImagen").val(descrip_foto);
-        $("textarea[name^='Descripcion']").text(descripcion);
+        $(".textEditor").html("<textarea class='textarea form-control' name='Descripcion' style='width:100%; height: 200px' required>"+descripcion+"</textarea>");
         $(".DescripcionBreve").val(breve_desc);
         $(".Keywords").val(keywords);
+        $( "select option:selected" ).each(function() {
+            $(this).attr('selected', false);
+        });
+        $("select > option[value='"+categoria+"']").attr('selected', 'selected');
+        $('.textarea').wysihtml5();
+    }
+
+    function ModalEliminar(id) {
+        $(".InputId").val(id);
     }
 </script>
 </body>
