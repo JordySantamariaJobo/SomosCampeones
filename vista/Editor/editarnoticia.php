@@ -46,7 +46,7 @@
                                             <td>".$valor['titulo']."</td>
                                             <td>".$valor['breve_desc']."</td><td>";
                                         ?>
-                                        <button class='btn btn-primary' data-toggle='modal' data-target='#ModalEditar' onclick="EditarNoticia(<?= $valor['id_noticia']; ?>,'<?= $valor['titulo']; ?>','<?= $valor['descrip_foto']; ?>','<?= $valor['descripcion']; ?>','<?= $valor['breve_desc']; ?>','<?= $valor['categoria']; ?>','<?= $valor['keywords']; ?>');"><i class='fa fa-pencil'></i></button>
+                                        <button class='btn btn-primary' data-toggle='modal' data-target='#ModalEditar' onclick="EditarNoticia(<?= $valor['id_noticia']; ?>,'<?= $valor['titulo']; ?>','<?= $valor['descrip_foto']; ?>','<?= htmlentities($valor['descripcion']); ?>','<?= $valor['breve_desc']; ?>','<?= $valor['categoria']; ?>','<?= $valor['keywords']; ?>');"><i class='fa fa-pencil'></i></button>
                                         <?php
                                         echo "</td>
                                         <td><button class='btn btn-danger' data-toggle='modal' data-target='#ModalEliminar' onclick='ModalEliminar(".$valor['id_noticia'].")'><i class='fa fa-trash'></i></button></td>
