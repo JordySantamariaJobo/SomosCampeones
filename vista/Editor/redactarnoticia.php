@@ -9,10 +9,6 @@
     else {
         $metodo = new UsuarioC($_SESSION['IdUsuario'], $_SESSION['CorreoUsuario']);
         $datos = $metodo -> DatosUsuario();
-        $historial = $metodo -> HistorialUsuario();
-        $bonus = $metodo -> BonusDiario();
-        if($bonus != 0){ $bonus = 1; }
-        else{ $bonus = 0; }
     }
 ?>
 <!DOCTYPE html>
@@ -26,9 +22,27 @@
         <section id="content" class="table-layout animated fadeIn">
             <div class="chute chute-center">
                 <div class="row">
-                    <div class="col-sm-12" style="box-shadow: 1px 2px 0 #e5eaee; position: relative; margin-bottom: 45px; background-color: #ffffff; border-radius: 4px;">
+                    <div class="col-sm-12" style="box-shadow: 1px 2px 0 #e5eaee; position: relative; margin-bottom: 45px; background-color: #ffffff; border-radius: 4px;"><br>
                         <?= $metodo -> Anuncio(); ?>
-                        <textarea class="textarea form-control" placeholder="Enter text ..." style="width: 810px; height: 200px"></textarea>
+                        <center><br>
+                            <h2>Publicar Noticia</h2>
+                            <form action="../controlador/RegistrarNoticia.php" method="POST" enctype="multipart/form-data">
+                                <input class="form-control" placeholder="Titulo de la Noticia" style="width:100%;" name="Titulo" required><br>
+                                <input type="file" class="form-control" name="ImagenNoticia" required><br>
+                                <input type="text" class="form-control" placeholder="Descripcion de la Imagen" name="DescripcionImagen" required><br>
+                                <textarea class="textarea form-control" placeholder="Descripción de la Noticia" style="width:100%; height: 200px" name="Descripcion" required></textarea><br>
+                                <textarea class="form-control" placeholder="Breve descripcion de la noticia" style="width:100%;" name="DescripcionBreve" required></textarea><br>
+                                <select class="form-control" name="Categoria" required>
+                                    <option value="0">Selecciona la Categoria</option>
+                                    <option value="Champions League">Champions League</option>
+                                    <option value="La Liga">La Liga</option>
+                                    <option value="Premier League">Premier League</option>
+                                    <option value="Liga MX">Liga MX</option>
+                                </select><br>
+                                <textarea class="form-control" placeholder="Keywords de la Noticia" style="width:100%;" name="Keywords" required></textarea><br>
+                                <button type="submit" class="btn btn-danger">Registrar Noticia</button><br><br>
+                            </form>
+                        </center>
                     </div>
                 </div>
             </div>

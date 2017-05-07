@@ -19,5 +19,10 @@
 		{
 			return NoticiaM::ConsultarDatosUsuario($idUsuario);
 		}
+
+		public function ListaNoticias($idUsuario)
+		{
+			return NoticiaM::ListaNoticias($idUsuario);
+		}
 	}
 ?>

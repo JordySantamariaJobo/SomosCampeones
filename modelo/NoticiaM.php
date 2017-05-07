@@ -147,5 +147,23 @@
 
 			return $r;
 		}
+
+		public function RegistrarNoticia($id, $titulo, $descripcionImagen, $name, $descripcion, $descripcionBreve, $categoria, $keywords)
+		{
+			include 'config/conn.php';
+
+			$q = "CALL NuevaNoticia($id, '$titulo', '$descripcionImagen', '$name', '$descripcion', '$descripcionBreve', '$categoria', '$keywords')";
+			$r = mysqli_query($conn, $q);
+		}
+
+		public function ListaNoticias($idUsuario)
+		{
+			include 'config/conn.php';
+
+			$q = "SELECT *FROM Noticia WHERE id_usuario = $idUsuario AND activo = 1 ORDER BY id_noticia DESC LIMIT 10";
+			$r = mysqli_query($conn, $q);
+
+			return $r;
+		}
 	}
 ?>
