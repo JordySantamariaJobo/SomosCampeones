@@ -169,6 +169,27 @@
                     </ul>
                 </li>
                 <li>
+                    <a class="accordion-toggle" href="#">
+                        <span class="fa fa-futbol-o"></span>
+                        <span class="sidebar-title">Minuto a Minuto</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="nav sub-nav">
+                        <li>
+                            <a href="registrarpartido.php">
+                            <i class="fa fa-futbol-o"></i> Postear Minuto</a>
+                        </li>
+                        <li>
+                            <a href="editarpartido.php">
+                            <i class="fa fa-pencil"></i> Editar Posteo</a>
+                        </li>
+                        <li>
+                            <a href="eliminarpartido.php">
+                            <i class="fa fa-trash"></i> Eliminar Posteo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="bandejaquejas.php">
                         <span class="fa fa-inbox"></span>
                         <span class="sidebar-title">Bandeja de Entrada</span>
