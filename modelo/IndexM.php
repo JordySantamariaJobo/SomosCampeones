@@ -2,7 +2,7 @@
 /**
 *  Funciones para la pagina principal -> index.php
 */
-include 'config/conexion.php';
+
 class IndexM
 {
 	public function TitularNav($competencia)
@@ -26,7 +26,7 @@ class IndexM
 		return $r;
 	}
 
-	public function NoticiaJumbotron()
+	public static function NoticiaJumbotron()
 	{
 		include 'config/conn.php';
 
@@ -77,7 +77,7 @@ class IndexM
 		return $r;
 	}
 
-	public function GeneradorAnuncios($num)
+	public static function GeneradorAnuncios($num)
 	{
 		include 'config/conn.php';
 

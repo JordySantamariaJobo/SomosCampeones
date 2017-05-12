@@ -162,10 +162,6 @@
                             <a href="editarpartido.php">
                             <i class="fa fa-pencil"></i> Editar Partido</a>
                         </li>
-                        <li>
-                            <a href="eliminarpartido.php">
-                            <i class="fa fa-trash"></i> Eliminar Partido</a>
-                        </li>
                     </ul>
                 </li>
                 <li>
@@ -182,10 +178,6 @@
                         <li>
                             <a href="editarpartido.php">
                             <i class="fa fa-pencil"></i> Editar Posteo</a>
-                        </li>
-                        <li>
-                            <a href="eliminarpartido.php">
-                            <i class="fa fa-trash"></i> Eliminar Posteo</a>
                         </li>
                     </ul>
                 </li>

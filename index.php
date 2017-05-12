@@ -1,14 +1,13 @@
 <?php
 	session_start();
-    include 'controlador/IndexC.php';
 
+    require 'controlador/IndexC.php';
+    
     $metodo = new IndexC();
+    
     $jumbotron = IndexC::NoticiaJumbotron();
     $noticias = IndexC::TitularesDelDia();
     $champions = IndexC::TitularesChampions();
-
-    $url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-	$ipUser = base64_encode($_SERVER['REMOTE_ADDR']);
 
     if (isset($_SESSION['IdUsuario'])) { $datos = $metodo -> ConsultarDatosUsuario($_SESSION['IdUsuario']); }
 
@@ -276,8 +275,8 @@
 			</div>
   		</nav>
 	</header>
-	<div class="container">
-		<div class="row">
+	<div class="container-fluid">
+		<div class="row-fluid">
 			<div class="col-sm-12">
 				<div id="myAd">
 					<?php echo IndexC::Anuncio(); ?>
@@ -397,7 +396,7 @@
 				<h2 class="M7" style="margin-left: 15px;"><img src="libs/img/cup.png" class="img-responsive ContenedorImagen"> UEFA CHAMPIONS LEAGUE</h2><hr class="hrRed"><br><br>
 				<div class="col-sm-12">
 					<?php
-						while ($result = mysqli_fetch_array($champions, MYSQLI_ASSOC)) {
+						foreach ($champions as $result) {
 							echo "<div class='col-sm-4' style='overflow: hidden;'><br>
 								<div class='thumbnail thumb-material'>
 									<div class='cat M8'><i class='fa fa-trophy'></i> ".$result['categoria']."</div>

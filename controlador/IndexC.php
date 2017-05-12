@@ -1,8 +1,11 @@
 <?php
 	/**
-	* CIndex
+	* Created by JordySantamaria
+	* Mail: jordysantamaria@hotmail.com
 	*/
-	include 'modelo/IndexM.php';
+	
+	require 'modelo/IndexM.php';
+
 	class IndexC extends IndexM
 	{
 		function __construct(){}
@@ -17,7 +20,7 @@
 			return IndexM::NoticiasNav($competencia);
 		}
 
-		public function NoticiaJumbotron()
+		public static function NoticiaJumbotron()
 		{
 			return IndexM::NoticiaJumbotron();
 		}
