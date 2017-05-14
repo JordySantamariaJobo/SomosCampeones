@@ -7,9 +7,23 @@
 	*/
 	class BonusDiario
 	{
-		public static function getNombreTabla()
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
+		}
+
+		public function getBonusDiario($id)
 		{
-			return "BonusDiario";
+			$q = "CALL ConsultarBonusDiario($id)";
+			$r = mysqli_query($this->_connection, $q);
+			$count = mysqli_num_rows($r);
+
+			return $count;
 		}
 	}
 ?>

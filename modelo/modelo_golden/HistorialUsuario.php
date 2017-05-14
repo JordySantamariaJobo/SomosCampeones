@@ -7,9 +7,14 @@
 	*/
 	class HistorialUsuario
 	{
-		public static function getNombreTabla()
-		{
-			return "HistorialUsuario";
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
 		}
 	}
 ?>

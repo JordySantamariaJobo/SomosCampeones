@@ -7,9 +7,14 @@
 	*/
 	class QuejaSugerencia
 	{
-		public static function getNombreTabla()
-		{
-			return "QuejaSugerencia";
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
 		}
 	}
 ?>

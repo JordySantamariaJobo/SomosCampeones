@@ -7,9 +7,22 @@
 	*/
 	class PostMinuto
 	{
-		public static function getNombreTabla()
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
+		}
+
+		public function MinutoPartido()
 		{
-			return "PostMinuto";
+			$q = "SELECT *FROM PostMinuto WHERE activo = 1 ORDER BY idPost DESC LIMIT 3";
+			$r = mysqli_query($this->_connection, $q);
+
+			return $r;
 		}
 	}
 ?>

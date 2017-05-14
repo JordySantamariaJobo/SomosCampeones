@@ -7,9 +7,14 @@
 	*/
 	class Juegos
 	{
-		public static function getNombreTabla()
-		{
-			return "Games";
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
 		}
 	}
 ?>

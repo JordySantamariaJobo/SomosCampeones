@@ -7,9 +7,22 @@
 	*/
 	class Competencia
 	{
-		public static function getNombreTabla()
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
+		}
+		
+		public function getCompetencias()
 		{
-			return "Competencia";
+			$q = "SELECT *FROM Competencia WHERE activo = 1";
+			$r = mysqli_query($this->_connection, $q);
+
+			return $r;
 		}
 	}
 ?>

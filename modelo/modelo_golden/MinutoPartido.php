@@ -7,9 +7,22 @@
 	*/
 	class MinutoPartido
 	{
-		public static function getNombreTabla()
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
+		}
+
+		public function getMinutoMinuto()
 		{
-			return "MinutoPartido";
+			$q = "SELECT *FROM MinutoPartido WHERE id_post = $id ORDER BY id_minuto DESC LIMIT 10";
+			$r = mysqli_query($this->_connection, $q);
+
+			return $r;
 		}
 	}
 ?>

@@ -7,9 +7,38 @@
 	*/
 	class HistorialLiga
 	{
-		public static function getNombreTabla()
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
+		}
+
+		public function getTablaLigaMX()
 		{
-			return "HistorialLiga";
+			$q = "SELECT *FROM tablaligamx";
+			$r = mysqli_query($this->_connection, $q);
+
+			return $r;
+		}
+
+		public function getTablaLaLiga()
+		{
+			$q = "SELECT *FROM tablalaliga";
+			$r = mysqli_query($this->_connection, $q);
+
+			return $r;
+		}
+
+		public function getTablaPremierLeague()
+		{
+			$q = "SELECT *FROM tablapremierleague";
+			$r = mysqli_query($this->_connection, $q);
+
+			return $r;
 		}
 	}
 ?>

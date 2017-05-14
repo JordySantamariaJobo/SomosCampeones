@@ -7,9 +7,14 @@
 	*/
 	class Premio
 	{
-		public static function getNombreTabla()
-		{
-			return "Premios";
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
 		}
 	}
 ?>

@@ -7,9 +7,31 @@
 	*/
 	class Equipo
 	{
-		public static function getNombreTabla()
+		public $_connection;
+
+		public function __construct() {
+
+			require 'config/conn.php';
+
+			$this->_connection = $conn;
+
+		}
+
+		public function getInfoEquipo($idEquipo)
 		{
-			return "Equipo";
+			$q = "CALL DatosEquipo($idEquipo)";
+			$r = mysqli_query($this->_connection, $q);
+			$res = mysqli_fetch_array($r, MYSQLI_ASSOC);
+
+			return $res;
+		}
+
+		public function getEquipos()
+		{
+			$q = "SELECT *FROM Equipo WHERE id_liga <= 4 ORDER BY nombre_e ASC";
+			$r = mysqli_query($this->_connection, $q);
+
+			return $r;
 		}
 	}
 ?>
