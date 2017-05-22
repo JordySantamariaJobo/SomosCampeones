@@ -5,7 +5,10 @@
 	* Date: 11/05/2017
 	* Time: 23:43
 	*/
-	class Premio
+
+	namespace SomosCampeones\Modelo\Juegos;
+
+	class Juegos
 	{
 		public $_connection;
 

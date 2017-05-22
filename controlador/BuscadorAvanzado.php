@@ -3,25 +3,25 @@
 	$Lugar = $_REQUEST['lugar'];
 	$resultadosbuscador = "";
 
-	include("../modelo/IndexM.php");
+	require '../modelo/Noticia.php';
 
-	$search = new IndexM();
+	$search = new Noticia;
 
 	$resultado = $search -> BuscadorAvanzado($palabra);
 	$resultado1 = $search -> BuscadorAvanzado($palabra);
 
 	$conteo = mysqli_num_rows($resultado1);
 
-	$resultadosbuscador .= "<hgroup class='mb20'>
-		<h1 class='M7'>Resultados Encontrados</h1>
-		<h3 class='lead M4'>
+	$resultadosbuscador .= "<br><br><hgroup class='mb20'>
+		<h1 class='P7'>Resultados Encontrados</h1>
+		<h3 class='lead P5'>
 			<strong class='text-danger'>".$conteo."</strong> coincidencias encontradas con <strong class='text-danger'>".$palabra."</strong>
 		</h3>								
 	</hgroup>";
 				
 	if($palabra == "") {
 
-		$resultadosbuscador .= "<br><br><center><h3 class='M4'>Busca articulos, noticias de tu equipo y jugador favorito o de algun evento deportivo, vamos intentalo! <i class='fa fa-pencil'></i></h3></center><br><br>";
+		$resultadosbuscador .= "<br><br><center><h3 class='P7'>Busca articulos, noticias de tu equipo y jugador favorito o de algun evento deportivo, vamos intentalo! <i class='fa fa-pencil'></i></h3></center><br><br>";
 
 		echo $resultadosbuscador;
 
@@ -45,15 +45,15 @@
 				</div>
 				<div class='col-xs-12 col-sm-12 col-md-2'>
 					<ul class='meta-search'>
-						<li class='M7'><i class='fa fa-calendar'></i> <span>".$result['fecha']."</span></li>
-						<li class='M7'><i class='fa fa-tags'></i> <span>".$result['categoria']."</span></li>
+						<li><i class='fa fa-calendar'></i> <span class='P5'>".$result['fecha']."</span></li>
+						<li><i class='fa fa-tags'></i> <span class='P5'>".$result['categoria']."</span></li>
 					</ul>
 				</div>
 				<div class='col-xs-12 col-sm-12 col-md-7 excerpet'>
-					<h3 class='M7'>".$result['titulo']."</h3>
-					<p class='M4'>".$result['breve_desc']."</p><br>
+					<h3 class='P7'>".$result['titulo']."</h3>
+					<p class='P5'>".$result['breve_desc']."</p><br>
                 	".$formulario."
-        				<button class='btn btn-danger' type='submit'>LEER MÁS</button>
+        				<button class='btn btn-danger P7' type='submit'>LEER MÁS</button>
         				<input type='text' name='id' value='".$result['id_noticia']."' style='display:none'>
         				<input type='text' name='tituloNew' value='".$result['titulo']."' style='display:none'>
         			</form><br>

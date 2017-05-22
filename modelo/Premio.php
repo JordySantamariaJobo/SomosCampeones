@@ -5,7 +5,10 @@
 	* Date: 11/05/2017
 	* Time: 23:43
 	*/
-	class BonusDiario
+
+	namespace SomosCampeones\Modelo\Premio;
+
+	class Premio
 	{
 		public $_connection;
 
@@ -15,15 +18,6 @@
 
 			$this->_connection = $conn;
 
-		}
-
-		public function getBonusDiario($id)
-		{
-			$q = "CALL ConsultarBonusDiario($id)";
-			$r = mysqli_query($this->_connection, $q);
-			$count = mysqli_num_rows($r);
-
-			return $count;
 		}
 	}
 ?>

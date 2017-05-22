@@ -1,70 +1,93 @@
 <?php
 	/**
-	* 
+	* Created by JordySantamaria
+	* Mail: jordysantamaria@hotmail.com
 	*/
-	include '../modelo/NoticiaM.php';
-	class NoticiaC extends NoticiaM
+
+	require '../modelo/Noticia.php';
+	require '../modelo/Usuario.php';
+	require '../modelo/Partido.php';
+	require '../modelo/Equipo.php';
+	require '../modelo/Banner.php';
+	require '../modelo/SoundCloud.php';
+	require '../modelo/Helper.php';
+
+	class NoticiaC
 	{
-		public function TitularesDelDia()
+		private static $_noticia;
+		private static $_usuario;
+		private static $_partido;
+		private static $_equipo;
+		private static $_banner;
+		private static $_sound_cloud;
+		private static $_helper;
+
+		public function __construct()
 		{
-			return NoticiaM::TitularesDelDia();
+			self::$_noticia = new Noticia;
+			self::$_usuario = new Usuario;
+			self::$_partido = new Partido;
+			self::$_equipo = new Equipo;
+			self::$_banner = new Banner;
+			self::$_sound_cloud = new SoundCloud;
+			self::$_helper = new Helper;
 		}
 
-		public function ConsultarNoticia($id, $titulo)
+		public static function TitularesDelDia()
 		{
-			return NoticiaM::ConsultarNoticia($id, $titulo);
+			return self::$_noticia->getTitularesDelDia();
 		}
 
-		public function ConsultarDatosUsuario($id)
+		public static function ConsultarNoticia($id, $titulo)
 		{
-			return NoticiaM::ConsultarDatosUsuario($id);
+			return self::$_noticia->getNoticia($id, $titulo);
 		}
 
-		public function NoticiasPrincipal()
+		public static function Equipo($id)
 		{
-			return NoticiaM::NoticiasPrincipal();
+			return self::$_equipo->getInfoEquipo($id);
 		}
 
-		public function TeRecomendamos($idNoticia)
+		public static function ConsultarDatosUsuario($id)
 		{
-			return NoticiaM::TeRecomendamos($idNoticia);
+			return self::$_usuario->getConsultarDatosUsuario($id);
 		}
 
-		public function Partidos()
+		public static function NoticiasPrincipal()
 		{
-			return NoticiaM::Partidos();
+			return self::$_noticia->getTitularesDelDia();
 		}
 
-		public function VerificarGustos()
+		public static function TeRecomendamos($idNoticia)
 		{
-			return NoticiaM::VerificarGustos();
+			return self::$_noticia->getNoticiasRecomendadas($idNoticia);
 		}
 
-		public function ConsultarEquipo($idEquipo)
+		public static function Partidos()
 		{
-			return NoticiaM::ConsultarEquipo($idEquipo);
+			return self::$_partido->getPartidosEnJuego();
 		}
 
-		public function Anuncio()
+		public static function Anuncio()
 		{
 			$num = rand(1,10);
 
-			return NoticiaM::GeneradorAnuncios($num);
+			return self::$_banner->getAnuncio($num);
 		}
 
-		public function Equipo($id)
+		public static function SoundCloud()
 		{
-			return NoticiaM::ConsultarEquipo($id);
+			return self::$_sound_cloud->getSoundCloud();
 		}
 
-		public function SoundCloud()
+		public static function NoticiaPanel()
 		{
-			return NoticiaM::SoundCloud();
+			return self::$_noticia->getNoticiasPanel();
 		}
 
-		public function NoticiaPanel()
+		public static function getFormatoFecha($fecha)
 		{
-			return NoticiaM::NoticiaPanel();
+			return self::$_helper->getFormatoFecha($fecha);
 		}
 	}
 ?>

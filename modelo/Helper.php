@@ -39,7 +39,7 @@
 
 		public static function getFormatoHora($hora)
 		{
-			$hora = date("H:i a",strtotime($hora));
+			$hora = date("h:i a",strtotime($hora));
 			
 			return $hora;
 		}

@@ -5,7 +5,10 @@
 	* Date: 11/05/2017
 	* Time: 23:43
 	*/
-	class Partido
+
+	namespace SomosCampeones\Modelo\VideoUsuario;
+
+	class VideoUsuario
 	{
 		public $_connection;
 
@@ -14,7 +17,8 @@
 			require 'config/conn.php';
 
 			$this->_connection = $conn;
-
+			
 		}
+
 	}
 ?>

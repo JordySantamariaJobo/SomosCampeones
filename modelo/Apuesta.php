@@ -51,5 +51,7 @@
 
 			return $r;
 		}
+
+		public function getUltimasApuestas()
 	}
 ?>

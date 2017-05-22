@@ -5,6 +5,7 @@
 	* Date: 11/05/2017
 	* Time: 23:43
 	*/
+
 	class Noticia
 	{
 		public $_connection;
@@ -29,7 +30,7 @@
 		public function getNoticiasNav($competencia)
 		{
 			$q = "SELECT *FROM Noticia WHERE categoria = '$competencia' ORDER BY id_noticia DESC LIMIT 3";
-			$r = mysqli_query($conn, $q);
+			$r = mysqli_query($this->_connection, $q);
 
 			return $r;
 		}
@@ -51,7 +52,7 @@
 			return $r;
 		}
 
-		public function TitularesCategoria($categoria)
+		public function getTitularesCategoria($categoria)
 		{
 			include 'config/conn.php';
 
@@ -72,8 +73,10 @@
 
 		public function getNoticiasRecomendadas($id)
 		{
+			require 'config/conn.php';
+
 			$q = "CALL TeRecomendamos($id)";
-			$r = mysqli_query($this->_connection, $q);
+			$r = mysqli_query($conn, $q);
 
 			return $r;
 		}
@@ -104,7 +107,7 @@
 
 		public function setEditarNoticia($id, $titulo, $descImagen, $descripcion, $descBreve, $categoria, $keywords)
 		{
-			include 'config/conn.php';
+			require 'config/conn.php';
 
 			$q = "UPDATE Noticia SET titulo = '$titulo', descrip_foto = '$descImagen', descripcion = '$descripcion', breve_desc = '$descBreve', categoria = '$categoria', keywords = '$keywords' WHERE id_noticia = $id";
 			if (mysqli_query($this->_connection, $q)) { return ['status' => 'success']; }
@@ -113,9 +116,21 @@
 
 		public function getNoticiasPanel()
 		{
-			$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 10";
-			$r = mysqli_query($this->_connection, $q);
+			require 'config/conn.php';
 
+			$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 10";
+			$r = mysqli_query($conn, $q);
+
+			return $r;
+		}
+
+		public function BuscadorAvanzado($palabra)
+		{
+			require 'config/conn.php';
+
+			$q = "CALL BuscadorAvanzado('$palabra')";
+			$r = mysqli_query($conn, $q);
+		
 			return $r;
 		}
 	}

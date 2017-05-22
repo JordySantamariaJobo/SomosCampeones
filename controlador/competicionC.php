@@ -1,24 +1,26 @@
 <?php
 	/**
-	* Constructor de competicion.php
+	* Created by JordySantamaria
+	* Mail: jordysantamaria@hotmail.com
 	*/
+
+	require '../modelo/Competencia.php';
+	require '../modelo/Usuario.php';
+
 	class competicionC
 	{
-		public $competicion;
+		private static $_competencia;
+		private static $_usuario;
 		
-		public function __construct($competicion)
+		public function __construct()
 		{
-			$this->competicion = $competicion;
+			self::$_competencia = new Competencia;
+			self::$_usuario = new Usuario;
 		}
 
-		public function tituloHeader()
+		public static function Competencia($competencia)
 		{
-			return $this->competicion;
-		}
-
-		public function titulo()
-		{
-			return $this->competicion;
+			return self::$_competencia->getCompetencia($competencia);
 		}
 	}
 ?>

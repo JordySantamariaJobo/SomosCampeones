@@ -1,18 +1,13 @@
 <?php
 	session_start();
 
-    $urlLibre = "http://www.campeonessomos.com".$_SERVER['REQUEST_URI'];
-    $url = base64_encode("http://www.campeonessomos.com".$_SERVER['REQUEST_URI']);
-    $ipUser = base64_encode($_SERVER['REMOTE_ADDR']);
-
-    include '../controlador/NoticiaC.php';
 	include '../controlador/competicionC.php';
-	include '../controlador/NavBarC.php';
 
-	$competicion = $_GET['competencia'];
+	$nombre_comp = $_GET['competencia'];
 
-	$metodo = new competicionC($competicion);
-    $metodoNoticia = new NoticiaC();
+    $competicion = competicionC::Competencia($nombre_comp);
+
+    if (isset($competicion)) { header('Location: ../index.php'); }
 
     if (isset($_SESSION['IdUsuario'])) { 
         $id = $_SESSION['IdUsuario'];
@@ -64,7 +59,7 @@
     <meta name="viewport" content="user-scalable=no">
     <meta name="application-name" content="www.campeonessomos.com">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title data-ue-c="innerHTML" data-ue-u="title"><?php echo $metodo->tituloHeader(); ?> | Somos Campeones</title>
+	<title data-ue-c="innerHTML" data-ue-u="title"><?= $competicion['nombre_c']; ?> | Somos Campeones</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="shortcut icon" href="../libs/img/iconos/icon.ico" type="image/x-icon">
 	<?php include 'plantillas/headerVista.php'; ?>
@@ -84,7 +79,7 @@
 		<div class="row">
             <div id="ResultadosBuscador" class="col-sm-12"></div>
 			<div id="WallWhiteNews" class="col-sm-12">
-				<h1 class="M8"><?php echo $metodo->titulo(); ?></h1>
+				<h1 class="M8"><?= $competicion['nombre_c']; ?></h1>
 			</div>
 		</div>
 	</div>

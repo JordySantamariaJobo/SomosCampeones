@@ -3,92 +3,114 @@
 	* Created by JordySantamaria
 	* Mail: jordysantamaria@hotmail.com
 	*/
-	
-	require 'modelo/IndexM.php';
 
-	class IndexC extends IndexM
+	require 'modelo/Usuario.php';
+	require 'modelo/Noticia.php';
+	require 'modelo/Partido.php';
+	require 'modelo/Banner.php';
+	require 'modelo/SoundCloud.php';
+	require 'modelo/Equipo.php';
+	require 'modelo/PostMinuto.php';
+	require 'modelo/Helper.php';
+
+	class IndexC
 	{
-		function __construct(){}
+		private static $_noticia;
+		private static $_usuario;
+		private static $_partido;
+		private static $_banner;
+		private static $_sound_cloud;
+		private static $_equipo;
+		private static $_post_minuto;
+		private static $_helper;
+
+		public function __construct()
+		{
+			self::$_noticia = new Noticia;
+			self::$_usuario = new Usuario;
+			self::$_partido = new Partido;
+			self::$_banner = new Banner;
+			self::$_sound_cloud = new SoundCloud;
+			self::$_equipo = new Equipo;
+			self::$_post_minuto = new PostMinuto;
+			self::$_helper = new Helper;
+		}
 
 		public function TitularNav($competencia)
 		{
-			return IndexM::TitularNav($competencia);
+			return self::$_noticia->getNoticiaTitularNav($competencia);
 		}
 
 		public function NoticiasNav($competencia)
 		{
-			return IndexM::NoticiasNav($competencia);
+			return self::$_noticia->getNoticiasNav($competencia);
 		}
 
 		public static function NoticiaJumbotron()
 		{
-			return IndexM::NoticiaJumbotron();
+			return self::$_noticia->getNoticiaJumbotron();
 		}
 
-		public function TitularesDelDia()
+		public static function TitularesDelDia()
 		{
-			return IndexM::TitularesDelDia();
+			return self::$_noticia->getTitularesDelDia();
 		}
 
-		public function TitularesChampions()
+		public static function TitularesCategoria($categoria)
 		{
-			return IndexM::TitularesChampions();
+			return self::$_noticia->getTitularesCategoria($categoria);
 		}
 
-		public function NoticiasEspecial()
+		public static function Partidos()
 		{
-			return IndexM::NoticiasEspecial();
+			return self::$_partido->getPartidosEnJuego();
 		}
 
-		public function Partidos()
-		{
-			return IndexM::Partidos();
-		}
-
-		public function Anuncio()
+		public static function Anuncio()
 		{
 			$num = rand(1,10);
 
-			return IndexM::GeneradorAnuncios($num);
+			return self::$_banner->getAnuncio($num);
 		}
 
-		public function SoundCloud()
+		public static function SoundCloud()
 		{
-			return IndexM::SoundCloud();
+			return self::$_sound_cloud->getSoundCloud();
 		}
 
-		public function Equipo($id)
+		public static function Equipo($id)
 		{
-			return IndexM::ConsultarEquipo($id);
+			return self::$_equipo->getInfoEquipo($id);
 		}
 
-		public function NoticiaPanel()
+		public static function NoticiaPanel()
 		{
-			return IndexM::NoticiaPanel();
+			return self::$_noticia->getNoticiasPanel();
 		}
 
-		public function MinutoPartido()
+		public static function MinutoPartido()
 		{
-			return IndexM::MinutoPartido();
+			return self::$_post_minuto->getMinutoPartido();
 		}
 
-		public function ConsultarDatosUsuario($id)
+		public static function ConsultarDatosUsuario($id)
 		{
-			return IndexM::ConsultarDatosUsuario($id);
+			return self::$_usuario->getConsultarDatosUsuario($id);
 		}
 
-		public function MensajeSesion()
+		public static function ProximosPartidos()
 		{
-			$random = rand(0,2);
+			return self::$_partido->getProximosPartidos();
+		}
 
-    		switch ($random)
-    		{
-    			case 0: $mensaje = "QUE DORSAL LLEVARA TU CAMISETA?"; break;
-    			case 1: $mensaje = "VAMOS!, LA AFICION TE ESPERA!"; break;
-    			case 2: $mensaje = "CUANTOS GOLES PLANEAS METER HOY?"; break;
-			}
+		public static function FormatoFecha($fecha)
+		{
+			return self::$_helper->getFormatoFecha($fecha);
+		}
 
-			return $mensaje;
+		public static function FormatoHora($hora)
+		{
+			return self::$_helper->getFormatoHora($hora);
 		}
 	}
 ?>

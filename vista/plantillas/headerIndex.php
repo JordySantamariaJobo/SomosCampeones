@@ -59,11 +59,9 @@
 	<link rel="stylesheet" type="text/css" href="libs/css/MenuNav.css">
 	<link rel="stylesheet" type="text/css" href="libs/css/style.css">
 	<link rel="stylesheet" type="text/css" href="libs/css/index.css">
+	<link rel="stylesheet" type="text/css" href="libs/css/colors.css">
 	<!-- FUENTES -->
-	<link rel="stylesheet" type="text/css" href="libs/fonts/cabin.css">
-	<link rel="stylesheet" type="text/css" href="libs/fonts/cabincondensed.css">
-	<link rel="stylesheet" type="text/css" href="libs/fonts/varelaround.css">
-	<link rel="stylesheet" type="text/css" href="libs/fonts/muli.css">
+	<link rel="stylesheet" type="text/css" href="libs/fonts/poppins.css">
 	<!-- Scripts -->
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<script type="text/javascript" src="libs/js/jquery.min.js"></script>

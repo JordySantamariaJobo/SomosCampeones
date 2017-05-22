@@ -1,0 +1,11 @@
+/* Colores de Fuentes */
+.fRojo{ color: #FF3546; }
+.fAzul{ color: #337ab7; }
+.fBlanco{ color: #fff; }
+.fGris{ color: #212121; }
+
+/* Colores de Fondo */
+.bRojo{ background-color: #FF3546; }
+.bAzul{ background-color: #337ab7; }
+.bBlanco{ background-color: #fff; }
+.bGris{ background-color: #212121; }

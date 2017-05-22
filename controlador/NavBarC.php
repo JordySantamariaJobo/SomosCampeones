@@ -1,24 +1,31 @@
 <?php
 	/**
-	* 
+	* Created by JordySantamaria
+	* Mail: jordysantamaria@hotmail.com
 	*/
-	include '../modelo/NavBarM.php';
 
-	class NavBarC extends NavBarM
+	class NavBarC
 	{
+		private static $_noticia;
+
+		public function __construct()
+		{
+			self::$_noticia = new Noticia;
+		}
+
 		public function TitularNav($competencia)
 		{
-			return NavBarM::TitularNav($competencia);
+			return self::$_noticia->getNoticiaTitularNav($competencia);
 		}
 
 		public function NoticiasNav($competencia)
 		{
-			return NavBarM::NoticiasNav($competencia);
+			return self::$_noticia->getNoticiasNav($competencia);
 		}
 
 		public function TitularesDelDia()
 		{
-			return NavBarM::TitularesDelDia();
+			return self::$_noticia->getTitularesDelDia();
 		}
 
 		public function MensajeSesion()

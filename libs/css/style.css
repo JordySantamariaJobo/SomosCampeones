@@ -3,6 +3,10 @@
     clear:both;
 }
 
+.h1New{
+    font-size: 60px;
+}
+
 #flexiselDemo1, #flexiselDemo2, #flexiselDemo3 {
     display:none;
 }
@@ -50,13 +54,15 @@
 /*** Navigation ***/
 
 th.Liga {
-    text-align: center; 
-    color:#ff3546;
+    text-align: center;
+    color: #4c4c4c;
+    background-color: #fff;
 }
 
 td.equipo {
     text-align: center;
     color: #4c4c4c;
+    background-color: #fff;
 }
 
 td.resultado {
@@ -68,12 +74,12 @@ td.resultado {
  
 .nbs-flexisel-nav-left,
 .nbs-flexisel-nav-right {
-    padding: 40px 5px; 
+    padding: 50px 5px;
     position: absolute;
     cursor: pointer;
     z-index: 4;
-    background-color: #e2e2e2;
-    color: #000;     
+    background-color: #CCC;
+    color: #fff;    
 }
 
 .nbs-flexisel-nav-left {

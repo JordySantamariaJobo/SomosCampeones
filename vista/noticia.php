@@ -1,31 +1,24 @@
 <?php
 	session_start();
-	//$_SERVER['HTTP_HOST']: Sirve para obtener el nombre del dominio.
-	//$_SERVER['SERVER_PORT']: Sirve para obtener el puerto.
-	//$_SERVER['REQUEST_URI']: Sirve para obtener la URI.
-	include '../controlador/NoticiaC.php';
-	include '../controlador/NavBarC.php';
-	include'../controlador/FormatoFecha.php';
 
-	$urlLibre = "http://www.campeonessomos.com".$_SERVER['REQUEST_URI'];
-	$url = base64_encode("http://www.campeonessomos.com".$_SERVER['REQUEST_URI']);
-	$ipUser = base64_encode($_SERVER['REMOTE_ADDR']);
+	require '../controlador/NoticiaC.php';
+	require '../controlador/NavBarC.php';
+
+	$metodo = new NoticiaC;
+	$navbar = new NavBarC;
 
 	$id = $_GET['id'];
 	$TituloNew = $_GET['tituloNew'];
-	
-	$metodo = new NoticiaC();
-	$FormatoFecha = new FormatoFecha();
 
-	$new = $metodo -> ConsultarNoticia($id, $TituloNew);
-	$con = $metodo -> ConsultarDatosUsuario($new['id_usuario']);
-	$noticias1 = $metodo -> NoticiasPrincipal();
-	$trc = $metodo -> TeRecomendamos($id);
-	$actual = $metodo -> Partidos();
+	$new = NoticiaC::ConsultarNoticia($id, $TituloNew);
+	$con = NoticiaC::ConsultarDatosUsuario($new['id_usuario']);
+	$noticias1 = NoticiaC::NoticiasPrincipal();
+	$trc = NoticiaC::TeRecomendamos($id);
+	$actual = NoticiaC::Partidos();
 
 	if (isset($_SESSION['IdUsuario'])) { 
     	$id = $_SESSION['IdUsuario'];
-    	$datos = $metodo -> ConsultarDatosUsuario($id);
+    	$datos = NoticiaC::ConsultarDatosUsuario($id);
     	$init = 1;
     }
     else{ $init = 0; }
@@ -87,48 +80,55 @@
   	js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=1049067215171328";
   	fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-580436d98a2e5f21"></script>
 	<?php include 'plantillas/NavBar.php'; ?>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12">
-				<div id="myAd">
-					<?php echo NoticiaC::Anuncio(); ?><br>
-				</div>
+			<div class="col-sm-12"><br>
 				<ul id="flexiselDemo3">
 					<?php
-						$actual = $metodo -> Partidos();
-						while ($res = mysqli_fetch_array($actual, MYSQLI_ASSOC)) {
+						$actual = NoticiaC::Partidos();
+						foreach($actual as $res) {
 							$local = NoticiaC::Equipo($res['id_local']);
 							$visita = NoticiaC::Equipo($res['id_visitante']);
+
 							echo "<li>
-							<table class='table table-striped'>
-       							<tbody>
-       								<tr>
-       									<th class='Liga M8'>".$res['competencia_p']."</th>
-       								</tr>
-       								<tr>
-            							<td class='equipo M4'>".$local['nombre_e']." <strong>".$res['gol_l']." - ".$res['gol_v']."</strong> ".$visita['nombre_e']."</td>
-        							</tr>
-    							</tbody>
-    						</table>
+								<table class='table'>
+       								<tbody>
+       									<tr>
+       										<th class='Liga P5'>".$res['competencia_p']."</th>
+       									</tr>
+       									<tr>
+            								<td class='equipo P5'>".$local['nombre_e']." <strong class='P7 fRojo' style='padding-left:10px;'>".$res['gol_l']."</strong></td>
+        								</tr>
+        								<tr>
+        									<td class='equipo P5'>".$visita['nombre_e']." <strong class='P7 fRojo' style='padding-left:10px;'>".$res['gol_v']."</strong></td>
+        								</tr>
+    								</tbody>
+    							</table>
 							</li>";
 						}
 					?>                                         
 				</ul>
+				<div id="myAd" style="margin-bottom:100px;">
+					<?php echo NoticiaC::Anuncio(); ?><br>
+				</div>
 			</div>
 			<div id="ResultadosBuscador" class="col-sm-12"></div>
 			<div id="WallWhiteNews" class="col-sm-12">
 				<div class="col-sm-12">
-					<h1 class="M9"><?php echo $new['titulo']; ?></h1>
-					<p class="M4" style="font-size: 20px;"><img src="../libs/img/usuarios/<?php echo $con['imagen']; ?>" class="img-circle" style="width:65px; float:left; padding-right:5px;">Redactada por: <strong class="M7"><?php echo $con['nombre']." ".$con['app'] ?><div class="fb-follow" data-href="https://www.facebook.com/campeonessomoscs/?fref=ts" data-layout="standard" data-size="large" data-show-faces="true"></div></strong></p>
-					<h5 class="M7"><i class="fa fa-calendar"></i> Redactada el: <strong class="M4"><?php echo $FormatoFecha -> ModificarFecha($new['fecha']) ?></strong></h5><hr>					
-					<center><img src="../libs/img/Noticias/<?php echo $new['foto_ruta']; ?>" width="100%" class="img-responsive"></center>
-					<h5 class="M4"><i class="fa fa-camera"></i> <?php echo $new['descrip_foto']; ?></h5><hr>
+					<h1 class="P7 h1New"><?php echo $new['titulo']; ?></h1>
+					<p class="P5" style="font-size: 20px;"><img src="../libs/img/usuarios/<?= $con['imagen']; ?>" class="img-circle" style="width:65px; float:left; padding-right:5px;">Redactada por: 
+						<strong class="M7 fRojo"><?php echo $con['nombre']." ".$con['app'] ?>
+							<div class="fb-follow" data-href="https://www.facebook.com/campeonessomoscs/?fref=ts" data-layout="standard" data-size="large" data-show-faces="true"></div>
+						</strong>
+					</p>
+					<h5 class="P7"><i class="fa fa-calendar"></i> Redactada el: <strong class="M4"><?= NoticiaC::getFormatoFecha($new['fecha']) ?></strong></h5><hr>					
+					<center><img src="../libs/img/Noticias/<?= $new['foto_ruta']; ?>" width="100%" class="img-responsive"></center>
+					<h5 class="P5"><i class="fa fa-camera"></i> <?= $new['descrip_foto']; ?></h5><hr>
 				</div>
 				<div class="col-sm-9">
-					<div class="M4" style="text-align:justify; font-size:20px;"><?php echo $new['descripcion']; ?></div><br>
-					<div id="myAd"><?php echo $metodo -> GeneradorAnuncios(); ?></div>
+					<div class="P4" style="text-align:justify; font-size:20px;"><?php echo $new['descripcion']; ?></div><br>
+					<div id="myAd"><?php echo NoticiaC::Anuncio(); ?></div>
 					<h2 class="M7" style="margin-left: 15px;">QUIZÁS TE INTERESE...</h2><hr class="hrRed"><br><br>
 					<div class="col-sm-12">
 						<?php
@@ -154,7 +154,7 @@
 				</div>
 				<div class="col-sm-3">
 					<h2 class="M8" style="margin-left: 15px;"><img src="../libs/img/social/soundcloud.png" class="img-responsive ContenedorImagen"> POSTCAST</h2><hr class="hrRed">
-					<?php echo $metodo -> SoundCloud(); ?><br><br>
+					<?php echo NoticiaC::SoundCloud(); ?><br><br>
 					<div class="panel panel-default panel-whats">
   						<div class="panel-body M4">
   							<center>
@@ -163,7 +163,7 @@
   							</center>
   						</div>
 					</div>
-					<div class="panel panel-default">
+					<div class="panel panel-primary panel-material">
   						<div class="panel-heading">
     						<h3 class="panel-title M7">CATEGORIAS</h3>
   						</div>
@@ -174,9 +174,9 @@
     						<a href="competicion.php?competencia=Liga%20MX">Liga MX</a>
   						</div>
 					</div>
-					<div class="panel panel-default">
+					<div class="panel panel-primary panel-material">
   						<div class="panel-heading">
-    						<h3 class="panel-title M8">TAGS</h3>
+    						<h3 class="panel-title M8"><i class="fa fa-tags"></i> TAGS</h3>
   						</div>
   						<div class="panel-body M4">
     						<?php echo $new['keywords']; ?>
@@ -190,7 +190,7 @@
 									<div class="col-xs-12">
 										<ul id="demo3">
 											<?php
-												$noticiaPanel = $metodo -> NoticiaPanel();
+												$noticiaPanel = NoticiaC::NoticiaPanel();
 												while ($result = mysqli_fetch_array($noticiaPanel, MYSQLI_ASSOC)) {
 													echo "<li class='news-item'><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 												}

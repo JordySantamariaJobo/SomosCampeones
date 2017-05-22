@@ -5,6 +5,7 @@
 	* Date: 11/05/2017
 	* Time: 23:43
 	*/
+
 	class Equipo
 	{
 		public $_connection;
@@ -19,7 +20,8 @@
 
 		public function getInfoEquipo($idEquipo)
 		{
-			$q = "CALL DatosEquipo($idEquipo)";
+			//$q = "CALL DatosEquipo($idEquipo)";
+			$q = "SELECT *FROM Equipo WHERE id_equipo = $idEquipo";
 			$r = mysqli_query($this->_connection, $q);
 			$res = mysqli_fetch_array($r, MYSQLI_ASSOC);
 

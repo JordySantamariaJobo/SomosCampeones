@@ -6,9 +6,7 @@
 	* Time: 23:43
 	*/
 
-	namespace SomosCampeones\Modelo\Apuesta;
-
-	class Banner
+	class PostMinuto
 	{
 		public $_connection;
 
@@ -20,13 +18,12 @@
 
 		}
 
-		public function getAnuncio($num)
+		public function getMinutoPartido()
 		{
-			$q = "CALL GeneradorAnuncios($num)";
-			$r = mysql_query($this->_connection, $q);
-			$result = mysqli_query($r, MYSQLI_ASSOC);
+			$q = "SELECT *FROM PostMinuto WHERE activo = 1 ORDER BY idPost DESC LIMIT 3";
+			$r = mysqli_query($this->_connection, $q);
 
-			return $result;
+			return $r;
 		}
 	}
 ?>
