@@ -5,9 +5,8 @@
 	*/
 
 	require '../modelo/Competencia.php';
-	require '../modelo/Usuario.php';
 
-	class competicionC
+	class CompeticionC
 	{
 		private static $_competencia;
 		private static $_usuario;
@@ -18,9 +17,14 @@
 			self::$_usuario = new Usuario;
 		}
 
-		public static function Competencia($competencia)
+		public static function InfoCompetencia($competencia)
 		{
-			return self::$_competencia->getCompetencia($competencia);
+			return self::$_competencia->getInfoCompetencia($competencia);
+		}
+
+		public static function ConsultarDatosUsuario($id)
+		{
+			return self::$_usuario->getConsultarDatosUsuario($id);
 		}
 	}
 ?>

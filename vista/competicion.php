@@ -1,17 +1,20 @@
 <?php
 	session_start();
 
-	include '../controlador/competicionC.php';
+    $nombre_comp = $_GET['competencia'];
 
-	$nombre_comp = $_GET['competencia'];
+    require '../controlador/competicionC.php';
+    require '../controlador/NoticiaC.php';
+    require '../controlador/NavBarC.php';
 
-    $competicion = competicionC::Competencia($nombre_comp);
+    $metodo = new NoticiaC;
+    $navbar = new NavBarC;
 
-    if (isset($competicion)) { header('Location: ../index.php'); }
+    $competicion = CompeticionC::InfoCompetencia($nombre_comp);
 
     if (isset($_SESSION['IdUsuario'])) { 
         $id = $_SESSION['IdUsuario'];
-        $datos = $metodoNoticia -> ConsultarDatosUsuario($id);
+        $datos = CompeticionC::ConsultarDatosUsuario($id);
         $init = 1;
     }
     else{ $init = 0; }

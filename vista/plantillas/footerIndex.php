@@ -1,4 +1,4 @@
-classP5<footer style="background-color:#212121; color:#fff; padding-left:20px;">
+<footer style="background-color:#212121; color:#fff; padding-left:20px;">
 	<div><br>
 		<div id="Raleway4">
 			<div class="col-sm-12">

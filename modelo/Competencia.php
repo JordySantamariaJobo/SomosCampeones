@@ -18,11 +18,11 @@
 
 		}
 		
-		public function getCompetencia($competencia)
+		public function getInfoCompetencia($competencia)
 		{
 			$q = "SELECT *FROM Competencia WHERE nombre_c = '$competencia' AND activo = 1";
 			$r = mysqli_query($this->_connection, $q);
-			$res = msyqli_fetch_array($r, MYSQLI_ASSOC);
+			$res = mysqli_fetch_array($r, MYSQLI_ASSOC);
 
 			return $res;
 		}
