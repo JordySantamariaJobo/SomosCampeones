@@ -130,6 +130,31 @@
                         </table>
                         <?php } ?>
                     </div>
+                    <div class="col-sm-8">
+                        <div class="col-sm-12">
+                            <h3 class="P7">Noticias</h3>
+                            <?php
+                                $noticias = CompeticionC::TitularesCategoria($competicion['nombre_c']);
+                                foreach ($noticias as $noticia) {
+                                    echo "<div class='col-sm-6' style='overflow: hidden;'><br>
+                                        <div class='thumbnail thumb-material'>
+                                            <div class='cat M8'><i class='fa fa-trophy'></i> ".$noticia['categoria']."</div>
+                                            <img src='../libs/img/Noticias/".$noticia['foto_ruta']."' style='background-repeat: no-repeat; background-size: cover; width:100%; height:35%;' class='img-responsive'>
+                                            <div class='caption'>
+                                                <h3 class='M8'>".$noticia['titulo']."</h3>
+                                                <p class='M4 Descripcion' style='text-align: justify;'>".$noticia['breve_desc']."...</p>
+                                            </div><hr class='hrThumbMaterial'>
+                                            <center>
+                                                <strong>
+                                                    <a href='noticia.php?id=".$noticia['id_noticia']."&tituloNew=".$noticia['titulo']."' class='M9' style='font-size: 16px;'>LEER MÁS</a>
+                                                </strong>
+                                            </center>
+                                        </div>
+                                    </div>";
+                                }
+                            ?>
+                        </div>
+                    </div>
                 </div>
 			</div>
 		</div>

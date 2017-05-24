@@ -8,12 +8,10 @@
 
 	class CompeticionC
 	{
-		private static $_competencia;
 		private static $_usuario;
 		
 		public function __construct()
 		{
-			self::$_competencia = new Competencia;
 			self::$_usuario = new Usuario;
 		}
 
@@ -30,6 +28,13 @@
 		public static function ConsultarDatosUsuario($id)
 		{
 			return self::$_usuario->getConsultarDatosUsuario($id);
+		}
+
+		public function TitularesCategoria($categoria)
+		{
+			$noticia = new Noticia;
+
+			return $noticia->getTitularesCategoria($categoria);
 		}
 	}
 ?>
