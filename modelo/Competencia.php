@@ -18,10 +18,23 @@
 
 		}
 		
-		public function getInfoCompetencia($competencia)
+		public static function getCompetencia($competencia)
 		{
+			require 'config/conn.php';
+
 			$q = "SELECT *FROM Competencia WHERE nombre_c = '$competencia' AND activo = 1";
-			$r = mysqli_query($this->_connection, $q);
+			$r = mysqli_query($conn, $q);
+			$res = mysqli_fetch_array($r, MYSQLI_ASSOC);
+
+			return $res;
+		}
+
+		public static function getInfoCompetencia($id)
+		{
+			require 'config/conn.php';
+
+			$q = "SELECT *FROM InfoCompetencia WHERE idcompetencia = $id";
+			$r = mysqli_query($conn, $q);
 			$res = mysqli_fetch_array($r, MYSQLI_ASSOC);
 
 			return $res;

@@ -111,6 +111,7 @@
 								<ul>
 									<li class="dropdown-header P7">Competiciones de la UEFA</li>
 									<li><a href="competicion.php?competencia=Champions%20League">UEFA Champions League</a></li>
+									<li><a href="competicion.php?competencia=Europa%20League">UEFA Europa League</a></li>
 									<li><a href="competicion.php?competencia=Super%20Cup">UEFA Super Cup</a></li>
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Otras Competiciones</li>

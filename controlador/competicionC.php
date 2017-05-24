@@ -17,9 +17,14 @@
 			self::$_usuario = new Usuario;
 		}
 
-		public static function InfoCompetencia($competencia)
+		public static function Competencia($competencia)
 		{
-			return self::$_competencia->getInfoCompetencia($competencia);
+			return Competencia::getCompetencia($competencia);
+		}
+
+		public static function InfoCompetencia($id)
+		{
+			return Competencia::getInfoCompetencia($id);
 		}
 
 		public static function ConsultarDatosUsuario($id)

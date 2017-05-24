@@ -10,7 +10,11 @@
     $metodo = new NoticiaC;
     $navbar = new NavBarC;
 
-    $competicion = CompeticionC::InfoCompetencia($nombre_comp);
+    $competicion = CompeticionC::Competencia($nombre_comp);
+
+    if(!isset($competicion)){ header("Location: ../index.php"); }
+
+    $info = CompeticionC::InfoCompetencia($competicion['id_competencia']);
 
     if (isset($_SESSION['IdUsuario'])) { 
         $id = $_SESSION['IdUsuario'];
@@ -76,13 +80,57 @@
   	js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=1049067215171328";
   	fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-580436d98a2e5f21"></script>
 	<?php include 'plantillas/NavBar.php'; ?>
 	<div class="container">
 		<div class="row">
             <div id="ResultadosBuscador" class="col-sm-12"></div>
-			<div id="WallWhiteNews" class="col-sm-12">
-				<h1 class="M8"><?= $competicion['nombre_c']; ?></h1>
+			<div id="WallWhiteNews" class="col-sm-12"><br><br>
+                <div class="col-sm-12 img-wall" style="background: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)), url(../libs/img/competencias/<?= $info['imagen']; ?>); margin-bottom:10px; height:65%;"><br>
+				    <h1 class="P7 fBlanco"><?= strtoupper($competicion['nombre_c']); ?></h1>
+                </div>
+                <div class="col-sm-12">
+                    <div class="col-sm-4">
+                        <h3 class='P7'>Informacion</h3>
+                        <table class="table table-striped P5">
+                            <tr>
+                                <th class="P7">Campeon</th>
+                            </tr>
+                            <tr>
+                                <td><?= $info['campeon']; ?></td>
+                            </tr>
+                            <tr>
+                                <th class="P7">Subcampeon</th>
+                            </tr>
+                            <tr>
+                                <td><?= $info['subcampeon']; ?></td>
+                            </tr>
+                        </table>
+                        <?php if($info['maximo_anotador'] != "-") { ?>
+                        <table class="table table-striped P5">
+                            <tr>
+                                <th class="P7">Maximo Anotador</th>
+                                <th class="P7">Goles</th>
+                            </tr>
+                            <tr>
+                                <td><?= $info['maximo_anotador']; ?></td>
+                                <td><?= $info['goles']; ?></td>
+                            </tr>
+                        </table>
+                        <?php } ?>
+                        <?php if($info['equipo_mas_titulos'] != "-") { ?>
+                        <table class="table table-striped P5">
+                            <tr>
+                                <th class="P7">Equipo más Laureado</th>
+                                <th class="P7">Titulos</th>
+                            </tr>
+                            <tr>
+                                <td><?= $info['equipo_mas_titulos']; ?></td>
+                                <td><?= $info['titulos']; ?></td>
+                            </tr>
+                        </table>
+                        <?php } ?>
+                    </div>
+                </div>
 			</div>
 		</div>
 	</div>
