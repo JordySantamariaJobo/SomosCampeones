@@ -52,11 +52,11 @@
 			return $r;
 		}
 
-		public function getTitularesCategoria($categoria)
+		public function getTitularesCategoria($categoria, $limit)
 		{
 			include 'config/conn.php';
 
-			$q = "SELECT *FROM Noticia WHERE categoria = '$categoria' ORDER BY id_noticia DESC LIMIT 3";
+			$q = "SELECT *FROM Noticia WHERE categoria = '$categoria' ORDER BY id_noticia DESC LIMIT $limit";
 			$r = mysqli_query($this->_connection, $q);
 
 			return $r;

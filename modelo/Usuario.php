@@ -100,12 +100,14 @@
 			return $res;
 		}
 
-		public function ValidarSesion($correoEn)
+		public function setValidarSesion($correoEn)
 		{
+			require 'config/conn.php';
+
 			$correo = base64_decode($correoEn);
 		
 			$q = "CALL DatosUsuario('$correo')";
-			$r = mysqli_query($this->_connection, $q);
+			$r = mysqli_query($conn, $q);
 
 			$result = mysqli_fetch_array($r, MYSQLI_ASSOC);
 
@@ -115,7 +117,7 @@
 			$_SESSION['TipoUsuario'] = $result['tipoUsuario'];
 		}
 
-		public function ReactivarCuenta($correoEn)
+		public function setReactivarCuenta($correoEn)
 		{
 			$correo = base64_decode($correoEn);
 

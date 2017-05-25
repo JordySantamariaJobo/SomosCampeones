@@ -1,18 +1,19 @@
 <?php
 	session_start();
-	include '../modelo/IndexM.php';
 
-	$metodo = new IndexM();
+	include '../modelo/Usuario.php';
+
+	$metodo = new Usuario();
 
 	$correo = base64_encode($_REQUEST['correo']);
 	$pwd = base64_encode($_REQUEST['pwd']);
 
-	$res = $metodo -> LoginUsuario($correo, $pwd);
+	$res = $metodo -> getLoginUsuario($correo, $pwd);
 
 	if ($res != "Error") {
-		$metodo -> ValidarSesion($correo);
-		$metodo -> ReactivarCuenta($correo);
+		$metodo -> setValidarSesion($correo);
+		$metodo -> setReactivarCuenta($correo);
 	}
 
-	echo $res;
+	echo $res['type'];
 ?>

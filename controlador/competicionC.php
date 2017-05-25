@@ -27,14 +27,18 @@
 
 		public static function ConsultarDatosUsuario($id)
 		{
-			return self::$_usuario->getConsultarDatosUsuario($id);
+			$usuario = new Usuario;
+
+			return $usuario->getConsultarDatosUsuario($id);
 		}
 
 		public function TitularesCategoria($categoria)
 		{
+			$limit = 2;
+
 			$noticia = new Noticia;
 
-			return $noticia->getTitularesCategoria($categoria);
+			return $noticia->getTitularesCategoria($categoria, $limit);
 		}
 	}
 ?>

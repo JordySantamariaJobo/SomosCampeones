@@ -15,6 +15,8 @@
 
 	class IndexC
 	{
+		const LIMIT_NOTICIAS = 3;
+
 		private static $_noticia;
 		private static $_usuario;
 		private static $_partido;
@@ -58,7 +60,7 @@
 
 		public static function TitularesCategoria($categoria)
 		{
-			return self::$_noticia->getTitularesCategoria($categoria);
+			return self::$_noticia->getTitularesCategoria($categoria, self::LIMIT_NOTICIAS);
 		}
 
 		public static function Partidos()

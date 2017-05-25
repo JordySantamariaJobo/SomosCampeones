@@ -39,29 +39,24 @@
     <meta name="Googlebot" content="all">
     <meta name="GENERATOR" content="campeonessomos.com - El Hogar de los Triunfadores Sitio Oficial">
     <meta name="SUBJECT" content="campeonessomos.com - El Hogar de los Triunfadores Sitio Oficial">
-    <!--meta name="DESCRIPTION" content="<?php echo $new['breve_desc']; ?>"-->
     <meta name="ABSTRACT" content="campeonessomos.com - Noticias del Futbul Internacional, Apuestas, Minuto a Minuto y mucho mas.">
-    <!--meta name="KEYWORDS" content="<?php echo $new['keywords']; ?>"-->
     <meta property="fb:page_id" content="1049067215171328">
-    <!--meta property="og:url" content="<?php echo $url; ?>"-->
-    <!--meta property="og:title" content="<?php echo $new['titulo']; ?>"-->
-    <!--meta property="og:image" content="http://www.campeonessomos.com/libs/img/Noticias/<?php echo $new['foto_ruta']; ?>"-->
-    <!--meta property="og:description" content="<?php echo $new['breve_desc']; ?>"-->
-    <!--meta name="cXenseParse:recs:squareImage" content="http://www.campeonessomos.com/libs/img/Noticias/<?php echo $new['foto_ruta']; ?>"-->
+    <meta property="og:title" content="<?= $competicion['nombre_c']; ?>">
+    <meta property="og:image" content="http://www.campeonessomos.com/libs/img/competencias/<?= $info['imagen']; ?>">
+    <meta property="og:description" content="<?= $new['breve_desc']; ?>"-->
+    <meta name="cXenseParse:recs:squareImage" content="http://www.campeonessomos.com/libs/img/competencias/<?= $info['imagen']; ?>">
     <meta property="og:type" content="article">
     <meta property="og:section" content="Fútbol Internacional">
     <meta property="og:site_name" content="campeonessomos.com">
     <meta name="twitter:card" content="summary_large_image">
-    <!--meta name="twitter:image" content="http://www.campeonessomos.com/libs/img/Noticias/<?php echo $new['foto_ruta']; ?>"-->
-    <!--meta name="twitter:image:src" content="http://www.campeonessomos.com/libs/img/Noticias/<?php echo $new['foto_ruta']; ?>"-->
-    <!--meta name="twitter:image:alt" content="<?php echo $new['descrip_foto']; ?>"-->
+    <meta name="twitter:image" content="http://www.campeonessomos.com/libs/img/competencias/<?= $info['imagen']; ?>">
+    <meta name="twitter:image:src" content="http://www.campeonessomos.com/libs/img/competencias/<?= $info['imagen']; ?>">
     <meta name="twitter:site" content="@somoscampeoness">
-    <!--meta name="twitter:title" content="<?php echo $new['titulo']; ?>"-->
-    <!--meta name="twitter:description" content="<?php echo $new['breve_desc']; ?>"-->
+    <meta name="twitter:title" content="<?= $competicion['nombre_c']; ?>">
     <meta name="twitter:creator" content="@somoscampeoness">
     <meta name="twitter:domain" content="www.campeonessomos.com">
     <meta name="cXenseParse:pageclass" content="article">
-    <!--meta name="cXenseParse:recs:publishtime" content="<?php echo $new['fecha']; ?>"-->
+    <meta name="cXenseParse:recs:publishtime" content="<?= date('d-m-Y'); ?>">
     <meta name="cXenseParse:gca-categories" content="Futbol Internacional">
     <meta name="viewport" content="user-scalable=no">
     <meta name="application-name" content="www.campeonessomos.com">
