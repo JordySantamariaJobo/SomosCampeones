@@ -6,27 +6,30 @@
 	* Time: 23:43
 	*/
 
-	class Banner
+	class Banner extends DBConn
 	{
 		public $_connection;
 
 		public function __construct() {
 
-			require 'config/conn.php';
-
-			$this->_connection = $conn;
+			$this->_connection = $this->open_conn();
 
 		}
 
 		public function getAnuncio($num)
 		{
-			require 'config/conn.php';
+			try {
+				
+				$sql = $this->_connection->prepare("CALL GeneradorAnuncios(?)");
+				$sql->bindParam(1, $num);
+				$sql->execute();
+				$res = $sql->fetch(PDO::FETCH_ASSOC);
 
-			$q = "CALL GeneradorAnuncios($num)";
-			$r = mysqli_query($conn, $q);
-			$result = mysqli_fetch_array($r, MYSQLI_ASSOC);
+				return $res['code_ad'];
 
-			return $result['code_ad'];
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 	}
 ?>

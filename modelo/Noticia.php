@@ -6,50 +6,88 @@
 	* Time: 23:43
 	*/
 
-	class Noticia
+	class Noticia extends DBConn
 	{
 		public $_connection;
 
+		const LIMIT_UNO = 1;
+		const LIMIT_TRES = 3;
+
 		public function __construct() {
 
-			require 'config/conn.php';
-
-			$this->_connection = $conn;
+			$this->_connection = $this->open_conn();
 
 		}
 
-		public function getNoticiaTitularNav($competencia)
+		public function getNoticiaTitularNav($categoria)
 		{
-			$q = "SELECT *FROM Noticia WHERE categoria = '$competencia' ORDER BY id_noticia DESC LIMIT 1";
+			try {
+
+				$sql = $this->_connection->prepare("SELECT *FROM Noticia WHERE categoria = ? ORDER BY id_noticia DESC LIMIT ".self::LIMIT_UNO);
+				$sql->bindParam(1, $categoria);
+				$sql->execute();
+				$res = $sql->fetch(PDO::FETCH_ASSOC);
+
+				return $res;
+
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
+
+			$q = "SELECT *FROM Noticia WHERE categoria = '$competencia' ORDER BY id_noticia DESC LIMIT ".self::LIMIT_UNO;
 			$r = mysqli_query($this->_connection, $q);
 			$res = mysqli_fetch_array($r, MYSQLI_ASSOC);
 
 			return $res;
 		}
 
-		public function getNoticiasNav($competencia)
+		public function getNoticiasNav($categoria)
 		{
-			$q = "SELECT *FROM Noticia WHERE categoria = '$competencia' ORDER BY id_noticia DESC LIMIT 3";
-			$r = mysqli_query($this->_connection, $q);
+			try {
+				
+				$sql = $this->_connection->prepare("SELECT *FROM Noticia WHERE categoria = ? ORDER BY id_noticia DESC LIMIT ".self::LIMIT_TRES);
+				$sql->bindParam(1, $categoria);
+				$sql->execute();
+				$res = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-			return $r;
+				return $res;
+
+				print_r($res);
+				exit();
+
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 
 		public function getNoticiaJumbotron()
 		{
-			$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 1";
-			$r = mysqli_query($this->_connection, $q);
-			$res = mysqli_fetch_array($r, MYSQLI_ASSOC);
+			try {
 
-			return $res;
+				$sql = $this->_connection->prepare("SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT ".self::LIMIT_UNO);
+				$sql->execute();
+				$res = $sql->fetch(PDO::FETCH_ASSOC);
+
+				return $res;
+
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 
 		public function getTitularesDelDia()
 		{
-			$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 3";
-			$r = mysqli_query($this->_connection, $q);
+			try {
 
-			return $r;
+				$sql = $this->_connection->prepare("SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT ".self::LIMIT_TRES);
+				$sql->execute();
+				$res = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+				return $res;
+
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 
 		public function getTitularesCategoria($categoria, $limit)
@@ -76,7 +114,7 @@
 			require 'config/conn.php';
 
 			$q = "CALL TeRecomendamos($id)";
-			$r = mysqli_query($conn, $q);
+			$r = mysqli_query($this->open_conn(), $q);
 
 			return $r;
 		}
@@ -119,7 +157,7 @@
 			require 'config/conn.php';
 
 			$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 10";
-			$r = mysqli_query($conn, $q);
+			$r = mysqli_query($this->open_conn(), $q);
 
 			return $r;
 		}
@@ -129,7 +167,7 @@
 			require 'config/conn.php';
 
 			$q = "CALL BuscadorAvanzado('$palabra')";
-			$r = mysqli_query($conn, $q);
+			$r = mysqli_query($this->open_conn(), $q);
 		
 			return $r;
 		}

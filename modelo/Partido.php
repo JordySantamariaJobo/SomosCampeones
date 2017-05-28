@@ -6,15 +6,13 @@
 	* Time: 23:43
 	*/
 
-	class Partido
+	class Partido extends DBConn
 	{
 		public $_connection;
 
 		public function __construct() {
 
-			require 'config/conn.php';
-
-			$this->_connection = $conn;
+			$this->_connection = $this->open_conn();
 
 		}
 
@@ -37,10 +35,17 @@
 
 		public function getPartidosEnJuego()
 		{
-			$q = "SELECT *FROM PartidosEnJuego";
-			$r = mysqli_query($this->_connection, $q);
-			
-			return $r;
+			try {
+				
+				$sql = $this->_connection->prepare("SELECT *FROM PartidosEnJuego");
+				$sql->execute();
+				$res = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+				return $res;
+
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 
 		public function getProximosPartidos()

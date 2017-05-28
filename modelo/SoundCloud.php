@@ -6,15 +6,13 @@
 	* Time: 23:43
 	*/
 
-	class SoundCloud
+	class SoundCloud extends DBConn
 	{
 		public $_connection;
 
 		public function __construct() {
 
-			require 'config/conn.php';
-
-			$this->_connection = $conn;
+			$this->_connection = $this->open_conn();
 			
 		}
 

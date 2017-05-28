@@ -59,7 +59,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias Liga MX</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasLMX, MYSQLI_ASSOC)) {
+										foreach ($NoticiasLMX as $result) {
 											echo "<li><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -75,7 +75,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la PL</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasPL, MYSQLI_ASSOC)) {
+										foreach ($NoticiasPL as $result) {
 											echo "<li><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -91,7 +91,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias La Liga</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasLL, MYSQLI_ASSOC)) {
+										foreach ($NoticiasLL as $result) {
 											echo "<li style=''><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -125,7 +125,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la UCL</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasUCL, MYSQLI_ASSOC)) {
+										foreach($NoticiasUCL as $result) {
 											echo "<li style=''><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -141,7 +141,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la LCC</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasLC, MYSQLI_ASSOC)) {
+										foreach($NoticiasLC as $result) {
 											echo "<li style=''><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -157,7 +157,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la CL</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasCL, MYSQLI_ASSOC)) {
+										foreach($NoticiasCL as $result) {
 											echo "<li style=''><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -189,7 +189,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la SM</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasSM, MYSQLI_ASSOC)) {
+										foreach($NoticiasSM as $result) {
 											echo "<li style=''><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -205,7 +205,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la CCR</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasCC, MYSQLI_ASSOC)) {
+										foreach($NoticiasCC as $result) {
 											echo "<li style=''><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -221,7 +221,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la CM2018</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasCM, MYSQLI_ASSOC)) {
+										foreach($NoticiasCM as $result) {
 											echo "<li style=''><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>

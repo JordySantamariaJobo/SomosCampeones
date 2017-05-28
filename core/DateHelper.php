@@ -5,7 +5,7 @@
 	* Date: 11/05/2017
 	* Time: 23:14
 	*/
-	class Helper
+	class DateHelper
 	{
 		public static function getFormatoFecha($fecha)
 		{

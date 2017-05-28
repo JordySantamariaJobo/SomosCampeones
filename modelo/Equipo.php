@@ -6,26 +6,30 @@
 	* Time: 23:43
 	*/
 
-	class Equipo
+	class Equipo extends DBConn
 	{
 		public $_connection;
 
 		public function __construct() {
 
-			require 'config/conn.php';
-
-			$this->_connection = $conn;
+			$this->_connection = $this->open_conn();
 
 		}
 
 		public function getInfoEquipo($idEquipo)
 		{
-			//$q = "CALL DatosEquipo($idEquipo)";
-			$q = "SELECT *FROM Equipo WHERE id_equipo = $idEquipo";
-			$r = mysqli_query($this->_connection, $q);
-			$res = mysqli_fetch_array($r, MYSQLI_ASSOC);
+			try {
+				
+				$sql = $this->_connection->prepare("SELECT *FROM Equipo WHERE id_equipo = ?");
+				$sql->bindParam(1, $idEquipo);
+				$sql->execute();
+				$res = $sql->fetch(PDO::FETCH_ASSOC);
 
-			return $res;
+				return $res;
+
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 
 		public function getEquipos()

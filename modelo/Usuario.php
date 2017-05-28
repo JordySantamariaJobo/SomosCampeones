@@ -6,15 +6,15 @@
 	* Time: 23:43
 	*/
 
-	class Usuario
+	require 'config/DBConn.php';
+
+	class Usuario extends DBConn
 	{
 		public $_connection;
 
 		public function __construct() {
 
-			require 'config/conn.php';
-
-			$this->_connection = $conn;
+			$this->_connection = $this->open_conn();
 			
 		}
 
@@ -102,12 +102,10 @@
 
 		public function setValidarSesion($correoEn)
 		{
-			require 'config/conn.php';
-
 			$correo = base64_decode($correoEn);
 		
 			$q = "CALL DatosUsuario('$correo')";
-			$r = mysqli_query($conn, $q);
+			$r = mysqli_query($this->open_conn, $q);
 
 			$result = mysqli_fetch_array($r, MYSQLI_ASSOC);
 

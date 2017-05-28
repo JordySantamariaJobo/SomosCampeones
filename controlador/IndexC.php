@@ -11,7 +11,7 @@
 	require 'modelo/SoundCloud.php';
 	require 'modelo/Equipo.php';
 	require 'modelo/PostMinuto.php';
-	require 'modelo/Helper.php';
+	require 'core/DateHelper.php';
 
 	class IndexC
 	{
@@ -35,7 +35,7 @@
 			self::$_sound_cloud = new SoundCloud;
 			self::$_equipo = new Equipo;
 			self::$_post_minuto = new PostMinuto;
-			self::$_helper = new Helper;
+			self::$_helper = new DateHelper;
 		}
 
 		public function TitularNav($competencia)
@@ -46,6 +46,7 @@
 		public function NoticiasNav($competencia)
 		{
 			return self::$_noticia->getNoticiasNav($competencia);
+			get_template('template');
 		}
 
 		public static function NoticiaJumbotron()
