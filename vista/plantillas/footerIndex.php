@@ -12,8 +12,7 @@
 				<div class="col-sm-4 P5">
 					<h4 class="P7"><strong>NOTICIAS</strong></h4>
 					<?php
-						$noticias1 = IndexC::TitularesDelDia();
-						while ($result = mysqli_fetch_array($noticias1, MYSQLI_ASSOC)) {
+						foreach($noticias as $result) {
 							echo "<a class='P5' href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a><br>";
 						}
 					?>
@@ -52,7 +51,7 @@
 	</div>
 </footer>
 <?php
-	$visita = Helper::getVisita();
+	$visita = DateHelper::getVisita();
 ?>
 <script type="text/javascript">
 	var unrli = "<?php echo $visita['url']; ?>";

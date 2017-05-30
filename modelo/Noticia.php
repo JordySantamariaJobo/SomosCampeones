@@ -92,12 +92,18 @@
 
 		public function getTitularesCategoria($categoria, $limit)
 		{
-			include 'config/conn.php';
+			try {
+				
+				$sql = $this->_connection->prepare("SELECT *FROM Noticia WHERE categoria = ? ORDER BY id_noticia DESC LIMIT $limit");
+				$sql->bindParam(1, $categoria);
+				$sql->execute();
+				$res = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-			$q = "SELECT *FROM Noticia WHERE categoria = '$categoria' ORDER BY id_noticia DESC LIMIT $limit";
-			$r = mysqli_query($this->_connection, $q);
+				return $res;
 
-			return $r;
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 
 		public function getNoticia($id, $titulo)
@@ -154,12 +160,17 @@
 
 		public function getNoticiasPanel()
 		{
-			require 'config/conn.php';
+			try {
+				
+				$sql = $this->_connection->prepare("SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 10");
+				$sql->execute();
+				$res = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-			$q = "SELECT *FROM Noticia ORDER BY id_noticia DESC LIMIT 10";
-			$r = mysqli_query($this->open_conn(), $q);
+				return $res;
 
-			return $r;
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 
 		public function BuscadorAvanzado($palabra)

@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="../libs/css/style.css">
 <link rel="stylesheet" type="text/css" href="../libs/css/index.css">
 <link rel="stylesheet" type="text/css" href="../libs/css/colors.css">
+<link rel="stylesheet" type="text/css" href="../libs/css/InputMaterial.css">
+<link rel="stylesheet" type="text/css" href="../libs/css/skins/flat/blue.css">
 <!-- FUENTES -->
 <link rel="stylesheet" type="text/css" href="../libs/fonts/poppins.css">
 <!-- Scripts -->
@@ -15,11 +17,13 @@
 <script type="text/javascript" src="../libs/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../libs/js/Validacion.js"></script>
 <script type="text/javascript" src="../libs/js/Viewlogin.js"></script>
+<script type="text/javascript" src="../libs/js/RegistrarScript.js"></script>
 <script type="text/javascript" src="../libs/js/analytics.js"></script>
 <script type="text/javascript" src="../libs/js/countAnalyticsView.js"></script>
 <script type="text/javascript" src="../libs/js/jquery.flexisel.js"></script>
 <script type="text/javascript" src="../libs/js/BuscadorAvanzado.js"></script>
-<script type="text/javascript" src="../libs/js/index.js"></script>
+<script type="text/javascript" src="../libs/js/DefaultImage.js"></script>
+<script type="text/javascript" src="../libs/js/icheck.js"></script>
 <script type="text/javascript" src="http://www.jqueryscript.net/demo/Responsive-jQuery-News-Ticker-Plugin-with-Bootstrap-3-Bootstrap-News-Box/scripts/jquery.bootstrap.newsbox.min.js"></script>
 <script>
 	(adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-9347761211349930", enable_page_level_ads: true });

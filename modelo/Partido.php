@@ -10,6 +10,9 @@
 	{
 		public $_connection;
 
+		const LIMIT_UNO = 1;
+		const LIMIT_TRES = 3;
+
 		public function __construct() {
 
 			$this->_connection = $this->open_conn();
@@ -50,10 +53,17 @@
 
 		public function getProximosPartidos()
 		{
-			$q = "SELECT *FROM Partido p WHERE p.disponible = 1 AND p.activo_p = 1 AND CURDATE() <= fecPartido ORDER BY id_partido, fecPartido DESC LIMIT 3";
-			$r = mysqli_query($this->_connection, $q);
+			try {
+				
+				$sql = $this->_connection->prepare("SELECT *FROM Partido p WHERE p.disponible = 1 AND p.activo_p = 1 AND CURDATE() <= fecPartido ORDER BY id_partido, fecPartido DESC LIMIT ".self::LIMIT_TRES);
+				$sql->execute();
+				$res = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-			return $r;
+				return $res;
+
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 	}
 ?>

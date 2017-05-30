@@ -1,22 +1,3 @@
-<!-- Modal Iniciar Sesion -->
-<div class="modal fade" id="ModalIniciarSesion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-   		<div class="modal-content">
-   			<div class="modal-body">
-   				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-   				<center>
-   					<h3 class='P7'>Iniciar Sesión en</h3>
-   					<h3 class='P7'>Somos Campeones</h3><br>
-					<input id="txtmail" type="mail" class="form-control input-sc valCorreo P4" placeholder="Correo Electronico"><br>
-					<input id="txtpwd" type="password" class="form-control input-sc P4" placeholder="Contraseña"><br>
-					<div id="fail"></div>
-					<button id="btnLogin" class="btn btn-danger P5" style="width:100%;" onclick="Login();"><strong>INICIAR SESIÓN</strong></button><br><br>
-					<a href="vista/Recovery.php" class='fAzul P7'>¿OLVIDASTE TU CONTRASEÑA?</a>
-    			</center>
-    		</div>
-    	</div>
-  	</div>
-</div>
 <footer style="background-color:#212121; color:#fff; padding-left:20px;">
 	<div><br>
 		<div id="Raleway4">
@@ -31,8 +12,7 @@
 				<div class="col-sm-4 P5">
 					<h4 id="Raleway7"><strong>NOTICIAS</strong></h4>
 					<?php
-						$noticias1 = NavBarC::TitularesDelDia();
-						while ($result = mysqli_fetch_array($noticias1, MYSQLI_ASSOC)) {
+						foreach(NavBarC::TitularesDelDia() as $result) {
 							echo "<a class='P5' href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a><br>";
 						}
 					?>
@@ -71,7 +51,7 @@
 	</div>
 </footer>
 <?php
-	$visita = Helper::getVisita();
+	$visita = DateHelper::getVisita();
 ?>
 <script type="text/javascript">
 	var unrli = "<?php echo $visita['url']; ?>";

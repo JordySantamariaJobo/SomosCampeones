@@ -23,7 +23,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a id="M8" class="navbar-brand active" href="index.php">
-                    <img src="libs/img/SomosCampeonesNav.png" class="img-responsive">
+                    <img src="libs/img/pagina/SomosCampeonesNav.png" class="img-responsive">
                 </a>
 			</div>
 			<div class="collapse navbar-collapse js-navbar-collapse">
@@ -238,8 +238,8 @@
         		<ul class="nav navbar-nav navbar-right" style="padding-right:15px;">
         			<li><input type="text" id="BuscadorAvanzado" class="form-control BuscadorNav P5" placeholder="Buscar..." style="margin-top:10px;"></li>
         			<?php if(!isset($_SESSION['IdUsuario'])) { ?>
-        			<li><a href="#" class='P5' data-toggle="modal" data-target="#ModalIniciarSesion">INGRESAR</a></li>
-        			<li><button class="btn btn-danger P7" style="margin-top: 10px;"><strong>REGISTRARME</strong></button></li>
+        			<li><button class="btn btn-default P7" style="margin-top: 10px; margin-left:10px; margin-right:10px;" onclick="location.href='vista/iniciarsesion.php'">INICIAR SESIÓN</button></li>
+        			<li><button class="btn btn-danger P7" style="margin-top: 10px;" onclick="location.href='vista/registrarse.php'"><strong>REGISTRARSE</strong></button></li>
         			<?php } else { ?>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -303,11 +303,11 @@
 				</a>
 				<?php
 					$MinutoPartido = $metodo -> MinutoPartido();
-					if (mysqli_num_rows($MinutoPartido) != 0) {
+					if (isset($MinutoPartido)) {
 						?>
 						<div class="col-sm-12" style="margin-bottom:15px;">
 						<?php
-						while ($result = mysqli_fetch_array($MinutoPartido, MYSQLI_ASSOC)) {
+						foreach($MinutoPartido as $result) {
 							echo "<div class='col-sm-4' style='overflow: hidden;'><br>
 								<div class='thumbnail thumb-material bRojo'>
 								<div class='cat P7'>EN VIVO <i class='fa fa-circle'></i></div>
@@ -329,7 +329,7 @@
 				?>
 				<div class="col-sm-12" style="margin-bottom:15px;">
 					<?php
-						while ($result = mysqli_fetch_array($noticias, MYSQLI_ASSOC)) {
+						foreach($noticias as $result) {
 							echo "<div class='col-sm-4' style='overflow: hidden;'><br>
 								<div class='thumbnail thumb-material'>
 									<div class='cat P7'><i class='fa fa-trophy'></i> ".$result['categoria']."</div>
@@ -351,7 +351,7 @@
 				<div class="col-sm-12 img-wall" style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(http://www.ford.dk/cs/BlobServer?blobtable=MungoBlobs&blobcol=urldata&blobwhere=1214373808222&blobkey=id); margin-bottom:10px;"><br>
 					<h2 class="P7 fBlanco" style="margin-left: 15px;">UEFA CHAMPIONS LEAGUE</h2><hr class="hrRed"><br><br>
 					<?php
-						$champions = IndexC::TitularesCategoria("Champions League");
+						$champions = IndexC::TitularesCategoria("Champions League", 3);
 						foreach ($champions as $result) {
 							echo "<div class='col-sm-4' style='overflow: hidden;'><br>
 								<div class='thumbnail thumb-material'>
@@ -407,7 +407,7 @@
 										<ul id="demo3">
 											<?php
 												$noticiaPanel = $metodo -> NoticiaPanel();
-												while ($result = mysqli_fetch_array($noticiaPanel, MYSQLI_ASSOC)) {
+												foreach($noticiaPanel as $result) {
 													echo "<li class='news-item P5'><a href='vista/noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 												}
 											?>
@@ -421,7 +421,7 @@
 				<div class="col-sm-12 img-wall" style="background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)), url(https://www.madridiario.es/fotos/1/127356_estadio_santiago_bernabeu_desde_torre_europa_noche_kr.jpg); margin-bottom:10px;"><br>
 					<h2 class="P7 fBlanco" style="margin-left: 15px;">LA LIGA</h2><hr class="hrRed"><br><br>
 					<?php
-						$laliga = IndexC::TitularesCategoria("La Liga");
+						$laliga = IndexC::TitularesCategoria("La Liga", 3);
 						foreach ($laliga as $result) {
 							echo "<div class='col-sm-4' style='overflow: hidden;'><br>
 								<div class='thumbnail thumb-material'>
@@ -444,7 +444,7 @@
 				<div class="col-sm-12 img-wall" style="background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)), url(http://www.mbc.net/default/mediaObject/Photos/2016/february/week-2/8-2-2016/%D8%A8%D9%88%D9%8A%D8%A8%D9%84%D8%A7/original/1a79712c1835544303e346dd0ea10ad758cdb44d/%D8%A8%D9%88%D9%8A%D8%A8%D9%84%D8%A7.jpg); margin-bottom:10px;">
 					<h2 class="P7 fBlanco" style="margin-left: 15px;">LIGA MX</h2><hr class="hrRed"><br><br>
 					<?php
-						$lmx = IndexC::TitularesCategoria("Liga MX");
+						$lmx = IndexC::TitularesCategoria("Liga MX", 3);
 						foreach ($lmx as $result) {
 							echo "<div class='col-sm-4' style='overflow: hidden;'><br>
 								<div class='thumbnail thumb-material'>
@@ -467,7 +467,7 @@
 				<div class="col-sm-12 img-wall" style="background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)), url(http://aurora-awards.com/wp-content/uploads/2017/05/premier-league-wallpapers-2016-all-new-premier-league-logo-unveiled-sleeve-patch-revealed.jpg); margin-bottom:10px;">
 					<h2 class="P7 fBlanco" style="margin-left: 15px;">PREMIER LEAGUE</h2><hr class="hrRed"><br><br>
 					<?php
-						$pl = IndexC::TitularesCategoria("Premier League");
+						$pl = IndexC::TitularesCategoria("Premier League", 3);
 						foreach ($pl as $result) {
 							echo "<div class='col-sm-4' style='overflow: hidden;'><br>
 								<div class='thumbnail thumb-material'>

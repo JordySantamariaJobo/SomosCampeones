@@ -34,10 +34,17 @@
 
 		public function getEquipos()
 		{
-			$q = "SELECT *FROM Equipo WHERE id_liga <= 4 ORDER BY nombre_e ASC";
-			$r = mysqli_query($this->_connection, $q);
+			try {
+				
+				$sql = $this->_connection->prepare("SELECT *FROM Equipo ORDER BY nombre_e ASC");
+				$sql->execute();
+				$res = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-			return $r;
+				return $res;
+
+			} catch (Exception $e) {
+				return $e->getMessage();
+			}
 		}
 	}
 ?>

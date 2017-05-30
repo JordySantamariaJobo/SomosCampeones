@@ -10,7 +10,7 @@
 	require '../modelo/Equipo.php';
 	require '../modelo/Banner.php';
 	require '../modelo/SoundCloud.php';
-	require '../modelo/Helper.php';
+	require '../modelo/DateHelper.php';
 
 	class NoticiaC
 	{
@@ -30,7 +30,7 @@
 			self::$_equipo = new Equipo;
 			self::$_banner = new Banner;
 			self::$_sound_cloud = new SoundCloud;
-			self::$_helper = new Helper;
+			self::$_helper = new DateHelper;
 		}
 
 		public static function TitularesDelDia()

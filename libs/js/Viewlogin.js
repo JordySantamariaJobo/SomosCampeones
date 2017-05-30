@@ -18,15 +18,12 @@ function Login() {
                 data: ajax_data,
                 success: function(result){
                     if (result == "Error"){
-                        $("#txtmail").addClass("error");
-                        $("#txtpwd").addClass("error");
-                        $("#fail").html("<strong><p style='color: #D32F2F;'>Al parecer tu correo o contrase&ntildea son incorrectos, verificalos de nuevo...</p></strong>");
-                    }
-                    else{
-                        location.reload();
+                        $("#fail").html("<div class='alert alert-danger P5' role='alert'>Al parecer tu correo o contrase&ntildea son incorrectos, verificalos de nuevo...</div>");
+                    } else{
+                        location.href = '../index.php';
                     }
                 },
-                error: function(){ $("#fail").html("<strong><p style='color: #D32F2F';>Al parecer hubo un error, Nuestro equipo ya esta trabajando para arreglar este error</p></strong>"); }
+                error: function(){ $("#fail").html("<div class='alert alert-danger P5' role='alert'>Al parecer hubo un error, Nuestro equipo ya esta trabajando para arreglar este error</div>"); }
             });
         }
     }            

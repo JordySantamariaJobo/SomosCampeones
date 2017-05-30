@@ -49,9 +49,17 @@ body{ background-color: #EEE; }
 }
 .BuscadorNav::-webkit-input-placeholder { color: #fff; }
 .BuscadorNav { 
-	background-color: transparent; 
-	color: #fff; 
-	border-radius: 50px;
+	-webkit-transition: background 0.3s ease-out;
+  transition: background 0.3s ease-out;
+  background: rgba(255,255,255,0.4);
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+}
+.BuscadorNav:focus {
+  background-color: #fff !important;
+  color: #212121 !important;
 }
 .btn{
 	border-radius: 2px;
@@ -83,16 +91,18 @@ body{ background-color: #EEE; }
 
 /*Default*/
 .btn-default {
-  background: #2BBBAD;
-  border-color: #2BBBAD;
+  background: #fff;
+  border-color: #fff;
 }
 .btn-default:hover, .btn-default:focus {
-  background-color: #30cfc0 !important;
-  border-color: #30cfc0 !important;
+  background-color: #FAFAFA !important;
+  border-color: #FAFAFA !important;
+  color: #212121;
 }
 .btn-default.active {
-  background-color: #186860 !important;
-  border-color: #186860 !important;
+  background-color: #F5F5F5 !important;
+  border-color: #F5F5F5 !important;
+  color: #212121;
 }
 
 /*Success*/

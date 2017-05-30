@@ -28,7 +28,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a id="M8" class="navbar-brand active" href="../index.php">
-                    <img src="../libs/img/SomosCampeonesNav.png" class="img-responsive">
+                    <img src="../libs/img/pagina/SomosCampeonesNav.png" class="img-responsive">
                 </a>
 			</div>
 			<div class="collapse navbar-collapse js-navbar-collapse">
@@ -64,7 +64,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias Liga MX</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasLMX, MYSQLI_ASSOC)) {
+										foreach($NoticiasLMX as $result) {
 											echo "<li><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -80,7 +80,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la PL</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasPL, MYSQLI_ASSOC)) {
+										foreach($NoticiasPL as $result) {
 											echo "<li><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -96,7 +96,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias La Liga</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasLL, MYSQLI_ASSOC)) {
+										foreach($NoticiasLL as $result) {
 											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -130,7 +130,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la UCL</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasUCL, MYSQLI_ASSOC)) {
+										foreach($NoticiasUCL as $result) {
 											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -146,7 +146,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la LCC</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasLC, MYSQLI_ASSOC)) {
+										foreach($NoticiasLC as $result) {
 											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -162,7 +162,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la CL</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasCL, MYSQLI_ASSOC)) {
+										foreach($NoticiasCL as $result) {
 											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -194,7 +194,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la SM</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasSM, MYSQLI_ASSOC)) {
+										foreach($NoticiasSM as $result) {
 											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -210,7 +210,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la CCR</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasCC, MYSQLI_ASSOC)) {
+										foreach($NoticiasCC as $result) {
 											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -226,7 +226,7 @@
 									<li class="divider"></li>
 									<li class="dropdown-header P7">Noticias de la CM2018</li>
 									<?php
-										while ($result = mysqli_fetch_array($NoticiasCM, MYSQLI_ASSOC)) {
+										foreach($NoticiasCM as $result) {
 											echo "<li style=''><a href='noticia.php?id=".$result['id_noticia']."&tituloNew=".$result['titulo']."'>".$result['titulo']."</a></li>";
 										}
 									?>
@@ -243,8 +243,8 @@
         		<ul class="nav navbar-nav navbar-right" style="padding-right:15px;">
         			<li><input type="text" id="BuscadorAvanzado" class="form-control BuscadorNav M4" placeholder="Buscar..." style="margin-top:10px;"></li>
 					<?php if(!isset($_SESSION['IdUsuario'])) { ?>
-        				<li><a href="#" class='P5' data-toggle="modal" data-target="#ModalIniciarSesion">INGRESAR</a></li>
-        				<li><button class="btn btn-danger P7" style="margin-top: 10px;"><strong>REGISTRARME</strong></button></li>
+        				<li><button class="btn btn-default P7" style="margin-top: 10px; margin-left:10px; margin-right:10px;" onclick="location.href='iniciarsesion.php'">INICIAR SESIÓN</button></li>
+        				<li><button class="btn btn-danger P7" style="margin-top: 10px;" onclick="location.href='registrarse.php'"><strong>REGISTRARSE</strong></button></li>
         				<?php } else { ?>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">

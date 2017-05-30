@@ -46,7 +46,6 @@
 		public function NoticiasNav($competencia)
 		{
 			return self::$_noticia->getNoticiasNav($competencia);
-			get_template('template');
 		}
 
 		public static function NoticiaJumbotron()
@@ -59,9 +58,9 @@
 			return self::$_noticia->getTitularesDelDia();
 		}
 
-		public static function TitularesCategoria($categoria)
+		public static function TitularesCategoria($categoria, $limit)
 		{
-			return self::$_noticia->getTitularesCategoria($categoria, self::LIMIT_NOTICIAS);
+			return self::$_noticia->getTitularesCategoria($categoria, $limit);
 		}
 
 		public static function Partidos()
