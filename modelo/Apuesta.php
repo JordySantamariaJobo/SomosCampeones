@@ -19,7 +19,13 @@
 			$this->_connection = $conn;
 
 		}
-
+		
+		/**
+     		* [getApuestasDisponibles Funcion que devuelve los partidos disponibles para apostar]
+     		* @param [int] $idUsuario [ID unico del Usuario]
+		* @return [array] $r
+		* @author Jordy Santamaria <santmjoy@gmail.com>
+     		*/
 		public function getApuestasDisponibles($idUsuario)
 		{
 			$q = "CALL PartidosDisponiblesApostar($idUsuario)";
@@ -27,7 +33,7 @@
 
 			return $r;
 		}
-
+		
 		public function setApostarPartido($idPartido, $idUsuario, $cantidad, $porcentaje)
 		{
 			$q = "CALL ApostarPartido($idPartido, $idUsuario, $cantidad, $porcentaje)";
