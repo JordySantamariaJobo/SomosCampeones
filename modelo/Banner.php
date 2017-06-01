@@ -15,6 +15,13 @@
 			$this->_connection = $this->open_conn();
 
 		}
+		
+		/**
+     		* [getAnuncio Funcion que devuelve un anuncio]
+     		* @param [int] $num [Numero aleatorio]
+		* @return [array] $res['code_ad']
+		* @author Jordy Santamaria <santmjoy@gmail.com>
+     		*/
 
 		public function getAnuncio($num)
 		{
