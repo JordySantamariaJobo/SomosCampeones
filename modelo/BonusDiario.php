@@ -6,8 +6,6 @@
 	* Time: 23:43
 	*/
 
-	namespace SomosCampeones\Modelo\BonusDiario;
-
 	class BonusDiario
 	{
 		public $_connection;
@@ -16,17 +14,22 @@
 
 			require 'config/conn.php';
 
-			$this->_connection = $conn;
+			$this->_connection = $this->open_conn();
 
 		}
 
 		public function getBonusDiario($id)
 		{
-			$q = "CALL ConsultarBonusDiario($id)";
-			$r = mysqli_query($this->_connection, $q);
-			$count = mysqli_num_rows($r);
-
-			return $count;
+			try{
+				$sql = $this->_connection->prepare("CALL ConsultarBonusDiario(?)");
+				$sql->bindParam(1, $id);
+				$sql->execute();
+				$res = count($sql->fetch(PDO::FETCH_ASSOC));
+				
+				return $res;
+			} catch(Exception $e) {
+				return $e->getMessage();
+			}
 		}
 	}
 ?>
